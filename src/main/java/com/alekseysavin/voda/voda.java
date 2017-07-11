@@ -24,7 +24,7 @@ public class voda extends TelegramLongPollingBot {
         try {
             if (update.hasMessage() && update.getMessage().hasText()) {
                 SendMessage message = new SendMessage();
-                message.setChatId((update.getMessage().getChatId())).setText("hello, alex");
+                message.setChatId((update.getMessage().getChatId())).setText("hello, Alex, i am voda; popej plz");
                 sendMessage(message);
             }
         } catch (TelegramApiException e) {

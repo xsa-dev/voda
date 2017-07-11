@@ -1,1 +1,0 @@
-worker: java -jar target/voda-1.0-SNAPSHOT.jar com.alekseysavin.voda.main
