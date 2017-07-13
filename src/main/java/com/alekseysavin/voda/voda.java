@@ -13,21 +13,7 @@ import java.util.ArrayList;
  * Created by User on 11.07.2017.
  */
 public class voda extends TelegramLongPollingBot {
-    public voda() {
-        super();
-    }
-
-    public String getBotToken() {
-        return "380086304:AAGS86JUVGuHNlY43IIYiitGC6ascrHhoyg";
-    }
-
-    public String getBotUsername() {
-        return "voda_bot";
-    }
-
-    public voda(DefaultBotOptions options) {
-        super(options);
-    }
+    private long ChatId;
 
     public void onUpdateReceived(Update update) {
 
@@ -38,7 +24,7 @@ public class voda extends TelegramLongPollingBot {
 
         try {
             if (update.hasMessage() && update.getMessage().hasText()) {
-                long ChatId = update.getMessage().getChatId(); //ChatId
+                ChatId = update.getMessage().getChatId(); //ChatId
                 String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
@@ -54,7 +40,27 @@ public class voda extends TelegramLongPollingBot {
                     }
             }
         } catch (Exception e) {
+        	SendMessage message = new SendMessage();
+        	message.setChatId(ChatId);
+            message.setText(e.toString());
             e.printStackTrace();
         }
+    }
+    
+    
+	public voda() {
+        super();
+    }
+
+    public String getBotToken() {
+        return "380086304:AAGS86JUVGuHNlY43IIYiitGC6ascrHhoyg";
+    }
+
+    public String getBotUsername() {
+        return "voda_bot";
+    }
+
+    public voda(DefaultBotOptions options) {
+        super(options);
     }
 }
