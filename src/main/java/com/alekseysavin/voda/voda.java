@@ -18,9 +18,16 @@ public class voda extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "380086304:AAFlk69S3b1wNSyVHvrIPBCVfLI8zzhaaLg";
+        return "380086304:AAGS86JUVGuHNlY43IIYiitGC6ascrHhoyg";
     }
 
+    public String getBotUsername() {
+        return "voda_bot";
+    }
+
+    public voda(DefaultBotOptions options) {
+        super(options);
+    }
 
     public void onUpdateReceived(Update update) {
 
@@ -31,13 +38,13 @@ public class voda extends TelegramLongPollingBot {
 
         try {
             if (update.hasMessage() && update.getMessage().hasText()) {
-                long id = update.getMessage().getChatId();
-                String instr = update.getMessage().getText();
+                long ChatId = update.getMessage().getChatId(); //ChatId
+                String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
-                message.setChatId(id);
-
-                if (instr.equals("/status")) {
-                    message.setChatId(id);
+                message.setChatId(ChatId);
+  
+                if (CurrentInMessage.equals("/status")) {
+                    message.setChatId(ChatId);
                     message.setText("Ok, is is status");
                     sendMessage(message);
                 } else
@@ -49,14 +56,5 @@ public class voda extends TelegramLongPollingBot {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    public String getBotUsername() {
-        return "voda_bot";
-    }
-
-    public voda(DefaultBotOptions options) {
-        super(options);
     }
 }
