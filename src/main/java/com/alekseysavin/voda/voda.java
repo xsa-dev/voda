@@ -31,20 +31,27 @@ public class voda extends TelegramLongPollingBot {
 
         try {
             if (update.hasMessage() && update.getMessage().hasText()) {
-                long id = update.getMessage().getChatId();
-                String instr = update.getMessage().getText();
-                SendMessage message = new SendMessage();
+                long id = update.getMessage().getChatId(); // id - идентификатор чата (обязательное)
+                String instr = update.getMessage().getText(); // instr - входящая строка
+                SendMessage message = new SendMessage(); // message - исходящая инструкция
+                StringBuilder status = new StringBuilder(); // status - отдаём статус
+                String[] arr = (update.getMessage().getText().split(":")); // список item'ов
+                String items;
                 message.setChatId(id);
 
-                if (instr.equals("/status")) {
+                if (instr.equals("status")) { // отправка статуса
                     message.setChatId(id);
-                    message.setText("Ok, is is status");
-                    sendMessage(message);
-                } else
-                    for (String str : messages) {
-                        message.setText(str);
-                        sendMessage(message);
+                    ArrayList<String> list = new ArrayList<String>();
+                    for (String str: list ) {
+                        status.append(str + "\n");
                     }
+                    sendMessage(message.setText(status.toString())); // набираем в статус
+                } else if (instr.contains("add")) {
+                    for (String str: arr ) {
+
+                    }
+                }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
