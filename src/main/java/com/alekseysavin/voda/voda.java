@@ -1,25 +1,23 @@
 package com.alekseysavin.voda;
 
-import org.telegram.telegrambots.TelegramBotsApi;
+
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
+
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 /**
  * Created by User on 11.07.2017.
+ * Updated by User on 19.07.2017.
  */
 public class voda extends TelegramLongPollingBot {
-    public voda() {
-        super();
-    }
-
-    public String getBotToken() {
-        return "380086304:AAFlk69S3b1wNSyVHvrIPBCVfLI8zzhaaLg";
-    }
+    private long ChatId;
+    public String[] inString;
 
 
     public void onUpdateReceived(Update update) {
@@ -31,32 +29,49 @@ public class voda extends TelegramLongPollingBot {
 
         try {
             if (update.hasMessage() && update.getMessage().hasText()) {
-                long id = update.getMessage().getChatId(); // id - идентификатор чата (обязательное)
-                String instr = update.getMessage().getText(); // instr - входящая строка
-                SendMessage message = new SendMessage(); // message - исходящая инструкция
-                StringBuilder status = new StringBuilder(); // status - отдаём статус
-                String[] arr = (update.getMessage().getText().split(":")); // список item'ов
-                String items;
-                message.setChatId(id);
-
-                if (instr.equals("status")) { // отправка статуса
-                    message.setChatId(id);
-                    ArrayList<String> list = new ArrayList<String>();
-                    for (String str: list ) {
-                        status.append(str + "\n");
-                    }
-                    sendMessage(message.setText(status.toString())); // набираем в статус
-                } else if (instr.contains("add")) {
-                    for (String str: arr ) {
-
-                    }
+                ChatId = update.getMessage().getChatId(); //ChatId
+                String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
+                SendMessage message = new SendMessage();
+                message.setChatId(ChatId);
+                
+                HashMap<String, Integer> vodaList = new	HashMap<String, Integer>();
+                vodaList.put("test", 1);
+  
+                if (CurrentInMessage.equals("/status")) {
+                    message.setChatId(ChatId);
+                    //message.setText("Ok, is is status;");
+                    //need update
+                    for (Entry<String, Integer> voda : vodaList.entrySet()) {
+						message.setText(voda.getKey() + " " + voda.getValue());
+				}                    
+                    sendMessage(message);
+                } else if (CurrentInMessage.startsWith("+")) {
+                	//need update
+                	   	message.setChatId(ChatId);
+                		System.out.println(update.getMessage().getText());
+                		inString = update.getMessage().getText().split(" ");
+                		for (int i = 0; i < inString.length; i++) {
+                			vodaList.put(inString[1], Integer.parseInt(inString[2]));
+                			message.setText(inString[0] + " " + inString[1] + " " + Integer.parseInt(inString[2]));
+                			sendMessage(message);
+                		}
                 }
-
             }
         } catch (Exception e) {
+        	SendMessage message = new SendMessage();
+        	message.setChatId(ChatId);
+            message.setText(e.toString());
             e.printStackTrace();
         }
+    }
+    
+    
+	public voda() {
+        super();
+    }
 
+    public String getBotToken() {
+        return "380086304:AAFPHSnQf1EJxwiQFrtJXBic0_nMeOChimQ";
     }
 
     public String getBotUsername() {
