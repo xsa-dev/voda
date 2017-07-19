@@ -17,8 +17,8 @@ import java.util.Map.Entry;
  */
 public class voda extends TelegramLongPollingBot {
     private long ChatId;
-    private String[] inString;
-    private HashMap<String, Integer> vodaList;
+    public String[] inString;
+
 
     public void onUpdateReceived(Update update) {
 
@@ -33,20 +33,27 @@ public class voda extends TelegramLongPollingBot {
                 String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
+                
+                HashMap<String, Integer> vodaList = new	HashMap<String, Integer>();
+                vodaList.put("test", 1);
   
                 if (CurrentInMessage.equals("/status")) {
                     message.setChatId(ChatId);
-                    message.setText("Ok, is is status;");
+                    //message.setText("Ok, is is status;");
                     //need update
                     for (Entry<String, Integer> voda : vodaList.entrySet()) {
 						message.setText(voda.getKey() + " " + voda.getValue());
-					}                    
+				}                    
                     sendMessage(message);
                 } else if (CurrentInMessage.startsWith("+")) {
                 	//need update
-                	inString = update.getMessage().getText().split(" ");
+                	   	message.setChatId(ChatId);
+                		System.out.println(update.getMessage().getText());
+                		inString = update.getMessage().getText().split(" ");
                 		for (int i = 0; i < inString.length; i++) {
                 			vodaList.put(inString[1], Integer.parseInt(inString[2]));
+                			message.setText(inString[0] + " " + inString[1] + " " + Integer.parseInt(inString[2]));
+                			sendMessage(message);
                 		}
                 }
             }
@@ -64,7 +71,7 @@ public class voda extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "380086304:AAGS86JUVGuHNlY43IIYiitGC6ascrHhoyg";
+        return "380086304:AAFPHSnQf1EJxwiQFrtJXBic0_nMeOChimQ";
     }
 
     public String getBotUsername() {
