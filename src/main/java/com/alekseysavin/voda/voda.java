@@ -10,7 +10,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
+import java.util.Date;
 /**
  * Created by User on 11.07.2017.
  * Updated by User on 19.07.2017.
@@ -25,6 +25,7 @@ public class voda extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
 
         ArrayList<String> messages = new ArrayList<String>();
+
         if (update.hasMessage() && update.getMessage().hasText()) {
             messages.add(update.getMessage().getText());
         }
@@ -35,8 +36,8 @@ public class voda extends TelegramLongPollingBot {
                 String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
-                
 
+//                DEBUG DATA
 //                vodaList.put("test", 1);
 //                vodaList.put("test2", 2);
 
