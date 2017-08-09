@@ -25,8 +25,7 @@ public class voda extends TelegramLongPollingBot {
     public String organization = "Школа Питания";
 
 
-
-    public void onUpdateReceived(Update update) {
+        public void onUpdateReceived(Update update) {
 
         ArrayList<String> messages = new ArrayList<String>();
 
