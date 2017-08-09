@@ -22,6 +22,8 @@ public class voda extends TelegramLongPollingBot {
     public HashMap<String, Integer> vodaList = new	HashMap<String, Integer>();
     public int vodaCounter = 0;
 
+    public String organization = "Школа Питания";
+
 
 
     public void onUpdateReceived(Update update) {
@@ -43,6 +45,18 @@ public class voda extends TelegramLongPollingBot {
 //                vodaList.put("test", 1);
 //                vodaList.put("test2", 2);
 
+                if (CurrentInMessage.equals("/start")) {
+                    message.setChatId(ChatId);
+                    message.setText("Добро пожаловать в " + organization + "!" +
+                    "\n" + "Для того что-бы что то увидеть попробуй команду /help там будет написано как" + "\n" + "Рад быть полезным, @popejbot");
+                    sendMessage(message);
+                }
+
+                if (CurrentInMessage.equals("/help")) {
+                    message.setChatId(ChatId);
+                    message.setText("Попробуй добавить что нибудь например так: " + "\n" + "* Что-то 500" + "\n" + "Что-то должно быть без пробелов :)");
+                    sendMessage(message);
+                }
                 if (CurrentInMessage.equals("/status")) {
                     message.setChatId(ChatId);
                     //message.setText("Ok, is is status;");
@@ -82,7 +96,7 @@ public class voda extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "380086304:AAEMlMHDuZSzPFzICJNB7mW_qXJrMNqGwGk";
+        return "380086304:AAE6Z8IOq0NiPdvbv42upKwnbozo0bQ12Z4";
     }
 
     public String getBotUsername() {
