@@ -15,81 +15,106 @@ import java.util.TimerTask;
 /**
  * Created by User on 11.07.2017.
  * Updated by User on 19.07.2017.
+ * Updated by iko in 25.08.2017
  */
 public class voda extends TelegramLongPollingBot {
-    private long ChatId;
-    public String[] inString;
-    public HashMap<String, Integer> vodaList = new	HashMap<String, Integer>();
-    public int vodaCounter = 0;
 
+    public class zamer {
+
+    }
+
+    int bSum = 0; // белок
+    int kSum = 0; // калории
+    int pSum = 0; // клетчатка
+    int vSum = 0; // вода
+    int aSum = 0; // активность
+
+    String[] vStringArray;
+    String[] eStringArray;
+    String[] aStringArray;
 
 
     public void onUpdateReceived(Update update) {
 
-        ArrayList<String> messages = new ArrayList<String>();
 
-        if (update.hasMessage() && update.getMessage().hasText()) {
-            messages.add(update.getMessage().getText());
-        }
+        long ChatId = 0;
+
+
 
         try {
+
             if (update.hasMessage() && update.getMessage().hasText()) {
+
                 ChatId = update.getMessage().getChatId(); //ChatId
                 String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
 
-//                DEBUG DATA
-//                vodaList.put("test", 1);
-//                vodaList.put("test2", 2);
-
                 if (CurrentInMessage.equals("/status")) {
+
                     message.setChatId(ChatId);
-                    //message.setText("Ok, is is status;");
-                    //need update
-                    String outMessage = "";
-                    int sum = 0;
-                    for (Entry<String, Integer> voda : vodaList.entrySet()) {
-                        outMessage += voda.getKey() + " " + voda.getValue() + "\n";
-						sum += voda.getValue();
-                    }
-                    message.setText(outMessage + "\n" + "Всего за сегодня= " + sum);
+
+                    String outMessage = "Дневник: " + "\n";
+
+                    message.setText(outMessage + "\n"
+                            + "Белка за день: " + bSum + "\n"
+                            + "Калории: " + kSum + "\n"
+                            + "П.В.: " + pSum + "\n"
+                            + "Воды: " + vSum + "\n"
+                            + "Активность: " + aSum + "\n"
+                    );
+
                     sendMessage(message);
 
                 } else if (CurrentInMessage.startsWith("*")) {
-                	//need update
-                	   	message.setChatId(ChatId);
-                		System.out.println(update.getMessage().getText());
-                		vodaCounter++;
-                		inString = update.getMessage().getText().split(" ");
-                		for (int i = 0; i < inString.length; i++) {
-                		    //parse this format [+ "string" 50]
-                			vodaList.put(vodaCounter + ". " + inString[1], Integer.parseInt(inString[2]));
-                		}
+
+                    message.setChatId(ChatId);
+                    System.out.println(update.getMessage().getText());
+                    vStringArray = update.getMessage().getText().split(" ");
+                    vSum += Integer.parseInt(vStringArray[1]); // добавляем воду
 
                 } else if (CurrentInMessage.startsWith("+")) {
-                        message.setChatId(ChatId);
-                        inString = update.getMessage().getText().split(" ");
-                        for (int i = 0; i < inString.length; i++) {
-                            System.out.print(inString[i]);
+
+                    message.setChatId(ChatId);
+                    eStringArray = update.getMessage().getText().split(" ");
+
+                    for (int i = 2; i < eStringArray.length; i++) {
+                        if (eStringArray[i].endsWith("б")) {
+                            String string = eStringArray[i].toString();
+                            bSum = Integer.parseInt(string.replace("б", ""));
                         }
+                        if (eStringArray[i].contains("к")) {
+                            String string = eStringArray[i].toString();
+                            kSum += Integer.parseInt(string.replace("к", ""));
+                        }
+                        if (eStringArray[i].endsWith("п")) {
+                            String string = eStringArray[i].toString();
+                            pSum = Integer.parseInt(string.replace("п", ""));
+                        }
+                    }
+                } else if (CurrentInMessage.startsWith("@")) {
+
+                    message.setChatId(ChatId);
+                    System.out.println(update.getMessage().getText());
+                    aStringArray = update.getMessage().getText().split(" ");
+                    aSum += Integer.parseInt(aStringArray[1]); // добавляем воду
                 }
             }
         } catch (Exception e) {
-        	SendMessage message = new SendMessage();
-        	message.setChatId(ChatId);
+
+            SendMessage message = new SendMessage();
+            message.setChatId(ChatId);
             message.setText(e.toString());
             e.printStackTrace();
         }
     }
-    
-    
-	public voda() {
+
+    public voda() {
         super();
     }
 
     public String getBotToken() {
-        return "380086304:AAEMlMHDuZSzPFzICJNB7mW_qXJrMNqGwGk";
+        return "380086304:AAFf6KjuyStoDG2UavmeuoX6TZjClEZsCqo";
     }
 
     public String getBotUsername() {
