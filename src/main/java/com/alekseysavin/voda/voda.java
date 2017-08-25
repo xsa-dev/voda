@@ -66,6 +66,13 @@ public class voda extends TelegramLongPollingBot {
                 		    //parse this format [+ "string" 50]
                 			vodaList.put(vodaCounter + ". " + inString[1], Integer.parseInt(inString[2]));
                 		}
+
+                } else if (CurrentInMessage.startsWith("+")) {
+                        message.setChatId(ChatId);
+                        inString = update.getMessage().getText().split(" ");
+                        for (int i = 0; i < inString.length; i++) {
+                            System.out.print(inString[i]);
+                        }
                 }
             }
         } catch (Exception e) {
