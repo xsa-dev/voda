@@ -13,9 +13,10 @@ import java.util.Map.Entry;
 import java.util.TimerTask;
 
 /**
- * Created by User on 11.07.2017.
- * Updated by User on 19.07.2017.
+ * Created by User on 11.07.2017
+ * Updated by User on 19.07.2017
  * Updated by iko in 25.08.2017
+ * Updated by xsd in 26.08.2017
  */
 public class voda extends TelegramLongPollingBot {
 
@@ -28,13 +29,13 @@ public class voda extends TelegramLongPollingBot {
     String[] vStringArray;
     String[] eStringArray;
     String[] aStringArray;
+    String[] rStringArray;
 
+    String resultString = "";
 
     public void onUpdateReceived(Update update) {
 
-
         long ChatId = 0;
-
 
         try {
 
@@ -45,6 +46,14 @@ public class voda extends TelegramLongPollingBot {
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
 
+                if (CurrentInMessage.equals("/results")) {
+                    message.setChatId(ChatId);
+                    String outMesasge = "Результаты:" + "\n";
+
+                    message.setText(outMesasge + "\n" + resultString;
+
+                    )
+                }
                 if (CurrentInMessage.equals("/status")) {
 
                     message.setChatId(ChatId);
@@ -88,11 +97,28 @@ public class voda extends TelegramLongPollingBot {
                         }
                     }
                 } else if (CurrentInMessage.startsWith("@")) {
-
                     message.setChatId(ChatId);
-                    System.out.println(update.getMessage().getText());
                     aStringArray = update.getMessage().getText().split(" ");
                     aSum += Integer.parseInt(aStringArray[1]); // добавляем воду
+                } else if (CurrentInMessage.startsWith(":")) {
+
+                    rStringArray = update.getMessage().getText().split(" ");
+
+                    Result result = new Result(
+
+                            Float.parseFloat(rStringArray[0].replace(":","")),
+                            Float.parseFloat(rStringArray[1]),
+                            Float.parseFloat(rStringArray[2]),
+                            Float.parseFloat(rStringArray[3]),
+                            Integer.parseInt(rStringArray[4]),
+                            Integer.parseInt(rStringArray[5]),
+                            Integer.parseInt(rStringArray[6]),
+                            Integer.parseInt(rStringArray[7]),
+                            Integer.parseInt(rStringArray[8]),
+                            Float.parseFloat(rStringArray[9]));
+
+                    resultString = result.toString();
+                    System.out.println(result.toString());
                 }
             }
         } catch (Exception e) {
