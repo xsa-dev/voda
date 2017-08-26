@@ -19,10 +19,6 @@ import java.util.TimerTask;
  */
 public class voda extends TelegramLongPollingBot {
 
-    public class zamer {
-
-    }
-
     int bSum = 0; // белок
     int kSum = 0; // калории
     int pSum = 0; // клетчатка
@@ -38,7 +34,6 @@ public class voda extends TelegramLongPollingBot {
 
 
         long ChatId = 0;
-
 
 
         try {
