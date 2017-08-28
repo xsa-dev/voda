@@ -91,7 +91,7 @@ public class voda extends TelegramLongPollingBot {
                         for (int i = 2; i < eStringArray.length; i++) {
                             if (eStringArray[i].endsWith("б")) {
                                 String string = eStringArray[i].toString();
-                                bSum += Integer.parseInt(string.replace("п", ""));
+                                bSum += Integer.parseInt(string.replace("б", ""));
                             }
                             if (eStringArray[i].contains("э")) {
                                 String string = eStringArray[i].toString();

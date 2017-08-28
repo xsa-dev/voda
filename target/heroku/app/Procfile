@@ -1,5 +1,2 @@
-<<<<<<< HEAD
-=======
 web java $JAVA_OPTS -cp target/classes: target/dependency/* com.alekseysavin.voda.main
->>>>>>> 32ffed841aa79ef1b4a0a7a1f99f875426bce25f
 web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.alekseysavin.voda.main
