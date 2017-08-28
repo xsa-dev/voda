@@ -13,15 +13,11 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
  */
 public class voda extends TelegramLongPollingBot {
 
-
     int bSum = 0; // белок
     int eSum = 0; // энергия
     int vSum = 0; // клетчатка
     int wSum = 0; // вода
     int aSum = 0; // активность
-
-    public String organization = "Школа Питания";
-
 
     String[] vStringArray;
     String[] eStringArray;
@@ -29,8 +25,6 @@ public class voda extends TelegramLongPollingBot {
     String[] rStringArray;
 
     String resultString = "";
-
-
 
     public void onUpdateReceived(Update update) {
 
