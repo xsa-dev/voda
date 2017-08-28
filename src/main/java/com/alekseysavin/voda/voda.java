@@ -13,11 +13,15 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
  */
 public class voda extends TelegramLongPollingBot {
 
+
     int bSum = 0; // белок
     int eSum = 0; // энергия
     int vSum = 0; // клетчатка
     int wSum = 0; // вода
     int aSum = 0; // активность
+
+    public String organization = "Школа Питания";
+
 
     String[] vStringArray;
     String[] eStringArray;
@@ -25,6 +29,8 @@ public class voda extends TelegramLongPollingBot {
     String[] rStringArray;
 
     String resultString = "";
+
+
 
     public void onUpdateReceived(Update update) {
 
@@ -46,6 +52,7 @@ public class voda extends TelegramLongPollingBot {
                             + "Строка: * вода 500 - добавит 500 мл воды (кофе и чай - не вода, нужно выпить столько же!)" + "\n"
                             + "& 500 - Активность" + "\n"
                             + "% 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 - Замеры";
+
 
                     message.setText(helpText);
                     message.setChatId(ChatId);
@@ -154,6 +161,7 @@ public class voda extends TelegramLongPollingBot {
 
     public String getBotToken() {
         return "380086304:AAFf6KjuyStoDG2UavmeuoX6TZjClEZsCqo";
+
     }
 
     public String getBotUsername() {
