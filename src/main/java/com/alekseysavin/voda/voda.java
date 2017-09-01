@@ -10,6 +10,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
  * Updated by User on 19.07.2017
  * Updated by iko in 25.08.2017
  * Updated by xsd in 26.08.2017
+ * Updated by iko in 01.09.2017
  */
 public class voda extends TelegramLongPollingBot {
 
@@ -39,13 +40,30 @@ public class voda extends TelegramLongPollingBot {
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
 
+                if (CurrentInMessage.equals("/reset")) {
+                    message.setChatId((ChatId));
+                    try {
+                        aSum = 0;
+                        bSum = 0;
+                        eSum = 0;
+                        wSum = 0;
+                        vSum = 0;
+                    }catch (Error e) {
+                        System.out.println(e);
+                        String error = e.toString();
+                        message.setText("Что-то случилось" + "\n" + error);
+                    }
+
+                }
+
                 if (CurrentInMessage.equals("/help")) {
                     message.setChatId(ChatId);
                     String helpText = "Как пользоваться:" + "\n"
                             + "Строка: + хлеб 10б 150э 5в - добавит 10 белка, 150 калорий, 5 пищевых волокон" +  "\n"
                             + "Строка: * вода 500 - добавит 500 мл воды (кофе и чай - не вода, нужно выпить столько же!)" + "\n"
                             + "& 500 - Активность" + "\n"
-                            + "% 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 - Замеры";
+                            + "% 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 - Замеры" + "\n"
+                            + "";
 
 
                     message.setText(helpText);
