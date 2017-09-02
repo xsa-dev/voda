@@ -56,10 +56,10 @@ public class voda extends TelegramLongPollingBot {
                         eSum = 0;
                         wSum = 0;
                         vSum = 0;
-                    }catch (Error e) {
+                    } catch (Error e) {
                         System.out.println(e);
                         String error = e.toString();
-                        message.setText("Что-то случилось" + "\n" + error);
+                        message.setText("Что-то случилось:" + "\n" + error);
                     }
 
                 }
@@ -71,7 +71,9 @@ public class voda extends TelegramLongPollingBot {
                             + "Строка: * вода 500 - добавит 500 мл воды (кофе и чай - не вода, нужно выпить столько же!)" + "\n"
                             + "& 500 - Активность" + "\n"
                             + "% 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 - Замеры" + "\n"
-                            + "";
+                            + "$ 8 - Добавит время сна"
+                            + "\n" +
+                            "Для дневника нужны: дневной рацион, вода, активность, сон";
 
 
                     message.setText(helpText);
@@ -82,7 +84,6 @@ public class voda extends TelegramLongPollingBot {
                     message.setChatId(ChatId);
                     String outMesasge = "Результаты:" + "\n";
                     message.setText(outMesasge + "\n" + resultString);
-
                 }
                 if (CurrentInMessage.equals("/status")) {
                     message.setChatId(ChatId);
@@ -131,13 +132,13 @@ public class voda extends TelegramLongPollingBot {
                     } catch (NumberFormatException nfe) {
                         System.out.println(nfe.toString());
                         String error = nfe.toString();
-                        message.setText("Не понял." + "\n" + error);
+                        message.setText("Не понял:" + "\n" + error);
                         message.setChatId(ChatId);
                         sendMessage(message);
                     } catch (Exception e) {
                         System.out.println(e);
                         String error = e.toString();
-                        message.setText("Не разобрал что ты написал." + "\n" + error);
+                        message.setText("Не разобрал что ты написал:" + "\n" + error);
                         message.setChatId(ChatId);
                         sendMessage(message);
                     }
