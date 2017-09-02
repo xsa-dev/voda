@@ -40,6 +40,14 @@ public class voda extends TelegramLongPollingBot {
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
 
+                if (CurrentInMessage.equals("/start")) {
+                    message.setChatId((ChatId));
+                    message.setText("Привет, я работаю в тестовом режиме." + "\n" +
+                                     "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
+                                     "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
+                                             "Добро пожаловать!");
+                }
+
                 if (CurrentInMessage.equals("/reset")) {
                     message.setChatId((ChatId));
                     try {
