@@ -13,20 +13,32 @@ import java.sql.*;
  * @author alekseysavin.com
  * @version 0.1
  */
+
 public class dbmodel {
     static class MysqlCon{
-        public void main(String args[]){
-            try{
+
+        String sqlUser = "devuser";
+        String sqlPass = "devuser";
+        String sqlHost = "jdbc:mysql://localhost:3306/clpr";
+
+        public void testConnection() throws SQLException, ClassNotFoundException {
+            try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection con= DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/clpr","devuser","devuser");
-//here sonoo is database name, root is username and password
-                Statement stmt=con.createStatement();
-                ResultSet rs=stmt.executeQuery("select * from USERS");
-                while(rs.next())
-                    System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
-                con.close();
-            }catch(Exception e){ System.out.println(e);}
+                Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select * from Users");
+                while (rs.next()) {
+                    System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
+                }
+            } catch (SQLException sqlE) {
+                System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
+            }
+        }
+
+        public void sqlExec(String qString) {
+            System.out.println("sqlExec()");
         }
     }
+
+
 }

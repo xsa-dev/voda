@@ -35,7 +35,7 @@ public class voda extends TelegramLongPollingBot {
 
             if (update.hasMessage() && update.getMessage().hasText()) {
 
-                ChatId = update.getMessage().getChatId(); //ChatId
+                ChatId = update.getMessage().getChat().getId(); //UserId
                 String CurrentInMessage = update.getMessage().getText(); // CurrentInMessage
                 SendMessage message = new SendMessage();
                 message.setChatId(ChatId);
