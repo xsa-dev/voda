@@ -9,11 +9,12 @@ import static com.alekseysavin.voda.dbmodel.*;
 /**
  * Created by User on 11.07.2017.
  */
+
 public class main {
     public static void main(String[] args) {
-        MysqlCon conn = new MysqlCon();
-        conn.main(null);
-        System.out.println(conn.toString());
+        // MysqlCon conn = new MysqlCon();
+        // conn.main(null);
+        // System.out.println(conn.toString());
 
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
