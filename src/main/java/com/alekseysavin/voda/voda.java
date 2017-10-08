@@ -1,11 +1,13 @@
 package com.alekseysavin.voda;
 
 import org.apache.commons.codec.digest.MessageDigestAlgorithms;
+import org.telegram.telegrambots.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.api.methods.send.SendLocation;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Location;
 import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
+import org.telegram.telegrambots.api.objects.payments.LabeledPrice;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboard;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -24,7 +26,7 @@ import java.util.List;
  * Updated by xsd in 26.08.2017
  * Updated by iko in 01.09.2017
  */
-public class voda extends TelegramLongPollingBot  {
+public class voda extends TelegramLongPollingBot {
 
     int bSum = 0; // белок
     int eSum = 0; // энергия
@@ -43,29 +45,51 @@ public class voda extends TelegramLongPollingBot  {
 
         long chat_id = update.getMessage().getChatId();
 
-
-        // клавиатура
-        SendMessage message0 = new SendMessage() // Create a message object object
-                .setText("Вот кнопки")
-                .setChatId(chat_id);
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
         List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
-        KeyboardRow row = new KeyboardRow();
-        row.add("Row 1 Button 1");
-        row.add("Row 1 Button 2");
-        keyboard.add(row);
-        keyboardMarkup.setKeyboard(keyboard);
-        message0.setReplyMarkup(keyboardMarkup);
 
-        try {
-            sendMessage(message0);
-        } catch (TelegramApiException e1) {
-            e1.printStackTrace();
+        KeyboardRow row1 = new KeyboardRow();
+        KeyboardRow row2 = new KeyboardRow();
+
+        KeyboardButton nearbly = new KeyboardButton("Ближайший клуб");
+        nearbly.getRequestLocation();
+
+        KeyboardButton inClub = new KeyboardButton("Клуб");
+        KeyboardButton friends = new KeyboardButton("Приведи друга");
+        KeyboardButton recoveryStrong = new KeyboardButton("Восстановление силы");
+        KeyboardButton invoice = new KeyboardButton("Инвойс");
+        KeyboardButton hommies = new KeyboardButton("Нет денег");
+
+        if (update.getMessage().getText().equals("/start")) {
+
+            SendMessage message0 = new SendMessage() // Create a message object object
+                    .setText("Нажми на кнопку соответсвующему твоему желанию")
+                    .setChatId(chat_id);
+            // клавиатура
+
+
+            row1.add(nearbly);
+            row2.add(inClub);
+            row2.add(friends);
+
+            keyboard.add(row1);
+            keyboard.add(row2);
+
+            keyboardMarkup.setKeyboard(keyboard);
+            message0.setReplyMarkup(keyboardMarkup);
+
+            try {
+                sendMessage(message0);
+            } catch (TelegramApiException e1) {
+                e1.printStackTrace();
+            }
+
+            // клавиатура end
         }
 
-        // клавиатура end
-
         if (update.getMessage().hasLocation()) {
+
+
             // location methods
 
             // отправляет локацию
@@ -92,7 +116,7 @@ public class voda extends TelegramLongPollingBot  {
                 }
             } else if (locationLatitude.equals("55.87") && (locationLongtitude.equals("37.55"))) {
                 SendMessage message1 = new SendMessage();
-                message1.setText("You at home location");
+                message1.setText("Ты в клубе у Леши");
                 message1.setChatId(chat_id);
                 try {
                     sendMessage(message1);
@@ -102,7 +126,7 @@ public class voda extends TelegramLongPollingBot  {
             } else if (locationLatitude.equals("55.79") && (locationLongtitude.equals("37.71"))) {
                 SendMessage message1 = new SendMessage();
                 message1.setChatId(chat_id);
-                message1.setText("You at club1 location");
+                message1.setText("Ты в клубе у Оли.");
                 try {
                     sendMessage(message1);
                 } catch (TelegramApiException e1) {
@@ -132,7 +156,103 @@ public class voda extends TelegramLongPollingBot  {
             message.setChatId(chat_id);
 
 
-            if (CurrentInMessage.equals("/location")) {
+            if (CurrentInMessage.equals("Ближайший")) {
+
+            }
+            else if (CurrentInMessage.contains("Клуб")) {
+
+                // запись на восстановление силы
+                SendMessage message0 = new SendMessage() // Create a message object object
+                        .setText("Ты в клубе.")
+                        .setChatId(chat_id);
+
+                keyboard.clear();
+                row1.add(recoveryStrong);
+                keyboard.add(row1);
+                keyboardMarkup.setKeyboard(keyboard);
+                message0.setReplyMarkup(keyboardMarkup);
+
+                try {
+                    sendMessage(message0);
+                }
+                catch (TelegramApiException e) {
+                    System.out.println(e);
+                }
+            }
+
+            else if (CurrentInMessage.equals("Восстановление силы")) {
+                SendMessage message0 = new SendMessage()
+                        .setChatId(chat_id)
+                        .setText("Цена разового абонемента 250рублей, готов оплатить?");
+
+                keyboard.clear();
+                row1.add(invoice);
+                row1.add(hommies);
+                keyboard.add(row1);
+                keyboardMarkup.setKeyboard(keyboard);
+                message0.setReplyMarkup(keyboardMarkup);
+                try {
+                    sendMessage(message0);
+                }
+                catch (TelegramApiException e) {
+                    System.out.println(e);
+                }
+
+            }
+
+            else if (CurrentInMessage.equals("Инвойс")) {
+
+                LabeledPrice RecoveryPrice = new LabeledPrice();
+                RecoveryPrice.setLabel("Коктель");
+                RecoveryPrice.setAmount(100);
+
+//                LabeledPrice AloePrice = new LabeledPrice();
+//                AloePrice.setLabel("Алое");
+//                AloePrice.setAmount(75);
+//
+//                LabeledPrice TeePrice = new LabeledPrice();
+//                TeePrice.setLabel("Чай");
+//                TeePrice.setAmount(75);
+
+
+                List<LabeledPrice> labeledPricesList = new ArrayList<LabeledPrice>();
+
+                labeledPricesList.add(RecoveryPrice);
+//                labeledPricesList.add(AloePrice);
+//                labeledPricesList.add(TeePrice);
+
+                SendInvoice Invoice = new SendInvoice()
+                        .setChatId(Integer.parseInt(String.valueOf(chat_id)))
+                        .setTitle("Разовый абонемент")
+                        .setDescription("Разовое посещение клуба на Преображенке")
+                        .setNeedEmail(true)
+                        .setNeedName(true)
+                        .setNeedPhoneNumber(true)
+                        .setPhotoUrl("")
+                        .setPhotoHeight(100)
+                        .setPhotoWidth(100)
+                        .setProviderToken("401643678:TEST:fce2bbd8-a2d1-46d6-a13c-b93155cf7168")
+                        .setPrices(labeledPricesList)
+                        .setCurrency("RUB")
+                        .setPayload("EarlyAbonement")
+                        .setStartParameter("BotStartParam");
+
+
+
+
+                try {
+                    sendInvoice(Invoice);
+                }
+                catch (TelegramApiException e) {
+                    System.out.println(e);
+                }
+
+
+
+
+            }
+
+            else if (CurrentInMessage.equals("/location")) {
 
                 SendLocation sendLocation = new SendLocation();
                 sendLocation.setChatId(chat_id);
@@ -147,7 +267,7 @@ public class voda extends TelegramLongPollingBot  {
 
             // end of location methods
 
-            if (CurrentInMessage.equals("/start")) {
+            else if (CurrentInMessage.equals("/start")) {
                 message.setChatId((chat_id));
                 message.setText("Привет, я работаю в тестовом режиме." + "\n" +
                         "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
@@ -173,7 +293,10 @@ public class voda extends TelegramLongPollingBot  {
 
             if (CurrentInMessage.equals("/help")) {
                 message.setChatId(chat_id);
-                String helpText = "Как пользоваться:" + "\n"
+                String helpText = "На кнопках всё написано" + "\n" + "\n";
+
+
+                        helpText = helpText + "Как пользоваться дневником питания:" + "\n"
                         + "Строка: + хлеб 10б 150э 5в - добавит 10 белка, 150 калорий, 5 пищевых волокон" + "\n"
                         + "Строка: * вода 500 - добавит 500 мл воды (кофе и чай - не вода, нужно выпить столько же!)" + "\n"
                         + "& 500 - Активность" + "\n"
