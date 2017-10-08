@@ -16,6 +16,7 @@ public class main {
         // conn.main(null);
         // System.out.println(conn.toString());
 
+
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
         try {
