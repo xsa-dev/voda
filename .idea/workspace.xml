@@ -2,130 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c9b0ff3-d08f-4c41-b856-c16c9ef703c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/draft/voda.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_42_bin.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/voda.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/Result.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/RunMeShedule.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/TicTackApp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/dbmodel$MysqlCon.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/dbmodel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/alekseysavin/voda/voda.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/aopalliance-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/aopalliance-repackaged-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/commons-codec-1.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/commons-io-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/commons-logging-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/grizzly-framework-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/grizzly-http-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/grizzly-http-server-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/guava-19.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/guice-4.1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/hk2-api-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/hk2-locator-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/hk2-utils-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/httpclient-4.5.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/httpcore-4.4.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/httpmime-4.5.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-annotations-2.8.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-core-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-databind-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-jaxrs-base-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-jaxrs-json-provider-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jackson-module-jaxb-annotations-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/javassist-3.20.0-GA.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/javax.annotation-api-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/javax.inject-1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/javax.inject-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/javax.ws.rs-api-2.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-client-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-common-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-container-grizzly2-http-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-entity-filtering-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-guava-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-media-jaxb-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-media-json-jackson-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/jersey-server-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/json-20160810.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/osgi-resource-locator-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/telegrambots-3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/telegrambots-meta-3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/dependency/validation-api-1.1.0.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/.heroku-deploy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/Procfile" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/system.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/classes/com/alekseysavin/voda/Result.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/classes/com/alekseysavin/voda/RunMeShedule.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/classes/com/alekseysavin/voda/TicTackApp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/classes/com/alekseysavin/voda/main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/classes/com/alekseysavin/voda/voda.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/aopalliance-1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/aopalliance-repackaged-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/commons-codec-1.9.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/commons-io-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/commons-logging-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/grizzly-framework-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/grizzly-http-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/grizzly-http-server-2.3.28.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/guava-19.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/guice-4.1.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/hk2-api-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/hk2-locator-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/hk2-utils-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/httpclient-4.5.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/httpcore-4.4.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/httpmime-4.5.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-annotations-2.8.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-core-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-databind-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-jaxrs-base-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-jaxrs-json-provider-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jackson-module-jaxb-annotations-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/javassist-3.20.0-GA.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/javax.annotation-api-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/javax.inject-1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/javax.inject-2.5.0-b32.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/javax.ws.rs-api-2.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-client-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-common-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-container-grizzly2-http-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-entity-filtering-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-guava-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-media-jaxb-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-media-json-jackson-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/jersey-server-2.25.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/json-20160810.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/osgi-resource-locator-1.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/telegrambots-3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/telegrambots-meta-3.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/dependency/validation-api-1.1.0.Final.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/mvn-dependency-list.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/heroku/app/target/voda-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/mvn-dependency-list.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/voda-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/Result.java" afterPath="$PROJECT_DIR$/src/main/java/com/erezults/Result.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/RunMeShedule.java" afterPath="$PROJECT_DIR$/src/main/java/com/timer/RunMeShedule.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/TicTackApp.java" afterPath="$PROJECT_DIR$/src/main/java/com/timer/TicTackApp.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/dbmodel.java" afterPath="$PROJECT_DIR$/src/main/java/com/model/dbmodel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/alekseysavin/voda/main.java" afterPath="$PROJECT_DIR$/src/main/java/com/main.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/target/heroku/slug.tgz" afterPath="$PROJECT_DIR$/out/artifacts/voda_jar/voda.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procfile" afterPath="$PROJECT_DIR$/Procfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/voda.iml" afterPath="$PROJECT_DIR$/voda.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -172,8 +50,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+            <state relative-caret-position="25">
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -862,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="25">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
