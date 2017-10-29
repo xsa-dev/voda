@@ -15,26 +15,48 @@ import java.sql.*;
  */
 
 public class dbmodel {
-    static class sqllite {
+    public static class sqllite {
         // http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
 
-
-
     }
-    static class MysqlCon{
+    public static class MysqlCon{
 
         String sqlUser = "devuser";
         String sqlPass = "devuser";
         String sqlHost = "jdbc:mysql://localhost:3306/clpr";
+
+        public void addProduct(String name, int pro, int fats, int carb) throws SQLException {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement statement = connection.createStatement();
+
+                String query = "insert into clpr.products (name, protein, fat, carbohydrate)\n" +
+                "values ('" + name + "', " + pro + "," + fats + "," + carb + ");";
+
+
+                // ResultSet results = statement.executeQuery(query);
+
+                statement.execute(query);
+
+//                while (results.next()) {
+//                    results.getStatement();
+//                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
 
         public void testMsqlConnection() throws SQLException, ClassNotFoundException {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
                 Statement stmt = con.createStatement();
-                ResultSet rs = stmt.executeQuery("select * from Users");
+                ResultSet rs = stmt.executeQuery("select * from People");
                 while (rs.next()) {
-                    System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
+                    System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " " + rs.getString(4));
                 }
             } catch (SQLException sqlE) {
                 System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
@@ -42,9 +64,8 @@ public class dbmodel {
         }
 
         public void sqlExec(String qString) throws SQLException, ClassNotFoundException {
-            System.out.println("sqlExec()");
-            testMsqlConnection();
-            System.out.println("SqlExce Done");
+            //Connection con = DriverManager;
+            //System.out.println("SqlExce Done");
         }
     }
 
