@@ -1,6 +1,7 @@
 package com;
 
 import com.draft.voda;
+import com.model.dbmodel    ;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -15,8 +16,11 @@ public class main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        // MysqlCon conn = new MysqlCon();
-        // conn.main(null);
+        dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+
+        conn.testMsqlConnection();
+        conn.addProduct("testo", 1,1,1);
+
         // System.out.println(conn.toString());
 
         // BOT API INIT
