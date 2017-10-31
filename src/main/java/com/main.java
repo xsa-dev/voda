@@ -16,10 +16,10 @@ public class main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+        //dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
 
-        conn.testMsqlConnection();
-        conn.addProduct("testo", 1,1,1);
+        //conn.testMsqlConnection();
+        //conn.addProduct("testo", 1,1,1);
 
         // System.out.println(conn.toString());
 

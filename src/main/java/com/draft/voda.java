@@ -14,8 +14,11 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.model.*;
 
 /**
  * Created by User on 11.07.2017
@@ -168,7 +171,25 @@ public class voda extends TelegramLongPollingBot {
             message.setChatId(chat_id);
 
 
-            if (CurrentInMessage.equals("Ближайший")) {
+            if (CurrentInMessage.startsWith("/addProduct")) {
+
+                dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+                try {
+                    conn.addProduct("addFromBot", 1, 1, 1);
+                    message.setText("testProductAdded");
+                } catch (SQLException sqle) {
+                    message.setText("SQL" + sqle);
+
+            }
+                try {
+                    sendMessage(message);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+            else if  (CurrentInMessage.equals("Ближайший")) {
 
             }
             else if (CurrentInMessage.contains("Клуб")) {
