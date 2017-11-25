@@ -25,6 +25,21 @@ public class dbmodel {
         String sqlPass = "devuser";
         String sqlHost = "jdbc:mysql://localhost:3306/clpr";
 
+        public void addUser(long tid, String tname, String tnummber) throws ClassNotFoundException, SQLException {
+           // INSERT INTO `telegram`.`users` (`telegramid`, `telegramname`, `telegramnumber`)
+           // VALUES (tid, tnumb, tname);
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            String query = "insert into telegram.users (telegramid, telegramname, telegramnumber) " +
+                    "values ('" + tid + "', '" + tname + "' , " +  tnummber + ");";
+            System.out.println(query);
+
+            statement.execute(query);
+
+        }
+
         public void addProduct(String name, int pro, int fats, int carb) throws SQLException {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -33,7 +48,6 @@ public class dbmodel {
 
                 String query = "insert into clpr.products (name, protein, fat, carbohydrate)\n" +
                 "values ('" + name + "', " + pro + "," + fats + "," + carb + ");";
-
 
                 // ResultSet results = statement.executeQuery(query);
 
