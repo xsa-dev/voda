@@ -211,7 +211,21 @@ public class voda extends TelegramLongPollingBot {
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
-            } else if (CurrentInMessage.equals("Ближайший")) {
+            } else if (CurrentInMessage.equals("Ближайший"))  {
+                // todo this
+                String nearClubName = "This";
+
+
+                SendMessage message0 = new SendMessage()
+                        .setText("Отправь мне своё местоположение и я найду ближайший клуб")
+                        .setChatId(chat_id);
+
+                try {
+                    sendMessage(message0);
+                } catch (TelegramApiException e) {
+                    e.printStackTrace();
+                }
+
 
             } else if (CurrentInMessage.contains("Клуб")) {
 
