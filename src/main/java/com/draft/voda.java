@@ -124,7 +124,6 @@ public class voda extends TelegramLongPollingBot {
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
-
             } else if (locationLatitude.equals("55.78") && (locationLongtitude.equals("37.70"))) {
                 SendMessage message1 = new SendMessage();
                 message1.setChatId(chat_id);
