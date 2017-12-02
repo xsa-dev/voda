@@ -55,11 +55,11 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton nearbly = new KeyboardButton("Ближайший клуб");
         nearbly.setRequestLocation(true);
 
-        KeyboardButton inClub = new KeyboardButton("#вКлубе");
+        KeyboardButton inClub = new KeyboardButton("Я в клубе");
         KeyboardButton friends = new KeyboardButton("Приведи друга");
-        KeyboardButton recoveryStrong = new KeyboardButton("Восстановление силы");
-        KeyboardButton invoice = new KeyboardButton("Инвойс");
-        KeyboardButton cash = new KeyboardButton("Наличные");
+        KeyboardButton recoveryStrong = new KeyboardButton("Запишись на восстановление");
+        KeyboardButton invoice = new KeyboardButton("Картой");
+        KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
 
         // payment - ok?
@@ -108,7 +108,7 @@ public class voda extends TelegramLongPollingBot {
                 }
             } else if (locationLatitude.equals("55.87") && (locationLongtitude.equals("37.55"))) {
                 SendMessage message1 = new SendMessage();
-                message1.setText("Ты в клубе у Леши");
+                message1.setText("Ты в клубе у Лёши! (Дегунино)");
                 message1.setChatId(chat_id);
                 try {
                     sendMessage(message1);
@@ -118,7 +118,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (locationLatitude.equals("55.79") && (locationLongtitude.equals("37.71"))) {
                 SendMessage message1 = new SendMessage();
                 message1.setChatId(chat_id);
-                message1.setText("Ты в клубе у Оли.");
+                message1.setText("Ты в клубе у Оли! (Преображенка).");
                 try {
                     sendMessage(message1);
                 } catch (TelegramApiException e1) {
@@ -127,7 +127,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (locationLatitude.equals("55.78") && (locationLongtitude.equals("37.70"))) {
                 SendMessage message1 = new SendMessage();
                 message1.setChatId(chat_id);
-                message1.setText("Рядом учебный центр.");
+                message1.setText("Рядом учебный центр! (Электрозаводская).");
                 try {
                     sendMessage(message1);
                 } catch (TelegramApiException e1) {
@@ -162,7 +162,7 @@ public class voda extends TelegramLongPollingBot {
             }
 
             SendMessage message0 = new SendMessage() // Create a message object object
-                    .setText("Нажми на кнопку соответсвующему твоему желанию")
+                    .setText("Выбери подходящий вариант")
                     .setChatId(chat_id);
             // клавиатура
             row1.add(nearbly);
