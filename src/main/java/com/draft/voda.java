@@ -216,7 +216,7 @@ public class voda extends TelegramLongPollingBot {
 
 
                 SendMessage message0 = new SendMessage()
-                        .setText("Отправь мне своё местоположение и я найду ближайший клуб")
+                        .setText("Отправь местоположение и я найду ближайший к тебе клуб")
                         .setChatId(chat_id);
 
                 try {
@@ -230,7 +230,7 @@ public class voda extends TelegramLongPollingBot {
 
                 // запись на восстановление силы
                 SendMessage message0 = new SendMessage() // Create a message object object
-                        .setText("Ты в клубе.")
+                        .setText("Ты в клубе!")
                         .setChatId(chat_id);
 
                 keyboard.clear();
@@ -247,7 +247,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (CurrentInMessage.equals("Восстановление силы")) {
                 SendMessage message0 = new SendMessage()
                         .setChatId(chat_id)
-                        .setText("Цена разового абонемента 250рублей, готов оплатить?");
+                        .setText("Цена разового абонемента (восстановление, алоэ, чай) 250 рублей. Готов оплатить?");
 
                 keyboard.clear();
                 row1.add(invoice);
@@ -261,10 +261,10 @@ public class voda extends TelegramLongPollingBot {
                     System.out.println(e);
                 }
 
-            } else if (CurrentInMessage.equals("Инвойс")) {
+            } else if (CurrentInMessage.equals("Картой")) {
 
                 LabeledPrice RecoveryPrice = new LabeledPrice();
-                RecoveryPrice.setLabel("Коктель");
+                RecoveryPrice.setLabel("Восстановление силы");
                 RecoveryPrice.setAmount(10000);
 
                 LabeledPrice AloePrice = new LabeledPrice();
@@ -347,14 +347,16 @@ public class voda extends TelegramLongPollingBot {
                 String helpText = "На кнопках всё написано" + "\n" + "\n";
 
 
-                helpText = helpText + "Как пользоваться дневником питания:" + "\n"
-                        + "Строка: + хлеб 10б 150э 5в - добавит 10 белка, 150 калорий, 5 пищевых волокон" + "\n"
-                        + "Строка: * вода 500 - добавит 500 мл воды (кофе и чай - не вода, нужно выпить столько же!)" + "\n"
-                        + "& 500 - Активность" + "\n"
-                        + "% 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9 - Замеры" + "\n"
-                        + "$ 8 - Добавит время сна"
+                helpText = helpText + "Как пользоваться ботом:" + "\n"
+                        + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
+                        + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
+                        + "Напиши: & 500 - добавит 500 килокаллорий активности." + "\n"
+                        + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n\n\n"
+                        + "Напиши: $ 8 - добавит время сна."
+                        + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n\n\n"
+                        
                         + "\n" +
-                        "Для дневника нужны: дневной рацион, вода, активность, сон";
+                        //"Для дневника нужны: дневной рацион, вода, активность, сон";
 
 
                 message.setText(helpText);
@@ -374,10 +376,10 @@ public class voda extends TelegramLongPollingBot {
                 message.setChatId(chat_id);
                 String outMessage = "Дневник: " + "\n";
                 message.setText(outMessage + "\n"
-                        + "Белка за день: " + bSum + "\n"
-                        + "Энергия: " + eSum + "\n"
-                        + "П.В.: " + vSum + "\n"
-                        + "Воды: " + wSum + "\n"
+                        + "Белок: " + bSum + "\n"
+                        + "Калорийность: " + eSum + "\n"
+                        + "Пищевые волокна.: " + vSum + "\n"
+                        + "Вода: " + wSum + "\n"
                         + "Активность: " + aSum + "\n"
                 );
                 try {
@@ -434,7 +436,7 @@ public class voda extends TelegramLongPollingBot {
                 } catch (Exception e) {
                     System.out.println(e);
                     String error = e.toString();
-                    message.setText("Не разобрал что ты написал:" + "\n" + error);
+                    message.setText("Не разобрал, что ты написал:" + "\n" + error);
                     message.setChatId(chat_id);
                     try {
                         sendMessage(message);
