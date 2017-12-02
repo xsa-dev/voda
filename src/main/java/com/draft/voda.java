@@ -226,7 +226,7 @@ public class voda extends TelegramLongPollingBot {
                 }
 
 
-            } else if (CurrentInMessage.contains("Клуб")) {
+            } else if (CurrentInMessage.contains("Я в клубе")) {
 
                 // запись на восстановление силы
                 SendMessage message0 = new SendMessage() // Create a message object object
@@ -244,7 +244,7 @@ public class voda extends TelegramLongPollingBot {
                 } catch (TelegramApiException e) {
                     System.out.println(e);
                 }
-            } else if (CurrentInMessage.equals("Восстановление силы")) {
+            } else if (CurrentInMessage.contains("осстановление")) {
                 SendMessage message0 = new SendMessage()
                         .setChatId(chat_id)
                         .setText("Цена разового абонемента (восстановление, алоэ, чай) 250 рублей. Готов оплатить?");
