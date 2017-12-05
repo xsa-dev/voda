@@ -226,8 +226,8 @@ public class voda extends TelegramLongPollingBot {
                 }
 
 
-            } else if (CurrentInMessage.contains("Я в клубе")) {
 
+            } else if (CurrentInMessage.startsWith("Я в клубе")) {
                 // запись на восстановление силы
                 SendMessage message0 = new SendMessage() // Create a message object object
                         .setText("Ты в клубе!")
