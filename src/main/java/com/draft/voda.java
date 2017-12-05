@@ -13,6 +13,7 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
+import com.vdurmont.emoji.EmojiParser;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -62,9 +63,8 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
 
-        // payment - ok?
-
 //        if (!update.getMessage().getSuccessfulPayment().getInvoicePayload().isEmpty()) {
+
 //
 //            int paymentSumm = update.getMessage().getSuccessfulPayment().getTotalAmount();
 //            String payerPhone = update.getMessage().getSuccessfulPayment().getOrderInfo().getPhoneNumber();
@@ -80,12 +80,10 @@ public class voda extends TelegramLongPollingBot {
 //                e.printStackTrace();
 //            }
 //        }
-
         if (update.getMessage().hasLocation()) {
 
-            // location methods
+            //region работа с локацией
 
-            // отправляет локацию
             // по локации бот определяет клуб (отправляет приветствие клубнику)
             // если сейчас в расписании время примерно равно окончанию фита, спрашивает будет ли человек восстанавливать силу? с кнопками да / нет
             // если будет, то отправляет сообщение организатору клуба (или в канал клуба (нужно создать) сообщение "Я буду восстанавливаться!"
@@ -144,7 +142,9 @@ public class voda extends TelegramLongPollingBot {
                     e1.printStackTrace();
                 }
             }
-        } else if (update.getMessage().getText().equals("/start")) {
+        }
+        //endregion
+        else if (update.getMessage().getText().equals("/start")) {
 
             dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
             try {
@@ -155,7 +155,24 @@ public class voda extends TelegramLongPollingBot {
 
                 System.out.println("tname: " + " " + "\n" + "tid: " + tid + " " + "\n" + "tnumber: " + tnum);
 
-                conn.addUser(tid, tname, tnum);
+                try {
+                    conn.addUser(tid, tname, tnum);
+                } catch (SQLException e) {
+                    sendMessage(new SendMessage().setChatId(chat_id).setText(e.toString()));
+                }
+                SendMessage message = new SendMessage();
+
+                message.setChatId((chat_id));
+                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
+                        "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
+                        "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
+                        "Добро пожаловать!" + "\n" + EmojiParser.parseToUnicode(":smile:").toString());
+
+                try {
+                    sendMessage(message);
+                } catch (TelegramApiException e) {
+                    System.out.println("Exption" + e.toString());
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -210,7 +227,7 @@ public class voda extends TelegramLongPollingBot {
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
-            } else if (CurrentInMessage.equals("Ближайший"))  {
+            } else if (CurrentInMessage.equals("Ближайший")) {
                 // todo this
                 String nearClubName = "This";
 
@@ -319,11 +336,7 @@ public class voda extends TelegramLongPollingBot {
             // end of location methods
 
             else if (CurrentInMessage.equals("/start")) {
-                message.setChatId((chat_id));
-                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
-                        "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
-                        "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
-                        "Добро пожаловать!");
+
             }
 
             if (CurrentInMessage.equals("/reset")) {
@@ -354,12 +367,12 @@ public class voda extends TelegramLongPollingBot {
                         + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n\n\n"
                         + "Напиши: $ 8 - добавит время сна."
                         + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n\n\n"
-                        
+
                         + "\n" +
                         //"Для дневника нужны: дневной рацион, вода, активность, сон";
 
 
-                message.setText(helpText);
+                        message.setText(helpText);
                 message.setChatId(chat_id);
                 try {
                     sendMessage(message);

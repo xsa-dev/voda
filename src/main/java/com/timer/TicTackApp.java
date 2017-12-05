@@ -5,6 +5,7 @@ import com.timer.RunMeShedule;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  * Link for this class: http://www.mkyong.com/java/jdk-timer-scheduler-example/
  *
@@ -24,6 +25,7 @@ public class TicTackApp
         Timer timer = new Timer();
         //In this example, the timer will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
         timer.schedule(task, 1000,60000);
+
 
 
     }
