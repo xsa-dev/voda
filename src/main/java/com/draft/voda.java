@@ -424,26 +424,29 @@ public class voda extends TelegramLongPollingBot {
             }
 
             if (CurrentInMessage.equals("/help")) {
+                SendMessage message1 = new SendMessage();
                 message.setChatId(chat_id);
-                String helpText = "На кнопках всё написано" + "\n" + "\n";
+                message1.setChatId(chat_id);
+                String helpText1 = "На кнопках всё написано";
 
-
-                helpText = helpText + "Как пользоваться ботом:" + "\n"
+                String helpText2 = "Как пользоваться дневником:" + "\n"
                         + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
                         + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
                         + "Напиши: & 500 - добавит 500 килокаллорий активности." + "\n"
-                        + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n\n\n"
+                        + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n"
                         + "Напиши: $ 8 - добавит время сна."
-                        + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n\n\n"
+                        + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n"
 
-                        + "\n" +
+                        + "\n";
                         //"Для дневника нужны: дневной рацион, вода, активность, сон";
 
+                        message.setText(helpText1);
+                        message1.setText(helpText2);
 
-                        message.setText(helpText);
-                message.setChatId(chat_id);
+
                 try {
                     sendMessage(message);
+                    sendMessage(message1);
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
