@@ -58,7 +58,7 @@ public class voda extends TelegramLongPollingBot {
 
         KeyboardButton inClub = new KeyboardButton("Я в клубе");
         KeyboardButton friends = new KeyboardButton("Приведи друга");
-        KeyboardButton recoveryStrong = new KeyboardButton("Запишись на восстановление");
+        KeyboardButton recoveryStrong = new KeyboardButton("Восстановление силы");
         KeyboardButton invoice = new KeyboardButton("Картой");
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
