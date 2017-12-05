@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by xsd on 02.09.2017 with love.
  * :)
@@ -19,26 +22,54 @@ public class dbmodel {
         // http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
 
     }
-    public static class MysqlCon{
 
-        String sqlUser = "devuser";
-        String sqlPass = "devuser";
-        String sqlHost = "jdbc:mysql://localhost:3306/clpr";
+    public static class MysqlCon {
+
+        static String sqlUser = "devuser";
+        static String sqlPass = "devuser";
+        static String sqlHost = "jdbc:mysql://localhost:3306/clpr";
 
         public void addUser(long tid, String tname, String tnummber) throws ClassNotFoundException, SQLException {
-           // INSERT INTO `telegram`.`users` (`telegramid`, `telegramname`, `telegramnumber`)
-           // VALUES (tid, tnumb, tname);
+            // INSERT INTO `telegram`.`users` (`telegramid`, `telegramname`, `telegramnumber`)
+            // VALUES (tid, tnumb, tname);
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
             Statement statement = connection.createStatement();
 
             String query = "insert into telegram.users (telegramid, telegramname, telegramnumber) " +
-                    "values ('" + tid + "', '" + tname + "' , " +  tnummber + ");";
+                    "values ('" + tid + "', '" + tname + "' , " + tnummber + ");";
             System.out.println(query);
 
             statement.execute(query);
 
         }
+
+        public static List<Integer> getAdmins() {
+
+            List<Integer> admins = new ArrayList<Integer>();
+            try {
+
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement statement = connection.createStatement();
+
+                String query = "SELECT telegramid FROM telegram.users WHERE userrole";
+
+                ResultSet results = statement.executeQuery(query);
+
+                while (results.next()) {
+                    results.getStatement();
+                    admins.add(results.getInt("telegramid"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            return admins;
+        }
+
 
         public void addProduct(String name, int pro, int fats, int carb) throws SQLException {
             try {
@@ -47,7 +78,7 @@ public class dbmodel {
                 Statement statement = connection.createStatement();
 
                 String query = "insert into clpr.products (name, protein, fat, carbohydrate)\n" +
-                "values ('" + name + "', " + pro + "," + fats + "," + carb + ");";
+                        "values ('" + name + "', " + pro + "," + fats + "," + carb + ");";
 
                 // ResultSet results = statement.executeQuery(query);
 

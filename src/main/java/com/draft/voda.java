@@ -21,6 +21,8 @@ import java.util.List;
 
 import com.model.*;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 /**
  * Created by User on 11.07.2017
  * Updated by User on 19.07.2017
@@ -43,6 +45,8 @@ public class voda extends TelegramLongPollingBot {
 
     String resultString = "";
 
+    private List<Integer> admins_ids;
+
     public void onUpdateReceived(Update update) {
 
         long chat_id = update.getMessage().getChatId();
@@ -53,7 +57,7 @@ public class voda extends TelegramLongPollingBot {
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
 
-        KeyboardButton nearbly = new KeyboardButton("Ближайший клуб");
+        KeyboardButton nearbly = new KeyboardButton("Ближайший клуб " + EmojiParser.parseToUnicode(":earth_asia:"));
         nearbly.setRequestLocation(true);
 
         KeyboardButton inClub = new KeyboardButton("Я в клубе");
@@ -62,6 +66,7 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton invoice = new KeyboardButton("Картой");
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
+
 
 //        if (!update.getMessage().getSuccessfulPayment().getInvoicePayload().isEmpty()) {
 
@@ -82,8 +87,6 @@ public class voda extends TelegramLongPollingBot {
 //        }
         //region работа с локацией
         if (update.getMessage().hasLocation()) {
-
-
 
             chat_id = update.getMessage().getChatId(); //chat_id
             Location CurrentInMessageLocation = update.getMessage().getLocation(); // CurrentInMessageLocation
@@ -275,7 +278,59 @@ public class voda extends TelegramLongPollingBot {
                     System.out.println(e);
                 }
 
-            } else if (CurrentInMessage.equals("Картой")) {
+            }
+            else if (CurrentInMessage.equals("Наличными")) {
+                // message to admins
+                admins_ids = dbmodel.MysqlCon.getAdmins();
+
+                for (Integer admin_id : admins_ids ) {
+                    SendMessage message1 = new SendMessage();
+
+                    message1.setText(update.getMessage().getChat().getFirstName().toString() + " хочет восстановление силы (наличные)");
+                    message1.setChatId(admin_id.toString());
+
+                    KeyboardButton ok_button = new KeyboardButton(EmojiParser.parseToUnicode(":ok:").toString());
+                    keyboard.clear();
+                    row1.clear();
+                    row1.add(ok_button);
+                    keyboard.add(row1);
+
+                    keyboardMarkup.setKeyboard(keyboard);
+                    message1.setReplyMarkup(keyboardMarkup);
+
+                    try {
+                        sendMessage(message1);
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
+                    }
+
+                }
+
+                // message to client
+                SendMessage message1 = new SendMessage();
+                message1
+                        .setChatId(chat_id)
+                        .setText("Ok" + EmojiParser.parseToUnicode(":heart_eyes:").toString());
+                    try {
+                        sendMessage(message1);
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
+                    }
+            }
+
+            else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
+                SendMessage message1 = new SendMessage().setText("/start").setChatId(chat_id);
+
+
+
+                try {
+                    sendMessage(message1);
+                }catch (Exception e) {
+                    e.toString();
+                }
+            }
+
+            else if (CurrentInMessage.equals("Картой")) {
 
                 LabeledPrice RecoveryPrice = new LabeledPrice();
                 RecoveryPrice.setLabel("Восстановление силы");
