@@ -14,16 +14,8 @@ import java.sql.SQLException;
 
 public class AppMainClass {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void main(String[] args) {
 
-        //dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
-
-        //conn.testMsqlConnection();
-        //conn.addProduct("testo", 1,1,1);
-
-        // System.out.println(conn.toString());
-
-        // BOT API INIT
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
         try {
