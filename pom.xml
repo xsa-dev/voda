@@ -8,31 +8,64 @@
     <artifactId>voda</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <!-- Build an executable JAR -->
     <build>
         <plugins>
             <plugin>
-                <groupId>com.heroku.sdk</groupId>
-                <artifactId>heroku-maven-plugin</artifactId>
-                <version>1.1.3</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
                 <configuration>
-                    <appName>popejbot</appName>
-                    <processTypes>
-                        <web>java $JAVA_OPTS -cp target/classes:target/dependency/* com.main</web>
-                    </processTypes>
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.AppMainClass</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <mode>development</mode>
+                            <url>${project.url}</url>
+                            <key>value</key>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
+
+            <!-- Build an executable JAR with dependensies -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
+                <artifactId>maven-assembly-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>com.AppMainClass</mainClass>
+                            </manifest>
+                        </archive>
+                        <descriptorRefs>
+                            <descriptorRef>jar-with-dependensies</descriptorRef>
+                        </descriptorRefs>
+                    </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
         </plugins>
     </build>
 
+
+
+
     <dependencies>
+
         <!-- Emoji lib -->
         <dependency>
             <groupId>com.vdurmont</groupId>
@@ -59,6 +92,13 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.8.11.2</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
 

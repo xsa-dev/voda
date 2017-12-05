@@ -12,9 +12,9 @@ import java.sql.SQLException;
  * Created by User on 11.07.2017.
  */
 
-public class main {
+public class AppMainClass {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+    public static void vodaStart(String[] args) throws SQLException, ClassNotFoundException {
 
         //dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
 

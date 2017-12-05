@@ -80,14 +80,10 @@ public class voda extends TelegramLongPollingBot {
 //                e.printStackTrace();
 //            }
 //        }
+        //region работа с локацией
         if (update.getMessage().hasLocation()) {
 
-            //region работа с локацией
 
-            // по локации бот определяет клуб (отправляет приветствие клубнику)
-            // если сейчас в расписании время примерно равно окончанию фита, спрашивает будет ли человек восстанавливать силу? с кнопками да / нет
-            // если будет, то отправляет сообщение организатору клуба (или в канал клуба (нужно создать) сообщение "Я буду восстанавливаться!"
-            // отправляет в ответ чек на оплату восстановления силы
 
             chat_id = update.getMessage().getChatId(); //chat_id
             Location CurrentInMessageLocation = update.getMessage().getLocation(); // CurrentInMessageLocation
@@ -144,8 +140,9 @@ public class voda extends TelegramLongPollingBot {
             }
         }
         //endregion
-        else if (update.getMessage().getText().equals("/start")) {
 
+        //region работа с текстом
+        else if (update.getMessage().getText().equals("/start")) {
             dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
             try {
 
@@ -200,7 +197,7 @@ public class voda extends TelegramLongPollingBot {
 
             // клавиатура end
         }
-
+        //region
 
         if (update.hasMessage() && update.getMessage().hasText()) {
 
