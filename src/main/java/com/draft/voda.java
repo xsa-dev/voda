@@ -14,10 +14,13 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import com.vdurmont.emoji.EmojiParser;
+import com.timer.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.model.*;
 
@@ -41,9 +44,22 @@ public class voda extends TelegramLongPollingBot {
     String[] aStringArray;
     String[] rStringArray;
 
+    public void sendMessageToChatId() {
+        SendMessage message = new SendMessage();
+        message.setChatId("188416619");
+        message.setText("This is sendMessageToChatId Test");
+        try {
+            sendMessage(message);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
     String resultString = "";
 
     public void onUpdateReceived(Update update) {
+        sendMessageToChatId();
 
         long chat_id = update.getMessage().getChatId();
 
@@ -82,8 +98,6 @@ public class voda extends TelegramLongPollingBot {
 //        }
         //region работа с локацией
         if (update.getMessage().hasLocation()) {
-
-
 
             chat_id = update.getMessage().getChatId(); //chat_id
             Location CurrentInMessageLocation = update.getMessage().getLocation(); // CurrentInMessageLocation
