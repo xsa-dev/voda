@@ -76,12 +76,15 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton nearbly = new KeyboardButton("Ближайший клуб " + EmojiParser.parseToUnicode(":earth_asia:"));
         nearbly.setRequestLocation(true);
 
+        KeyboardButton contact = new KeyboardButton("Мой консультант" + EmojiParser.parseToUnicode(":person_facepalming:")).setRequestContact(true);
+
         KeyboardButton inClub = new KeyboardButton("Я в клубе");
         KeyboardButton friends = new KeyboardButton("Приведи друга");
         KeyboardButton recoveryStrong = new KeyboardButton("Восстановление силы");
         KeyboardButton invoice = new KeyboardButton("Картой");
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
+
 
 
 //        if (!update.getMessage().getSuccessfulPayment().getInvoicePayload().isEmpty()) {
@@ -199,8 +202,9 @@ public class voda extends TelegramLongPollingBot {
                     .setChatId(chat_id);
             // клавиатура
             row1.add(nearbly);
-            row2.add(inClub);
+            row1.add(inClub);
             row2.add(friends);
+            row2.add(contact);
 
             keyboard.add(row1);
             keyboard.add(row2);
