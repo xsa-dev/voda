@@ -29,9 +29,24 @@ public class dbmodel {
         static String sqlPass = "devuser";
         static String sqlHost = "jdbc:mysql://localhost:3306/clpr";
 
+        public static void addUnrecognizedQuestion(String nrbotname, String nrbottoken,  int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            System.out.println(nrbotname + ":" + nrbottoken + ":" + nrmessageid + ":" + nrchatid + ":" + nrmessagetext);
+
+            String query = "insert into telegram.notrecognizedmessages (botname, bottoken, messageid, chatid, messagetext) " +
+                    //" VALUES " + "('" + nrbotname + "'," '" nrbottoken, nrchatid, nrmessageid, nrmessagetext)";
+                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid  + "' , '" + nrchatid+ "' , '" + nrmessagetext +"');";
+
+                   System.out.println(query);
+                   statement.execute(query);
+
+        }
+
         public void addUser(long tid, String tname, String tnummber) throws ClassNotFoundException, SQLException {
-            // INSERT INTO `telegram`.`users` (`telegramid`, `telegramname`, `telegramnumber`)
-            // VALUES (tid, tnumb, tname);
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
             Statement statement = connection.createStatement();

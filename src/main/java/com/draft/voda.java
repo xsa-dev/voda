@@ -1,6 +1,7 @@
 package com.draft;
 
 import com.erezults.Result;
+import org.apache.maven.plugin.lifecycle.Execution;
 import org.telegram.telegrambots.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.api.methods.send.SendLocation;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -17,10 +18,7 @@ import com.vdurmont.emoji.EmojiParser;
 import com.timer.*;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 import com.model.*;
 
@@ -46,10 +44,16 @@ public class voda extends TelegramLongPollingBot {
     String[] aStringArray;
     String[] rStringArray;
 
-    public void sendMessageToChatId() {
+    HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
+
+    public long getOwnerId() {
+        return 188416619;
+    }
+
+    public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
-        message.setChatId("188416619");
-        message.setText("This is sendMessageToChatId Test");
+        message.setChatId(getOwnerId());
+        message.setText(messageText +"\nfrom id" + fromId + " : "+ name);
         try {
             sendMessage(message);
         }
@@ -63,11 +67,15 @@ public class voda extends TelegramLongPollingBot {
     private List<Integer> admins_ids;
 
     public void onUpdateReceived(Update update) {
-        sendMessageToChatId();
+
+        onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
+
+        sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
 
         long chat_id = update.getMessage().getChatId();
 
-        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup().setResizeKeyboard(true);
+
         List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
 
         KeyboardRow row1 = new KeyboardRow();
@@ -76,7 +84,7 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton nearbly = new KeyboardButton("Ближайший клуб " + EmojiParser.parseToUnicode(":earth_asia:"));
         nearbly.setRequestLocation(true);
 
-        KeyboardButton contact = new KeyboardButton("Мой консультант" + EmojiParser.parseToUnicode(":person_facepalming:")).setRequestContact(true);
+        KeyboardButton contact = new KeyboardButton("Мой консультант " + EmojiParser.parseToUnicode(":sports_medal:")).setRequestContact(true);
 
         KeyboardButton inClub = new KeyboardButton("Я в клубе");
         KeyboardButton friends = new KeyboardButton("Приведи друга");
@@ -85,25 +93,6 @@ public class voda extends TelegramLongPollingBot {
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
 
-
-
-//        if (!update.getMessage().getSuccessfulPayment().getInvoicePayload().isEmpty()) {
-
-//
-//            int paymentSumm = update.getMessage().getSuccessfulPayment().getTotalAmount();
-//            String payerPhone = update.getMessage().getSuccessfulPayment().getOrderInfo().getPhoneNumber();
-//            String payerName = update.getMessage().getSuccessfulPayment().getOrderInfo().getName();
-//
-//            SendMessage message = new SendMessage()
-//                    .setChatId(chat_id)
-//                    .setText("Клубник " + payerName + " с телефоном: " + payerPhone + " оплатил на " + paymentSumm);
-//
-//            try {
-//                sendMessage(message);
-//            } catch (TelegramApiException e) {
-//                e.printStackTrace();
-//            }
-//        }
         //region работа с локацией
         if (update.getMessage().hasLocation()) {
 
@@ -164,75 +153,65 @@ public class voda extends TelegramLongPollingBot {
         //endregion
 
         //region работа с текстом
-        else if (update.getMessage().getText().equals("/start")) {
-            dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
-            try {
-
-                String tname = update.getMessage().getFrom().getFirstName();
-                long tid = update.getMessage().getFrom().getId();
-                String tnum = null;
-
-                System.out.println("tname: " + " " + "\n" + "tid: " + tid + " " + "\n" + "tnumber: " + tnum);
-
-                try {
-                    conn.addUser(tid, tname, tnum);
-                } catch (SQLException e) {
-                    sendMessage(new SendMessage().setChatId(chat_id).setText(e.toString()));
-                }
-                SendMessage message = new SendMessage();
-
-                message.setChatId((chat_id));
-                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
-                        "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
-                        "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
-                        "Добро пожаловать!" + "\n" + EmojiParser.parseToUnicode(":smile:").toString());
-
-                try {
-                    sendMessage(message);
-                } catch (TelegramApiException e) {
-                    System.out.println("Exption" + e.toString());
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            SendMessage message0 = new SendMessage() // Create a message object object
-                    .setText("Выбери подходящий вариант")
-                    .setChatId(chat_id);
-            // клавиатура
-            row1.add(nearbly);
-            row1.add(inClub);
-            row2.add(friends);
-            row2.add(contact);
-
-            keyboard.add(row1);
-            keyboard.add(row2);
-
-            keyboardMarkup.setKeyboard(keyboard);
-            message0.setReplyMarkup(keyboardMarkup);
-
-            try {
-                sendMessage(message0);
-            } catch (TelegramApiException e1) {
-                e1.printStackTrace();
-            }
-
-            // клавиатура end
-        }
-        //region
-
         if (update.hasMessage() && update.getMessage().hasText()) {
-
-
             String CurrentInMessage = update.getMessage().getText();
             chat_id = update.getMessage().getChatId(); //chat_id
-
             SendMessage message = new SendMessage();
             message.setChatId(chat_id);
 
+            if (update.getMessage().getText().equals("/start")) {
+                dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+                try {
+                    String tname = update.getMessage().getFrom().getFirstName();
+                    long tid = update.getMessage().getFrom().getId();
+                    String tnum = null;
+                    System.out.println("tname: " + " " + "\n" + "tid: " + tid + " " + "\n" + "tnumber: " + tnum);
 
-            if (CurrentInMessage.startsWith("/addProduct")) {
+                    try {
+                        conn.addUser(tid, tname, tnum);
+                    } catch (SQLException e) {
+                        sendMessage(new SendMessage().setChatId(chat_id).setText(e.toString()));
+                    }
+
+                    message.setChatId((chat_id));
+                    message.setText("Привет, я работаю в тестовом режиме." + "\n" +
+                            "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
+                            "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
+                            "Добро пожаловать!" + "\n" + EmojiParser.parseToUnicode(":smile:").toString());
+                    try {
+                        sendMessage(message);
+                    } catch (TelegramApiException e) {
+                        System.out.println("Exption" + e.toString());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                SendMessage message0 = new SendMessage() // Create a message object object
+                        .setText("Выбери подходящий вариант")
+                        .setChatId(chat_id);
+                // клавиатура
+                row1.add(nearbly);
+                row1.add(inClub);
+                row2.add(friends);
+                row2.add(contact);
+
+                keyboard.add(row1);
+                keyboard.add(row2);
+
+                keyboardMarkup.setKeyboard(keyboard);
+                message0.setReplyMarkup(keyboardMarkup);
+
+                try {
+                    sendMessage(message0);
+                } catch (TelegramApiException e1) {
+                    e1.printStackTrace();
+                }
+
+                // клавиатура end
+            }
+
+            else if (CurrentInMessage.startsWith("/addProduct")) {
 
                 dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
                 try {
@@ -340,9 +319,6 @@ public class voda extends TelegramLongPollingBot {
 
             else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
                 SendMessage message1 = new SendMessage().setText("/start").setChatId(chat_id);
-
-
-
                 try {
                     sendMessage(message1);
                 }catch (Exception e) {
@@ -385,7 +361,6 @@ public class voda extends TelegramLongPollingBot {
                         .setCurrency("RUB")
                         .setPayload("EarlyAbonement")
                         .setStartParameter("BotStartParam");
-
                 try {
                     sendInvoice(Invoice);
                 } catch (TelegramApiException e) {
@@ -405,13 +380,7 @@ public class voda extends TelegramLongPollingBot {
                 }
             }
 
-            // end of location methods
-
-            else if (CurrentInMessage.equals("/start")) {
-
-            }
-
-            if (CurrentInMessage.equals("/reset")) {
+            else if (CurrentInMessage.equals("/reset")) {
                 message.setChatId((chat_id));
                 try {
                     aSum = 0;
@@ -427,7 +396,7 @@ public class voda extends TelegramLongPollingBot {
 
             }
 
-            if (CurrentInMessage.equals("/help")) {
+            else if (CurrentInMessage.equals("/help")) {
                 SendMessage message1 = new SendMessage();
                 message.setChatId(chat_id);
                 message1.setChatId(chat_id);
@@ -455,12 +424,12 @@ public class voda extends TelegramLongPollingBot {
                     e1.printStackTrace();
                 }
             }
-            if (CurrentInMessage.equals("/results")) {
+            else if (CurrentInMessage.equals("/results")) {
                 message.setChatId(chat_id);
                 String outMesasge = "Результаты:" + "\n";
                 message.setText(outMesasge + "\n" + resultString);
             }
-            if (CurrentInMessage.equals("/status")) {
+            else if (CurrentInMessage.equals("/status")) {
                 message.setChatId(chat_id);
                 String outMessage = "Дневник: " + "\n";
                 message.setText(outMessage + "\n"
@@ -475,7 +444,8 @@ public class voda extends TelegramLongPollingBot {
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
-            } else if (CurrentInMessage.startsWith("*")) {
+            }
+            else if (CurrentInMessage.startsWith("*")) {
                 message.setChatId(chat_id);
                 System.out.println(update.getMessage().getText());
                 vStringArray = update.getMessage().getText().split(" ");
@@ -555,6 +525,27 @@ public class voda extends TelegramLongPollingBot {
                         Float.parseFloat(rStringArray[9]));
                 resultString = result.toString();
                 System.out.println(result.toString());
+            }
+            else {
+                message.setChatId(chat_id);
+                message.setText("Я не понял \"" + update.getMessage().getText() + "\"?");
+
+                ReplyKeyboardMarkup rkbm = new ReplyKeyboardMarkup();
+                rkbm.setKeyboard(keyboard);
+                message.setReplyMarkup(keyboardMarkup);
+                // long botid, int messageid, long chatid, String messagetext
+                try {
+                    dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+                } catch (Exception e) {
+                    message.setText("From: " + update.getMessage().getFrom().getFirstName() + "\n" + e.toString());
+                    message.setChatId(getOwnerId());
+                }
+
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
             }
         }
     }
