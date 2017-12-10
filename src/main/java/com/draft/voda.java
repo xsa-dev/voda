@@ -46,9 +46,23 @@ public class voda extends TelegramLongPollingBot {
 
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
 
-    public long getOwnerId() {
+
+    public static long getOwnerId() {
         return 188416619;
     }
+
+    public void sendSheduleMessage(int tid, String text) {
+        SendMessage message = new SendMessage();
+        message.setChatId(getOwnerId());
+        message.setText(text + ":" + "to tid" + tid);
+        try {
+            sendMessage(message);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
 
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();

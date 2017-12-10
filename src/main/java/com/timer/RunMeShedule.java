@@ -16,7 +16,8 @@ public class RunMeShedule extends TimerTask {
     public void run() {
         //send message about eating and sleeping
         try {
-            //voda.sendMessageToChatId();
+            voda bot = new voda();
+            bot.sendMessageToOwnerId("Hey", 1, "RunMeShedule");
             System.out.println("sendMessageTest");
         } catch (Exception e) {
             System.out.println();
