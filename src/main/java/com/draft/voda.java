@@ -54,7 +54,6 @@ public class voda extends TelegramLongPollingBot {
 
     public ReplyKeyboardMarkup getDefaultKeyBoard() {
 
-
         List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
 
         KeyboardRow row1 = new KeyboardRow();
@@ -459,7 +458,7 @@ public class voda extends TelegramLongPollingBot {
                 message.setChatId(chat_id);
                 message.setChatId(chat_id);
                 message.setReplyMarkup(getDefaultKeyBoard());
-                String helpText1 = "На кнопках всё написано";
+                String helpText1 = "На кнопках всё написано.";
                 String helpText2 = "Как пользоваться дневником:" + "\n"
                         + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
                         + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
@@ -577,7 +576,6 @@ public class voda extends TelegramLongPollingBot {
                 resultString = result.toString();
                 System.out.println(result.toString());
             } else if (userWorkFlow.get(chat_id).equals("sendAnswerAboutWater")) {
-                // sendMessageToOwnerId("sendAnswerAboutWater", chat_id, "admin");
                 try {
                     dbmodel.MysqlCon.addWaterToDiary(chat_id, Integer.parseInt(update.getMessage().getText()));
                     message.setText("Записано: " + update.getMessage().getText() + " " + EmojiParser.parseToUnicode(":pushpin:"));
