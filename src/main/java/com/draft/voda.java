@@ -1,7 +1,6 @@
 package com.draft;
 
 import com.erezults.Result;
-import org.apache.maven.plugin.lifecycle.Execution;
 import org.telegram.telegrambots.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.api.methods.send.SendLocation;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -15,14 +14,13 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 import com.vdurmont.emoji.EmojiParser;
-import com.timer.*;
 
 import java.sql.SQLException;
 import java.util.*;
 
 import com.model.*;
 
-import javax.xml.bind.SchemaOutputResolver;
+
 
 /**
  * Created by User on 11.07.2017
@@ -30,8 +28,11 @@ import javax.xml.bind.SchemaOutputResolver;
  * Updated by iko in 25.08.2017
  * Updated by xsd in 26.08.2017
  * Updated by iko in 01.09.2017
+ * Updated by xsa in 10.12.2017
+ *
+ * Emoji here: https://github.com/vdurmont/emoji-java#available-emojis
  */
-public class voda extends TelegramLongPollingBot {
+public class voda  extends TelegramLongPollingBot {
 
     int bSum = 0; // белок
     int eSum = 0; // энергия
@@ -46,15 +47,14 @@ public class voda extends TelegramLongPollingBot {
 
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
 
-
     public static long getOwnerId() {
         return 188416619;
     }
 
-    public void sendSheduleMessage(int tid, String text) {
+    public void sendTextToIdMessage(long receiverid, String messagetext) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText(text + ":" + "to tid" + tid);
+        message.setText(messagetext + "\n" + "to tid: " + receiverid);
         try {
             sendMessage(message);
         }
@@ -227,6 +227,18 @@ public class voda extends TelegramLongPollingBot {
                 }
 
                 // клавиатура end
+            }
+
+            else if (CurrentInMessage.startsWith("/testMessage")) {
+                    TestReturnMessage trm = new TestReturnMessage();
+                    message.setText(trm.getTestRetunMessage()); {
+                    message.setChatId(chat_id);
+                    try {
+                        sendMessage(message);
+                    } catch (TelegramApiException e) {
+                        System.out.println(e);
+                    }
+                }
             }
 
             else if (CurrentInMessage.startsWith("/addProduct")) {
@@ -415,7 +427,6 @@ public class voda extends TelegramLongPollingBot {
                 message.setChatId(chat_id);
                 message.setChatId(chat_id);
                 String helpText1 = "На кнопках всё написано";
-
                 String helpText2 = "Как пользоваться дневником:" + "\n"
                         + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
                         + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
@@ -426,10 +437,9 @@ public class voda extends TelegramLongPollingBot {
 
                         + "\n";
                         //"Для дневника нужны: дневной рацион, вода, активность, сон";
-                        message.setText(helpText1);
-                        message.setText(helpText2);
+                        message.setText(helpText1 + "\n" +helpText2);
+
                 try {
-                    sendMessage(message);
                     sendMessage(message);
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
@@ -539,7 +549,8 @@ public class voda extends TelegramLongPollingBot {
             }
             else {
                 message.setChatId(chat_id);
-                message.setText("Я не понял \"" + update.getMessage().getText() + "\"?");
+                String facepalm = EmojiParser.parseToUnicode(":male_shrug:").toString();
+                message.setText("Я не понял \"" + update.getMessage().getText() + "\"? " + facepalm);
 
                 ReplyKeyboardMarkup rkbm = new ReplyKeyboardMarkup();
                 rkbm.setKeyboard(keyboard);

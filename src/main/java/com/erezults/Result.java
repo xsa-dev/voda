@@ -8,6 +8,7 @@ package com.erezults;
  * @author alekseysavin.com
  * @version 0.1
  */
+
 public class Result {
     private float bodyMass;
     private float fatPer;

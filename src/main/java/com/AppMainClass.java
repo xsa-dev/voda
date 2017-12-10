@@ -18,8 +18,13 @@ public class AppMainClass {
 
     public static void main(String[] args) {
 
+        //
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
+
+        // Запускаем тестовый планировщик
+        TicTackApp shedulerApp = new TicTackApp();
+        shedulerApp.createShedulledTimer(1000, 600000);
 
         try {
             botsApi.registerBot(new voda());
@@ -29,8 +34,7 @@ public class AppMainClass {
             e.printStackTrace();
         }
 
-        TicTackApp shedulerApp = new TicTackApp();
-        shedulerApp.createTestSendSheduleTask();
+
 
     }
 
