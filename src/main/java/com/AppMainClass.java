@@ -21,15 +21,6 @@ public class AppMainClass {
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
 
-
-
-
-//        RunMeShedule shedule = new RunMeShedule();
-//        shedule.run();
-
-        TicTackApp shedulerApp = new TicTackApp();
-        shedulerApp.createTestSendSheduleTask();
-
         try {
             botsApi.registerBot(new voda());
 
@@ -37,6 +28,10 @@ public class AppMainClass {
         catch (TelegramApiException e) {
             e.printStackTrace();
         }
+
+        TicTackApp shedulerApp = new TicTackApp();
+        shedulerApp.createTestSendSheduleTask();
+
     }
 
 
