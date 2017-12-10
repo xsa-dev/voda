@@ -1,9 +1,5 @@
 package com.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +25,34 @@ public class dbmodel {
         static String sqlPass = "devuser";
         static String sqlHost = "jdbc:mysql://localhost:3306/clpr";
 
-        public static void addUnrecognizedQuestion(String nrbotname, String nrbottoken,  int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
+
+        public static int getWaterFromPeriod(long chatid, String dateFrom, String dateTo) throws ClassNotFoundException, SQLException {
+            int water = 0;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement stmt = con.createStatement();
+            String query = "select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime BETWEEN  '2017-12-10 00:00:00' AND '2017-12-10 23:59:00'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                water = rs.getInt(1);
+            }
+            return water;
+        }
+
+        public static void addWaterToDiary(Long chatid, int count) throws SQLException, ClassNotFoundException {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            System.out.println("Water added by" + chatid + "/n" + " count" + count);
+
+            String query = "insert into diary.waterdiary (tid, watercount) " +
+                    "values ('" + chatid + "', '" + count + "');";
+            statement.execute(query);
+            System.out.println(query);
+        }
+
+        public static void addUnrecognizedQuestion(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
             Statement statement = connection.createStatement();
@@ -38,10 +61,10 @@ public class dbmodel {
 
             String query = "insert into telegram.notrecognizedmessages (botname, bottoken, messageid, chatid, messagetext) " +
                     //" VALUES " + "('" + nrbotname + "'," '" nrbottoken, nrchatid, nrmessageid, nrmessagetext)";
-                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid  + "' , '" + nrchatid+ "' , '" + nrmessagetext +"');";
+                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid + "' , '" + nrchatid + "' , '" + nrmessagetext + "');";
 
-                   System.out.println(query);
-                   statement.execute(query);
+            System.out.println(query);
+            statement.execute(query);
 
         }
 
@@ -85,7 +108,6 @@ public class dbmodel {
             return admins;
         }
 
-
         public void addProduct(String name, int pro, int fats, int carb) throws SQLException {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
@@ -121,11 +143,6 @@ public class dbmodel {
             } catch (SQLException sqlE) {
                 System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
             }
-        }
-
-        public void sqlExec(String qString) throws SQLException, ClassNotFoundException {
-            //Connection con = DriverManager;
-            //System.out.println("SqlExce Done");
         }
     }
 

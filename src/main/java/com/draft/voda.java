@@ -1,6 +1,8 @@
 package com.draft;
 
 import com.erezults.Result;
+import com.model.dbmodel;
+import com.vdurmont.emoji.EmojiParser;
 import org.telegram.telegrambots.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.api.methods.send.SendLocation;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -13,13 +15,11 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
-import com.vdurmont.emoji.EmojiParser;
 
 import java.sql.SQLException;
-import java.util.*;
-
-import com.model.*;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -29,10 +29,10 @@ import com.model.*;
  * Updated by xsd in 26.08.2017
  * Updated by iko in 01.09.2017
  * Updated by xsa in 10.12.2017
- *
+ * <p>
  * Emoji here: https://github.com/vdurmont/emoji-java#available-emojis
  */
-public class voda  extends TelegramLongPollingBot {
+public class voda extends TelegramLongPollingBot {
 
     int bSum = 0; // белок
     int eSum = 0; // энергия
@@ -46,19 +46,34 @@ public class voda  extends TelegramLongPollingBot {
     String[] rStringArray;
 
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
+    HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
+
+    Diary diary = new Diary();
+    ReplyKeyboardMarkup rkm = new ReplyKeyboardMarkup();
 
     public static long getOwnerId() {
         return 188416619;
     }
 
+    public void sendMessageToId(long receiverid, SendMessage message) {
+        message.setChatId(receiverid);
+
+        try {
+            sendMessage(message);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
     public void sendTextToIdMessage(long receiverid, String messagetext) {
+
         SendMessage message = new SendMessage();
+
         message.setChatId(getOwnerId());
         message.setText(messagetext + "\n" + "to tid: " + receiverid);
         try {
             sendMessage(message);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
@@ -67,11 +82,10 @@ public class voda  extends TelegramLongPollingBot {
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText("Hello! "+ messageText +"\nfrom id" + fromId + " : "+ name);
+        message.setText("@@@: " + messageText + "\nfrom id" + fromId + " : " + name);
         try {
             sendMessage(message);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
@@ -82,6 +96,9 @@ public class voda  extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
 
+
+        System.out.println(update.getMessage().getChatId());
+
         SendMessage message = new SendMessage();
 
         onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
@@ -89,6 +106,14 @@ public class voda  extends TelegramLongPollingBot {
         sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
 
         long chat_id = update.getMessage().getChatId();
+
+        if (userWorkFlow.size() == 0) {
+            userWorkFlow.put(chat_id, "StartSesion");
+        }
+
+        if (userWorkFlow.get(chat_id).equals(null)) {
+            userWorkFlow.put(chat_id, "StartSesison");
+        }
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup().setResizeKeyboard(true);
 
@@ -108,6 +133,10 @@ public class voda  extends TelegramLongPollingBot {
         KeyboardButton invoice = new KeyboardButton("Картой");
         KeyboardButton cash = new KeyboardButton("Наличными");
         KeyboardButton hommies = new KeyboardButton("Нет денег");
+        KeyboardButton news = new KeyboardButton(EmojiParser.parseToUnicode(":eyes:"));
+
+        row1.add(news);
+
 
         //region работа с локацией
         if (update.getMessage().hasLocation()) {
@@ -173,7 +202,7 @@ public class voda  extends TelegramLongPollingBot {
 
         //region работа с текстом
         if (update.hasMessage() && update.getMessage().hasText()) {
-            String CurrentInMessage = update.getMessage().getText();
+            String CurrentInMessage = update.getMessage().getText().toString();
             chat_id = update.getMessage().getChatId(); //chat_id
             message.setChatId(chat_id);
 
@@ -227,11 +256,50 @@ public class voda  extends TelegramLongPollingBot {
                 }
 
                 // клавиатура end
-            }
+            } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"))) {
+                message.setText("Back");
+                rkm = diary.getDefaultDiaryKeybord();
+                message.setReplyMarkup(rkm);
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    e.toString();
+                }
+            } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":heavy_plus_sign:"))) {
+                message.setText("Давайте запишу сколько вы выпили? " + "\n" + "Пишите цифру в миллилитрах " + EmojiParser.parseToUnicode(":droplet:"));
+                userWorkFlow.put(chat_id, "sendAnswerAboutWater");
+                message.setReplyMarkup(diary.getDefaultAnswerWaterDiaryKeybord());
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    e.toString();
+                }
+            } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":potable_water:"))) {
+                message.setText("WaterDiary start");
+                rkm = diary.getDefaultWaterDiaryKeybord();
+                message.setReplyMarkup(rkm);
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    e.toString();
+                }
 
-            else if (CurrentInMessage.startsWith("/testMessage")) {
-                    TestReturnMessage trm = new TestReturnMessage();
-                    message.setText(trm.getTestRetunMessage()); {
+            } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":eyes:"))) {
+
+                Diary diary = new Diary();
+                message.setText("New function in develop: diary.. please test this and sebd feedback to @xsd14");
+                ReplyKeyboardMarkup rkm = diary.getDefaultDiaryKeybord();
+                message.setReplyMarkup(rkm);
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    e.toString();
+                }
+
+            } else if (CurrentInMessage.startsWith("/testMessage")) {
+                TestReturnMessage trm = new TestReturnMessage();
+                message.setText(trm.getTestRetunMessage());
+                {
                     message.setChatId(chat_id);
                     try {
                         sendMessage(message);
@@ -239,9 +307,7 @@ public class voda  extends TelegramLongPollingBot {
                         System.out.println(e);
                     }
                 }
-            }
-
-            else if (CurrentInMessage.startsWith("/addProduct")) {
+            } else if (CurrentInMessage.startsWith("/addProduct")) {
 
                 dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
                 try {
@@ -307,12 +373,11 @@ public class voda  extends TelegramLongPollingBot {
                     System.out.println(e);
                 }
 
-            }
-            else if (CurrentInMessage.equals("Наличными")) {
+            } else if (CurrentInMessage.equals("Наличными")) {
                 // message to admins
                 admins_ids = dbmodel.MysqlCon.getAdmins();
 
-                for (Integer admin_id : admins_ids ) {
+                for (Integer admin_id : admins_ids) {
                     message.setText(update.getMessage().getChat().getFirstName().toString() + " хочет восстановление силы (наличные)");
                     message.setChatId(admin_id.toString());
 
@@ -337,23 +402,19 @@ public class voda  extends TelegramLongPollingBot {
                 message
                         .setChatId(chat_id)
                         .setText("Ok" + EmojiParser.parseToUnicode(":heart_eyes:").toString());
-                    try {
-                        sendMessage(message);
-                    } catch (Exception e) {
-                        System.out.println(e.toString());
-                    }
-            }
-
-            else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
+                try {
+                    sendMessage(message);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+            } else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
                 message.setText("/start").setChatId(chat_id);
                 try {
                     sendMessage(message);
-                }catch (Exception e) {
+                } catch (Exception e) {
                     e.toString();
                 }
-            }
-
-            else if (CurrentInMessage.equals("Картой")) {
+            } else if (CurrentInMessage.equals("Картой")) {
 
                 LabeledPrice RecoveryPrice = new LabeledPrice();
                 RecoveryPrice.setLabel("Восстановление силы");
@@ -405,9 +466,7 @@ public class voda  extends TelegramLongPollingBot {
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
-            }
-
-            else if (CurrentInMessage.equals("/reset")) {
+            } else if (CurrentInMessage.equals("/reset")) {
                 message.setChatId((chat_id));
                 try {
                     aSum = 0;
@@ -421,9 +480,7 @@ public class voda  extends TelegramLongPollingBot {
                     message.setText("Что-то случилось:" + "\n" + error);
                 }
 
-            }
-
-            else if (CurrentInMessage.equals("/help")) {
+            } else if (CurrentInMessage.equals("/help")) {
                 message.setChatId(chat_id);
                 message.setChatId(chat_id);
                 String helpText1 = "На кнопках всё написано";
@@ -436,21 +493,19 @@ public class voda  extends TelegramLongPollingBot {
                         + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n"
 
                         + "\n";
-                        //"Для дневника нужны: дневной рацион, вода, активность, сон";
-                        message.setText(helpText1 + "\n" +helpText2);
+                //"Для дневника нужны: дневной рацион, вода, активность, сон";
+                message.setText(helpText1 + "\n" + helpText2);
 
                 try {
                     sendMessage(message);
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
-            }
-            else if (CurrentInMessage.equals("/results")) {
+            } else if (CurrentInMessage.equals("/results")) {
                 message.setChatId(chat_id);
                 String outMesasge = "Результаты:" + "\n";
                 message.setText(outMesasge + "\n" + resultString);
-            }
-            else if (CurrentInMessage.equals("/status")) {
+            } else if (CurrentInMessage.equals("/status")) {
                 message.setChatId(chat_id);
                 String outMessage = "Дневник: " + "\n";
                 message.setText(outMessage + "\n"
@@ -465,8 +520,7 @@ public class voda  extends TelegramLongPollingBot {
                 } catch (TelegramApiException e1) {
                     e1.printStackTrace();
                 }
-            }
-            else if (CurrentInMessage.startsWith("*")) {
+            } else if (CurrentInMessage.startsWith("*")) {
                 message.setChatId(chat_id);
                 System.out.println(update.getMessage().getText());
                 vStringArray = update.getMessage().getText().split(" ");
@@ -546,21 +600,61 @@ public class voda  extends TelegramLongPollingBot {
                         Float.parseFloat(rStringArray[9]));
                 resultString = result.toString();
                 System.out.println(result.toString());
-            }
-            else {
+            } else if (userWorkFlow.get(chat_id).equals("sendAnswerAboutWater")) {
+                // sendMessageToOwnerId("sendAnswerAboutWater", chat_id, "admin");
+                try {
+                    dbmodel.MysqlCon.addWaterToDiary(chat_id, Integer.parseInt(update.getMessage().getText()));
+                    message.setText("Записано: " + update.getMessage().getText() + " " + EmojiParser.parseToUnicode(":pushpin:"));
+                    message.setChatId(chat_id);
+                    userWorkFlow.put(chat_id, "queryAboutWaterGoted");
+                    message.setReplyMarkup(diary.getDefaultDiaryKeybord());
+                } catch (Exception e) {
+                    message.setText("Цыфра не распознанна");
+                    message.setChatId(chat_id);
+                }
+                try {
+                    sendMessage(message);
+                } catch (TelegramApiException e) {
+                    sendMessageToOwnerId("sendMessageExaption", chat_id, CurrentInMessage);
+                }
+
+            } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":question:"))) {
+
+
+                try {
+                    message.setChatId(chat_id);
+                    message.setText(String.valueOf(dbmodel.MysqlCon.getWaterFromPeriod(chat_id, "debug", "debug")));
+
+                } catch (SQLException sqle) {
+                    message.setText(sqle.toString());
+                    sendMessageToOwnerId(sqle.toString(), chat_id, CurrentInMessage);
+                } catch (ClassNotFoundException cnfe) {
+                    message.setText(cnfe.toString());
+                    sendMessageToOwnerId(cnfe.toString(), chat_id, CurrentInMessage);
+                }
+                try {
+                    sendMessage(message);
+                } catch (TelegramApiException e) {
+                    sendMessageToOwnerId("sendMessageExaption", chat_id, CurrentInMessage);
+                }
+
+            } else {
                 message.setChatId(chat_id);
-                String facepalm = EmojiParser.parseToUnicode(":male_shrug:").toString();
-                message.setText("Я не понял \"" + update.getMessage().getText() + "\"? " + facepalm);
+                message.setText("Я не понял \"" + update.getMessage().getText().toString() + "\"? " + EmojiParser.parseToUnicode(":male_shrug:").toString());
 
                 ReplyKeyboardMarkup rkbm = new ReplyKeyboardMarkup();
                 rkbm.setKeyboard(keyboard);
                 message.setReplyMarkup(keyboardMarkup);
+
                 // long botid, int messageid, long chatid, String messagetext
                 try {
-                    dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+                    dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), String.valueOf(CurrentInMessage));
                 } catch (Exception e) {
+                    sendMessageToOwnerId(e.toString() + " From ", update.getMessage().getChatId(), update.getMessage().getFrom().getFirstName());
+
                     message.setText("From: " + update.getMessage().getFrom().getFirstName() + "\n" + e.toString());
                     message.setChatId(getOwnerId());
+
                 }
 
                 try {
