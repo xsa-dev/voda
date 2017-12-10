@@ -67,7 +67,7 @@ public class voda  extends TelegramLongPollingBot {
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText(messageText +"\nfrom id" + fromId + " : "+ name);
+        message.setText("Hello! "+ messageText +"\nfrom id" + fromId + " : "+ name);
         try {
             sendMessage(message);
         }
