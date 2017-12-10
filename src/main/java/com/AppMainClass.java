@@ -1,14 +1,10 @@
 package com;
 
 import com.draft.voda;
-import com.model.dbmodel    ;
-import com.timer.RunMeShedule;
 import com.timer.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
-
-import java.sql.SQLException;
 
 /**
  * Created by User on 11.07.2017.
@@ -24,7 +20,9 @@ public class AppMainClass {
 
         // Запускаем тестовый планировщик
         TicTackApp shedulerApp = new TicTackApp();
-        shedulerApp.createShedulledTimer(1000, 600000);
+        shedulerApp.createShedulledTimer(1000, 6000000);
+
+        // Запускаем опросник по перезамерам
 
         try {
             botsApi.registerBot(new voda());
