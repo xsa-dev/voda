@@ -26,7 +26,9 @@ public class Diary {
         KeyboardButton weakly = new KeyboardButton(EmojiParser.parseToUnicode(":bar_chart:"));
         KeyboardButton mounthly = new KeyboardButton(EmojiParser.parseToUnicode(":date:"));
         KeyboardButton promotions = new KeyboardButton(EmojiParser.parseToUnicode(":star:"));
+        KeyboardButton back = new KeyboardButton(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"));
 
+        row.add(back);
         row.add(voda);
         row.add(eda);
         row.add(activity);

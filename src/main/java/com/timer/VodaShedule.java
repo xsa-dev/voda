@@ -12,10 +12,10 @@ import java.util.TimerTask;
  * @author alekseysavin.com
  * @version 0.1
  */
-public class TestShedule extends TimerTask {
+public class VodaShedule extends TimerTask {
     @Override
     public void run() {
-        //send message about worked sheduler
+        //send message about voda dialy commited sheduler
         try {
             voda bot = new voda();
             bot.sendTextToIdMessage(voda.getOwnerId(), "Test sheduled message");
