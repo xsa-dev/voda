@@ -89,7 +89,7 @@ public class Diary {
         KeyboardButton seven = new KeyboardButton(EmojiParser.parseToUnicode("750"));
         KeyboardButton eight = new KeyboardButton(EmojiParser.parseToUnicode("1000"));
         KeyboardButton nine = new KeyboardButton(EmojiParser.parseToUnicode("2000"));
-        KeyboardButton zero = new KeyboardButton(EmojiParser.parseToUnicode("2000"));
+        KeyboardButton zero = new KeyboardButton(EmojiParser.parseToUnicode("0"));
         KeyboardButton doted = new KeyboardButton(EmojiParser.parseToUnicode("..."));
         KeyboardButton back = new KeyboardButton(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"));
 
