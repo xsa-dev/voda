@@ -583,7 +583,7 @@ public class voda extends TelegramLongPollingBot {
                     userWorkFlow.put(chat_id, "queryAboutWaterGoted");
                     message.setReplyMarkup(diary.getDefaultDiaryKeybord());
                 } catch (Exception e) {
-                    message.setText("Цыфра не распознанна");
+                    message.setText("Цыфра не распознана, допишите запись нормально (цифрой). Для возврата используйте кнопку " + EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:") + "\n но так как это пока не работает используйте цыфру 0");
                     message.setChatId(chat_id);
                 }
                 try {
