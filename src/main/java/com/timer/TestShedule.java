@@ -15,7 +15,7 @@ import java.util.TimerTask;
 public class TestShedule extends TimerTask {
     @Override
     public void run() {
-        //send message about worked sheduler
+        //send message about eating and sleeping
         try {
             voda bot = new voda();
             bot.sendTextToIdMessage(voda.getOwnerId(), "Test sheduled message");

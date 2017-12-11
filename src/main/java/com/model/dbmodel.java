@@ -52,6 +52,21 @@ public class dbmodel {
             System.out.println(query);
         }
 
+        // todo i need to generate db objects, need to test
+        public static List<Integer> getWaterSubscribers() throws ClassNotFoundException, SQLException {
+            List<Integer> subscrabers = new ArrayList<Integer>();
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement stmt = con.createStatement();
+            String query = "select tid from diary.water.subscribers"; //"select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime BETWEEN  '2017-12-10 00:00:00' AND '2017-12-10 23:59:00'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                subscrabers.add(rs.getInt(1));
+            }
+            return subscrabers;
+        }
+
+
         public static void addUnrecognizedQuestion(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);

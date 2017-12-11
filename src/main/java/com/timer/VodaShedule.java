@@ -1,7 +1,8 @@
 package com.timer;
 
 import com.draft.voda;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 
 /**
@@ -15,12 +16,19 @@ import java.util.TimerTask;
 public class VodaShedule extends TimerTask {
     @Override
     public void run() {
-        //send message about voda dialy commited sheduler
+        voda bot = new voda();
+
+        // todo send message about worked sheduler
+        List<Integer> subscribers = new ArrayList<Integer>();
+
+        // todo query for subscribers for water notification
         try {
-            voda bot = new voda();
-            bot.sendTextToIdMessage(voda.getOwnerId(), "Test sheduled message");
-            System.out.println("sendMessageTest");
-        } catch (Exception e) {
+            for (Integer subscriber : subscribers) {
+                // todo get time setting (UTC,
+                bot.sendTextToIdMessage(subscriber, "Voda sheduled message");
+                System.out.println("Voda Message Send for " + subscriber);
+            }
+         } catch (Exception e) {
             System.out.println();
         }
     }

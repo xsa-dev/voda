@@ -22,7 +22,7 @@ public class AppMainClass {
         TicTackApp shedulerApp = new TicTackApp();
         shedulerApp.createShedulledTimer(1000, 6000000);
 
-        // Запускаем опросник по перезамерам
+        // todo Запускаем опросник по перезамерам
 
         try {
             botsApi.registerBot(new voda());

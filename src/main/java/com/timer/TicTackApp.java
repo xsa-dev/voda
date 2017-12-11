@@ -12,9 +12,10 @@ import java.util.TimerTask;
  *
  * JDK Timer is a simple scheduler for a specified task for repeated fixed-delay execution. To use this, you have to extends the TimerTask abstract class, override the run() method with your scheduler function.
  *
- *
+ * This is Tamer Tasker
  */
 
+// todo refactor tictackapp -> Tasker
 public class TicTackApp
 {
     public static void main( String[] args )
@@ -29,6 +30,16 @@ public class TicTackApp
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
         //In this example, the timer will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
+        timer.schedule(task, delay, period);
+    }
+
+    public void createShedulledTimerForWaterDiarySubscriber (Integer subscriber) {
+        int delay = 1000;
+        int period = 60000; // in mil
+
+        TimerTask task = new TestShedule();
+        Timer timer = new Timer();
+        // Write get personal subscriber setting and start timer
         timer.schedule(task, delay, period);
     }
 }
