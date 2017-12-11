@@ -146,10 +146,6 @@ public class voda extends TelegramLongPollingBot {
             userWorkFlow.put(chat_id, "StartSesion");
         }
 
-        if (userWorkFlow.get(chat_id).equals(null)) {
-            userWorkFlow.put(chat_id, "StartSesison");
-        }
-
 
         //region работа с локацией
         if (update.getMessage().hasLocation()) {
@@ -207,9 +203,7 @@ public class voda extends TelegramLongPollingBot {
 
         // region работа с телефоном
 
-        if (update.getMessage().getContact() != null) {
 
-        }
 
         // end region
 
