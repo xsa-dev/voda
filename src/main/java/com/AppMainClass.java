@@ -24,9 +24,10 @@ public class AppMainClass {
 
         // todo Запускаем опросник по перезамерам
 
+
         try {
             botsApi.registerBot(new voda());
-
+            botsApi.registerBot(new fitlife24());
         }
         catch (TelegramApiException e) {
             e.printStackTrace();
