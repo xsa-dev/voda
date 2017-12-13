@@ -36,8 +36,8 @@ public class Payments {
 
         KeyboardRow row = new KeyboardRow();
 
-        KeyboardButton invoice = new KeyboardButton(EmojiParser.parseToUnicode("Инвойс"));
-        KeyboardButton cash = new KeyboardButton(EmojiParser.parseToUnicode("Наличными"));
+        KeyboardButton invoice = new KeyboardButton("Картой");
+        KeyboardButton cash = new KeyboardButton("Наличными");
 
         row.add(invoice);
         row.add(cash);
