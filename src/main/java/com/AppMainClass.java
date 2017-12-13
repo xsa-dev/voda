@@ -1,5 +1,6 @@
 package com;
 
+import com.draft.fitlife24;
 import com.draft.voda;
 import com.timer.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;

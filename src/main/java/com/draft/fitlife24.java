@@ -1,8 +1,5 @@
-package com;
+package com.draft;
 
-import com.draft.Diary;
-import com.draft.Payments;
-import com.draft.TestReturnMessage;
 import com.erezults.Result;
 import com.model.dbmodel;
 import com.vdurmont.emoji.EmojiParser;
@@ -37,9 +34,22 @@ import java.util.List;
  */
 public class fitlife24 extends TelegramLongPollingBot {
 
+    int bSum = 0; // белок
+    int eSum = 0; // энергия
+    int vSum = 0; // клетчатка
+    int wSum = 0; // вода
+    int aSum = 0; // активность
+
+    String[] vStringArray;
+    String[] eStringArray;
+    String[] aStringArray;
+    String[] rStringArray;
+
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
     HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
 
+    Diary diary = new Diary();
+    Payments payments = new Payments();
     ReplyKeyboardMarkup rkm = new ReplyKeyboardMarkup();
 
     public ReplyKeyboardMarkup getDefaultKeyBoard() {
@@ -49,7 +59,7 @@ public class fitlife24 extends TelegramLongPollingBot {
         KeyboardRow row1 = new KeyboardRow();
         KeyboardRow row2 = new KeyboardRow();
 
-        KeyboardButton nearbly = new KeyboardButton("Ближайший клуб " + EmojiParser.parseToUnicode(":earth_asia:").);
+        KeyboardButton nearbly = new KeyboardButton("Ближайший клуб " + EmojiParser.parseToUnicode(":earth_asia:"));
         nearbly.setRequestLocation(true);
 
         KeyboardButton contact = new KeyboardButton("Мой консультант " + EmojiParser.parseToUnicode(":sports_medal:")).setRequestContact(true);
@@ -102,6 +112,7 @@ public class fitlife24 extends TelegramLongPollingBot {
             System.out.println(e.toString());
         }
     }
+
 
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();

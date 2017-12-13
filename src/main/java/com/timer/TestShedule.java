@@ -19,9 +19,8 @@ public class TestShedule extends TimerTask {
         try {
             voda bot = new voda();
             bot.sendTextToIdMessage(voda.getOwnerId(), "Test sheduled message");
-
-bot.sendTextToIdMessage(105600955, "Test sheduled message");
-          System.out.println("sendMessageTest");
+            bot.sendTextToIdMessage(105600955, "Test sheduled message");
+            System.out.println("sendMessageTest");
         } catch (Exception e) {
             System.out.println();
         }
