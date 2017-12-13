@@ -377,6 +377,7 @@ public class voda extends TelegramLongPollingBot {
                 }
             } else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
                 message.setText("/start").setChatId(chat_id);
+                message.setReplyMarkup(diary.getDefaultDiaryKeybord())
                 try {
                     sendMessage(message);
                 } catch (Exception e) {
