@@ -127,8 +127,8 @@ public class Diary {
 
         KeyboardRow row = new KeyboardRow();
 
-        KeyboardButton one = new KeyboardButton(EmojiParser.parseToUnicode("100"));
-        KeyboardButton two = new KeyboardButton(EmojiParser.parseToUnicode("200"));
+        KeyboardButton one = new KeyboardButton("Да");
+        KeyboardButton two = new KeyboardButton("Нет");
 
         row.add(one);
         row.add(two);
