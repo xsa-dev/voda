@@ -1,25 +1,12 @@
 package com.draft;
 
-import com.erezults.Result;
-import com.model.dbmodel;
-import com.vdurmont.emoji.EmojiParser;
-import org.telegram.telegrambots.api.methods.send.SendInvoice;
-import org.telegram.telegrambots.api.methods.send.SendLocation;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Location;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.payments.LabeledPrice;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardButton;
-import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 /**
@@ -75,7 +62,7 @@ public class fitlife24 extends TelegramLongPollingBot {
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText("@@@: " + messageText + "\nfrom id" + fromId + " : " + name);
+        message.setText("FIT: " + messageText + "\nfrom id" + fromId + " : " + name);
         try {
             sendMessage(message);
         } catch (Exception e) {
@@ -85,12 +72,12 @@ public class fitlife24 extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
 
-
-        System.out.println();
         onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
         sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
         long chat_id = update.getMessage().getChatId();
-
+        SendMessage message = new SendMessage();
+        message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+        sendMessageToId(chat_id, message);
 
     }
 
