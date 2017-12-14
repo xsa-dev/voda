@@ -31,7 +31,7 @@ public class dbmodel {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
             Statement stmt = con.createStatement();
-            String query = "select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime BETWEEN  '2017-12-10 00:00:00' AND '2017-12-10 23:59:00'";
+            String query = "select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime > curdate();";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 water = rs.getInt(1);
