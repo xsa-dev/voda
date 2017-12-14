@@ -8,6 +8,7 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import java.util.ArrayList;
 import java.util.List;
 
+// refactor this for "KEYBOARDS"
 public class Diary {
     public void start(long tid) {
         System.out.println("Diary:start");
@@ -112,6 +113,27 @@ public class Diary {
         keyboard.add(row1);
         keyboard.add(row2);
         keyboard.add(row3);
+
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup().setResizeKeyboard(true);
+
+        keyboardMarkup.setKeyboard(keyboard).setSelective(true);
+
+        return keyboardMarkup;
+
+    }
+
+    public ReplyKeyboardMarkup getDefaultFitActivityKeybord() {
+        List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
+
+        KeyboardRow row = new KeyboardRow();
+
+        KeyboardButton one = new KeyboardButton(EmojiParser.parseToUnicode("100"));
+        KeyboardButton two = new KeyboardButton(EmojiParser.parseToUnicode("200"));
+
+        row.add(one);
+        row.add(two);
+
+        keyboard.add(row);
 
         ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup().setResizeKeyboard(true);
 

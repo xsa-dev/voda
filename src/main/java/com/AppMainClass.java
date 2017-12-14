@@ -15,6 +15,9 @@ public class AppMainClass {
 
     public static void main(String[] args) {
 
+        // todo multilanguage support
+
+
         //
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
