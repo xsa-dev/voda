@@ -27,6 +27,7 @@ public class fitlife24 extends TelegramLongPollingBot {
     Diary diary = new Diary();
     Payments payments = new Payments();
     ReplyKeyboardMarkup rkm = new ReplyKeyboardMarkup();
+    String[] WorkFlow = {"INIT", "WAITANSWER", "ANSWERED"};
 
     public static long getAdminId() {
         return 188416619;
@@ -72,16 +73,28 @@ public class fitlife24 extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
 
-        onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
-        sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-        long chat_id = update.getMessage().getChatId();
+        String inMessage = update.getMessage().getText();
         SendMessage message = new SendMessage();
-        message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
-        sendMessageToId(chat_id, message);
+        long chat_id = update.getMessage().getChatId();
 
+        if (inMessage.startsWith("/start")) {
+                onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
+                sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
+                message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+                sendMessageToId(chat_id, message);
+            }
+         else if (inMessage.startsWith("Да")) {
+                message.setText("Ты красавчик! На тебе фиткойн! Печенька");
+                sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
+                message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+                sendMessageToId(chat_id, message);
+        } else if (inMessage.startsWith("Нет")) {
+                message.setText("Ты красавчик! Но фиткойн только тем кто был!");
+                sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
+                message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+                sendMessageToId(chat_id, message);
+        }
     }
-
-
 
     public fitlife24() {
         super();
