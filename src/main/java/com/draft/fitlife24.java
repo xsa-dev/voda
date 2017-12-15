@@ -50,7 +50,7 @@ public class fitlife24 extends TelegramLongPollingBot {
 
     public void sendTextToIdMessage(long receiverid, String messagetext) {
         SendMessage message = new SendMessage();
-        message.setChatId(getOwnerId());
+        message.setChatId(receiverid);
         message.setText(messagetext + "\n" + "to tid: " + receiverid);
         try {
             sendMessage(message);
@@ -76,6 +76,7 @@ public class fitlife24 extends TelegramLongPollingBot {
         String inMessage = update.getMessage().getText();
         SendMessage message = new SendMessage();
         long chat_id = update.getMessage().getChatId();
+        sendMessageToOwnerId("TestMessage:@ " + inMessage + ":" + chat_id,chat_id, update.getMessage().getFrom().getFirstName() );
 
         if (inMessage.startsWith("/start")) {
                 onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
@@ -83,17 +84,17 @@ public class fitlife24 extends TelegramLongPollingBot {
                 message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
                 sendMessageToId(chat_id, message);
             }
-         else if (inMessage.startsWith("Да")) {
+         else if (inMessage.equals("Да")) {
                 message.setText("Ты красавчик! На тебе фиткойн! Печенька");
                 sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
                 message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
                 sendMessageToId(chat_id, message);
-        } else if (inMessage.startsWith("Нет")) {
+        } else if (inMessage.equals("Нет")) {
                 message.setText("Ты красавчик! Но фиткойн только тем кто был!");
                 sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
                 message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
                 sendMessageToId(chat_id, message);
-        } else {
+        } else  {
                 message.setText("Я не понимаю о чём ты...");
                 sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
                 message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
