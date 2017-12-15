@@ -93,6 +93,11 @@ public class fitlife24 extends TelegramLongPollingBot {
                 sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
                 message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
                 sendMessageToId(chat_id, message);
+        } else {
+                message.setText("Я не понимаю о чём ты...");
+                sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
+                message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+                sendMessageToId(chat_id, message);
         }
     }
 
