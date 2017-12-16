@@ -1,6 +1,7 @@
 package com;
 
 import com.draft.fitlife24;
+import com.draft.plank30days;
 import com.draft.voda;
 import com.timer.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -15,10 +16,7 @@ public class AppMainClass {
 
     public static void main(String[] args) {
 
-        // todo multilanguage support android strings
-
-
-        //
+        // todo multilanguage support android strings kotlyn :D
 
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
@@ -28,18 +26,14 @@ public class AppMainClass {
         shedulerApp.createShedulledTimer(1000, 6000000);
 
         // todo Запускаем опросник по перезамерам
-
-
         try {
             botsApi.registerBot(new voda());
             botsApi.registerBot(new fitlife24());
+            botsApi.registerBot(new plank30days());
         }
         catch (TelegramApiException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
 
