@@ -586,7 +586,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":question:"))) {
                 try {
                     message.setChatId(chat_id);
-                    message.setText(String.valueOf("Очень хорошо! Итог за сегодня:" + dbmodel.MysqlCon.getWaterFromPeriod(chat_id, "debug", "debug") + " мл."));
+                    message.setText(String.valueOf("Очень хорошо! Итог за сегодня:" + dbmodel.MysqlCon.getWaterFromPeriod(chat_id, "debug", "debug") + " мл. "));
 
                 } catch (SQLException sqle) {
                     message.setText(sqle.toString());
