@@ -60,9 +60,9 @@ public class Diary {
         KeyboardButton back = new KeyboardButton(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"));
 
         row.add(plus);
-        row.add(minus);
+        // row.add(minus);
         row.add(all);
-        row.add(back);
+        // row.add(back);
 
         keyboard.add(row);
 

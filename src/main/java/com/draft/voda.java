@@ -233,12 +233,13 @@ public class voda extends TelegramLongPollingBot {
                 } catch (ClassNotFoundException e) {
                     sendMessageToOwnerId(e.toString(), chat_id, CurrentInMessage);
                 }
-                message.setReplyMarkup(getDefaultKeyBoard());
+                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
                 message.setChatId((chat_id));
-                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
-                        "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
-                        "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
-                        "Добро пожаловать!" + "\n" + EmojiParser.parseToUnicode(":smile:").toString());
+                message.setText("Привет, пользуйся кнопками для того чтобы записывать результаты по воде. О предложениях, замечаниях, ошибках сообщай тому кто тебя пригласил. Добро пожаловать. ");
+//                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
+//                        "Мой создатель @xsd14, просит тебя отправлять все найденные неточности ему в личку" + "\n" +
+//                        "Для того чтобы мною пользоваться нажми -> /help" + "\n" +
+//                        "Добро пожаловать!" + "\n" + EmojiParser.parseToUnicode(":smile:").toString());
                 try {
                     sendMessage(message);
                 } catch (TelegramApiException e) {
@@ -454,17 +455,17 @@ public class voda extends TelegramLongPollingBot {
                 message.setChatId(chat_id);
                 message.setReplyMarkup(getDefaultKeyBoard());
                 String helpText1 = "На кнопках всё написано.";
-                String helpText2 = "Как пользоваться дневником:" + "\n"
-                        + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
-                        + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
-                        + "Напиши: & 500 - добавит 500 килокаллорий активности." + "\n"
-                        + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n"
-                        + "Напиши: $ 8 - добавит время сна."
-                        + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n"
-
-                        + "\n";
+//                String helpText2 = "Как пользоваться дневником:" + "\n"
+//                        + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
+//                        + "Напиши: * вода 500 - добавит в дневник питания 500 мл воды." + "\n"
+//                        + "Напиши: & 500 - добавит 500 килокаллорий активности." + "\n"
+//                        + "Напиши: /status и получи отчёт по дневнику питания за сутки." + "\n"
+//                        + "Напиши: $ 8 - добавит время сна."
+//                        + "Добавить результаты замера: % 1.1 2.2 3.3 4.4 5.5 6.6 7.7 8.8 9.9" + "\n"
+//
+//                        + "\n";
                 //"Для дневника нужны: дневной рацион, вода, активность, сон";
-                message.setText(helpText1 + "\n" + helpText2);
+                message.setText(helpText1);
 
                 try {
                     sendMessage(message);
