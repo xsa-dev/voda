@@ -629,12 +629,12 @@ public class voda extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "380086304:AAFf6KjuyStoDG2UavmeuoX6TZjClEZsCqo";
+        return "465329850:AAF5N9vQO-dLF7ReetXbKeKfeK0HKaasVqs";
 
     }
 
     public String getBotUsername() {
-        return "voda_bot";
+        return "vipilbot";
     }
 
     public voda(DefaultBotOptions options) {
