@@ -214,7 +214,7 @@ public class voda extends TelegramLongPollingBot {
             message.setChatId(chat_id);
 
             if (update.getMessage().getText().equals("/keyboardRefresh")) {
-                message.setReplyMarkup(getDefaultKeyBoard());
+                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
                 message.setText("KeyBoardRefresh");
 
                 sendMessageToId(chat_id, message);
@@ -453,7 +453,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (CurrentInMessage.equals("/help")) {
                 message.setChatId(chat_id);
                 message.setChatId(chat_id);
-                message.setReplyMarkup(getDefaultKeyBoard());
+                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
                 String helpText1 = "На кнопках всё написано.";
 //                String helpText2 = "Как пользоваться дневником:" + "\n"
 //                        + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
@@ -574,7 +574,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (userWorkFlow.get(chat_id).equals("sendAnswerAboutWater")) {
                 try {
                     dbmodel.MysqlCon.addWaterToDiary(chat_id, Integer.parseInt(update.getMessage().getText()));
-                    message.setText("Записано: " + update.getMessage().getText() + " " + EmojiParser.parseToUnicode(":pushpin:"));
+                    message.setText("Отлично! Еще: " + update.getMessage().getText() + "мл. добавлено! " + EmojiParser.parseToUnicode(":pushpin:"));
                     message.setChatId(chat_id);
                     userWorkFlow.put(chat_id, "queryAboutWaterGoted");
                     message.setReplyMarkup(diary.getDefaultDiaryKeybord());
@@ -609,7 +609,7 @@ public class voda extends TelegramLongPollingBot {
             } else {
                 message.setChatId(chat_id);
                 message.setText("Я не понял \"" + update.getMessage().getText().toString() + "\"? " + EmojiParser.parseToUnicode(":male_shrug:").toString());
-                message.setReplyMarkup(getDefaultKeyBoard());
+                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
 
                 try {
                     dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), String.valueOf(CurrentInMessage));
