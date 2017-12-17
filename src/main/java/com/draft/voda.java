@@ -133,9 +133,7 @@ public class voda extends TelegramLongPollingBot {
 
 
         System.out.println(update.getMessage().getChatId());
-
         SendMessage message = new SendMessage();
-
         onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
 
         sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
@@ -199,13 +197,10 @@ public class voda extends TelegramLongPollingBot {
                 }
             }
         }
+
         //endregion
-
-        // region работа с телефоном
-
-
-
-        // end region
+        //region работа с телефоном
+        //end region
 
         //region работа с текстом
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -248,7 +243,7 @@ public class voda extends TelegramLongPollingBot {
 
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"))) {
                 message.setText("Back");
-                rkm = diary.getDefaultDiaryKeybord();
+                rkm = diary.getDefaultWaterDiaryKeybord();
                 message.setReplyMarkup(rkm);
                 try {
                     sendMessage(message);
@@ -278,7 +273,7 @@ public class voda extends TelegramLongPollingBot {
 
                 Diary diary = new Diary();
                 message.setText("New function in develop: diary.. please test this and sebd feedback to @xsd14");
-                ReplyKeyboardMarkup rkm = diary.getDefaultDiaryKeybord();
+                ReplyKeyboardMarkup rkm = diary.getDefaultWaterDiaryKeybord();
                 message.setReplyMarkup(rkm);
                 try {
                     sendMessage(message);
@@ -378,7 +373,7 @@ public class voda extends TelegramLongPollingBot {
                 }
             } else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
                 message.setText("/start").setChatId(chat_id);
-                message.setReplyMarkup(diary.getDefaultDiaryKeybord());
+                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
                 try {
                     sendMessage(message);
                 } catch (Exception e) {
@@ -577,7 +572,7 @@ public class voda extends TelegramLongPollingBot {
                     message.setText("Отлично! Еще: " + update.getMessage().getText() + "мл. добавлено! " + EmojiParser.parseToUnicode(":pushpin:"));
                     message.setChatId(chat_id);
                     userWorkFlow.put(chat_id, "queryAboutWaterGoted");
-                    message.setReplyMarkup(diary.getDefaultDiaryKeybord());
+                    message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
                 } catch (Exception e) {
                     message.setText("Цыфра не распознана, допишите запись нормально (цифрой). Для возврата используйте кнопку " + EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:") + "\n но так как это пока не работает используйте цыфру 0");
                     message.setChatId(chat_id);
