@@ -213,7 +213,7 @@ public class voda extends TelegramLongPollingBot {
                 message.setText("KeyBoardRefresh");
 
                 sendMessageToId(chat_id, message);
-            } else if (CurrentInMessage.startsWith("/addConsultant")) {
+            } else if (CurrentInMessage.startsWith("/myConsul")) {
 
                 dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
                 String[] parsedIds = CurrentInMessage.split(" ");
