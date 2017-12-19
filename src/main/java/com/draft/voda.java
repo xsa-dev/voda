@@ -219,10 +219,10 @@ public class voda extends TelegramLongPollingBot {
                 String[] parsedIds = CurrentInMessage.split(" ");
 
                 try {
-                    if (parsedIds[1] == "shoroh") {
+                    if (parsedIds[1].equals("shoroh")) {
                         dbmodel.MysqlCon.addConsult(chat_id, "shoroh");
                         message.setText("Вы зарегестрированы у Дианы");
-                    } else if (parsedIds[1] == "levcon") {
+                    } else if (parsedIds[1].equals("alexlev")) {
                         dbmodel.MysqlCon.addConsult(chat_id, "alexlev");
                         message.setText("Вы зарегистрированы у Александра");
                     } else {
