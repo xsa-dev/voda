@@ -213,6 +213,29 @@ public class voda extends TelegramLongPollingBot {
                 message.setText("KeyBoardRefresh");
 
                 sendMessageToId(chat_id, message);
+            } else if (CurrentInMessage.startsWith("/addConsultant")) {
+
+                dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+                String[] parsedIds = CurrentInMessage.split(" ");
+
+                try {
+                    if (parsedIds[1] == "shoroh") {
+                        dbmodel.MysqlCon.addConsult(chat_id, "shoroh");
+                        message.setText("Вы зарегестрированы у Дианы");
+                    } else if (parsedIds[1] == "levcon") {
+                        dbmodel.MysqlCon.addConsult(chat_id, "alexlev");
+                        message.setText("Вы зарегистрированы у Александра");
+                    } else {
+                        message.setText("Вы что-то не так написали...");
+                    }
+                    message.setChatId(chat_id);
+                    sendMessageToId(chat_id, message);
+                    sendMessageToOwnerId("@@@ Consulted login adding test", chat_id, update.getMessage().getFrom().getFirstName());
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+
+
             } else if (update.getMessage().getText().equals("/start")) {
 
                 dbmodel.MysqlCon conn = new dbmodel.MysqlCon();

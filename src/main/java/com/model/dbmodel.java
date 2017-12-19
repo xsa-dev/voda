@@ -97,6 +97,30 @@ public class dbmodel {
 
         }
 
+        public static void addConsult(long tid, String consultantCode) throws SQLException, ClassNotFoundException {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            String query = null;
+
+            if (consultantCode == "shoroh") {
+                query = "insert into telegram.consults (idconsultant, idconsulted) " +
+                        "values ('" + 70437788 + "', '" + tid + "');";
+            } else if (consultantCode == "levcom") {
+                query = "insert into telegram.consults (ifconsultant, idconsulted) " +
+                        "values ('" + 120890854 + "', '" + tid + "');";
+            }
+
+            System.out.println("adConsultant: " + query);
+
+            try {
+                statement.execute(query);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+        }
+
         public static List<Integer> getAdmins() {
 
             List<Integer> admins = new ArrayList<Integer>();
