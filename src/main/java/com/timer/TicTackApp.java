@@ -1,8 +1,5 @@
 package com.timer;
 
-import com.timer.RunMeShedule;
-
-import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,6 +30,7 @@ public class TicTackApp
         timer.schedule(task, delay, period);
     }
 
+    @Deprecated
     public void createShedulledTimerForWaterDiarySubscriber (Integer subscriber) {
         int delay = 1000;
         int period = 60000; // in mil
@@ -40,6 +38,15 @@ public class TicTackApp
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
         // Write get personal subscriber setting and start timer
+        timer.schedule(task, delay, period);
+    }
+
+    public void createEveryDaySheduleForWaterDiary() {
+        int delay = 1000;
+        int period = 600000; // every hour
+
+        TimerTask task = new EveryDaySheduleForWaterDiary();
+        Timer timer = new Timer();
         timer.schedule(task, delay, period);
     }
 }
