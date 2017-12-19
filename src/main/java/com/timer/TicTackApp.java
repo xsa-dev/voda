@@ -43,7 +43,7 @@ public class TicTackApp
 
     public void createEveryDaySheduleForWaterDiary() {
         int delay = 1000;
-        int period = 600000; // every hour
+        int period = 3600000; // every hour
 
         TimerTask task = new EveryDaySheduleForWaterDiary();
         Timer timer = new Timer();
