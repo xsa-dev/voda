@@ -49,7 +49,7 @@ public class EveryDaySheduleForWaterDiary extends TimerTask {
                 for (Integer tid : consultants) {
                     bot.sendTextToIdMessage(voda.getOwnerId(), "Else@@@messageTo: " + tid + " ready:" + "\n" +
                             // todo this place for get list of water to consultant name
-                            dbmodel.MysqlCon.getEveryDayWaterDiaryReportView(tid) + "\n");
+                            dbmodel.MysqlCon.getEveryDayWaterDiaryReportView(tid));
                 }
 
                 bot.sendTextToIdMessage(voda.getOwnerId(), "Это оповещение настроено на " + timeOfShedule);
