@@ -34,7 +34,7 @@ public class EveryDaySheduleForWaterDiary extends TimerTask {
 
                 for (Integer tid : consultants) {
                     bot.sendTextToIdMessage(voda.getOwnerId(), "@@@messageTo: " + tid + " ready:" + "\n" +
-                            // todo this place for get list of water
+                            // todo this place for get list of water to consultant name
                             dbmodel.MysqlCon.getEveryDayWaterDiaryReportView(tid) + "\n");
                 }
 
@@ -42,9 +42,18 @@ public class EveryDaySheduleForWaterDiary extends TimerTask {
                 // bot.sendTextToIdMessage(105600955, "Это оповещение настроено на " + timeOfShedule);
 
             } else {
-                System.out.println("CurrentHour not : " + timeOfShedule);
-                // bot.sendTextToIdMessage(105600955, "Тут просто проверяем сколько времени, если время не: " + timeOfShedule + " то пользователям ничего не пишем");
-                bot.sendTextToIdMessage(voda.getOwnerId(), "Тут просто проверяем сколько времени, если время не: " + timeOfShedule + " то пользователям ничего не пишем");
+                System.out.println("CurrentHour: " + timeOfShedule + " : " + currentHour);
+
+                ArrayList<Integer> consultants = dbmodel.MysqlCon.getConsultans();
+
+                for (Integer tid : consultants) {
+                    bot.sendTextToIdMessage(voda.getOwnerId(), "Else@@@messageTo: " + tid + " ready:" + "\n" +
+                            // todo this place for get list of water to consultant name
+                            dbmodel.MysqlCon.getEveryDayWaterDiaryReportView(tid) + "\n");
+                }
+
+                bot.sendTextToIdMessage(voda.getOwnerId(), "Это оповещение настроено на " + timeOfShedule);
+                // bot.sendTextToIdMessage(105600955, "Это оповещение настроено на " + timeOfShedule);
             }
 
         } catch (Exception e) {
