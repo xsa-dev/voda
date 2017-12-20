@@ -122,10 +122,8 @@ public class dbmodel {
         }
 
         public static List<Integer> getAdmins() {
-
             List<Integer> admins = new ArrayList<Integer>();
             try {
-
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
                 Statement statement = connection.createStatement();
@@ -145,6 +143,46 @@ public class dbmodel {
             }
 
             return admins;
+        }
+
+        public static ArrayList<Integer> getConsultans() throws SQLException, ClassNotFoundException {
+            // todo needed for getEveryDayWaterDiaryReport
+            ArrayList<Integer> consultants = new ArrayList<Integer>();
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            /*
+            SELECT idconsultant FROM telegram.consults group by consults.idconsultant;
+             */
+            String query = "SELECT idconsultant FROM telegram.consults group by consults.idconsultant";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next()) {
+                results.getStatement();
+                consultants.add(results.getInt(1));
+            }
+            return consultants;
+        }
+
+        public static String getEveryDayWaterDiaryReportView(long consul_tid) throws SQLException, ClassNotFoundException {
+            String stroke = "";
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT watercountsum, telegramname, datetime, wdv.idconsultant  FROM diary.waterdiaryview wdv where datetime > curdate() and wdv.idconsultant = '" + consul_tid + "';");
+
+                while (rs.next()) {
+                    // todo rewrite for needs
+                    // System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " " + rs.getString(4));
+                    stroke += rs.getString(2) + " за " + rs.getString(3) + " выпил: " + rs.getInt(1) + "\n";
+                }
+            } catch (SQLException sqlE) {
+                System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
+            }
+            return stroke;
         }
 
         public void addProduct(String name, int pro, int fats, int carb) throws SQLException {
