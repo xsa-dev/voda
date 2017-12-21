@@ -58,6 +58,16 @@ public class plank30days extends TelegramLongPollingBot {
         }
     }
 
+    public void sendMessageToPlankGroupId() {
+        SendMessage message = new SendMessage();
+        message.setChatId(Long.parseLong("1001108159484"));
+        message.setText("Ребята, кто сделал сегодня планку? Я готовлю призы...");
+        try {
+            sendMessage(message);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
 
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();

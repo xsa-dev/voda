@@ -23,8 +23,9 @@ public class AppMainClass {
 
         // Запускаем тестовый планировщик
         TicTackApp shedulerApp = new TicTackApp();
-        shedulerApp.createShedulledTimer(1000, 3600000);
+        // shedulerApp.createShedulledTimer(1000, 3600000);
         shedulerApp.createEveryDaySheduleForWaterDiary();
+        shedulerApp.plankEveryDaySheduleForAnswer();
 
         // todo Запускаем опросник по перезамерам
         try {

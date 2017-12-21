@@ -25,7 +25,6 @@ public class dbmodel {
         static String sqlPass = "devuser";
         static String sqlHost = "jdbc:mysql://localhost:3306/clpr";
 
-
         public static int getWaterFromPeriod(long chatid, String dateFrom, String dateTo) throws ClassNotFoundException, SQLException {
             int water = 0;
             Class.forName("com.mysql.jdbc.Driver");
