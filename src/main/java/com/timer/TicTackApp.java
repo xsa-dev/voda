@@ -49,4 +49,13 @@ public class TicTackApp
         Timer timer = new Timer();
         timer.schedule(task, delay, period);
     }
+
+    public void plankEveryDaySheduleForAnswer() {
+        int delay = 0;
+        int period = 3600000; // every hour
+
+        TimerTask task = new PlankShedule();
+        Timer timer = new Timer();
+        timer.schedule(task, delay, period);
+    }
 }
