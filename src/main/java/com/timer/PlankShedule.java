@@ -21,7 +21,7 @@ public class PlankShedule extends TimerTask {
 
         try {
             LocalDateTime now = LocalDateTime.now();
-            int timeOfShedule = 12;
+            int timeOfShedule = 13;
             int currentHour = now.getHour();
             plank30days bot = new plank30days();
 
