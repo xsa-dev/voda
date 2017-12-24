@@ -164,6 +164,24 @@ public class dbmodel {
             return consultants;
         }
 
+        public static ArrayList<Integer> getFollowers() throws SQLException, ClassNotFoundException {
+            // todo needed for getEveryDayWaterUserWaterCountView
+            ArrayList<Integer> followers = new ArrayList<Integer>();
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            String query = "SELECT idconsulted FROM telegram.consults group by consults.idconsulted";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next()) {
+                results.getStatement();
+                followers.add(results.getInt(1));
+            }
+            return followers;
+        }
+
+        // todo оповещение консультанта о выпитом консультируемым за сегодня
         public static String getEveryDayWaterDiaryReportView(long consul_tid) throws SQLException, ClassNotFoundException {
             String stroke = "";
 
@@ -177,6 +195,27 @@ public class dbmodel {
                     // todo rewrite for needs
                     // System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " " + rs.getString(4));
                     stroke += rs.getString(2) + " за " + rs.getString(3) + " выпил: " + rs.getInt(1) + "\n";
+                }
+            } catch (SQLException sqlE) {
+                System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
+            }
+            return stroke;
+        }
+
+        // todo оповещение пользователя о выпитом за сегодня
+        public static String getEveryDayWaterUserWaterCountView(long user_tid) throws SQLException, ClassNotFoundException {
+            String stroke = "";
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("SELECT watercountsum, telegramname, datetime  FROM diary.waterdiaryview wdv where datetime > curdate() and wdv.idconsulted = '" + user_tid + "';");
+
+                while (rs.next()) {
+                    // todo rewrite for needs
+                    // System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3) + " " + rs.getString(4));
+                    stroke += rs.getString(2) + ", Вы сегодня выпили " + rs.getInt(1) + " мл.";
                 }
             } catch (SQLException sqlE) {
                 System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());

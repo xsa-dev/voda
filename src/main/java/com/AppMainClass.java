@@ -1,9 +1,9 @@
 package com;
 
-import com.draft.fitlife24;
-import com.draft.plank30days;
-import com.draft.voda;
-import com.timer.TicTackApp;
+import com.draft.Diary.voda;
+import com.draft.Plank.plank30days;
+import com.draft.fitlife24.fitlife24;
+import com.sheduler.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -25,6 +25,7 @@ public class AppMainClass {
         TicTackApp shedulerApp = new TicTackApp();
         // shedulerApp.createShedulledTimer(1000, 3600000);
         shedulerApp.createEveryDaySheduleForWaterDiary();
+        shedulerApp.createEveryDaySheduleForUsersWaterDiary();
         shedulerApp.plankEveryDaySheduleForAnswer();
 
         // todo Запускаем опросник по перезамерам
@@ -37,6 +38,4 @@ public class AppMainClass {
             e.printStackTrace();
         }
     }
-
-
 }

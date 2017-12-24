@@ -1,7 +1,8 @@
-package com.timer;
+package com.sheduler.test;
+
+import com.draft.Diary.voda;
 
 import java.util.TimerTask;
-import com.draft.voda;
 
 /**
  * Created by xsd on 21.07.2017 with love.

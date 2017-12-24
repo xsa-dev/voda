@@ -1,6 +1,6 @@
-package com.timer;
+package com.sheduler.water;
 
-import com.draft.voda;
+import com.draft.Diary.voda;
 import com.model.dbmodel;
 
 import java.time.LocalDateTime;

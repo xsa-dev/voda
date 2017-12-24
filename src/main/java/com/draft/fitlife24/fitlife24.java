@@ -1,5 +1,7 @@
-package com.draft;
+package com.draft.fitlife24;
 
+import com.Diary;
+import com.draft.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -19,7 +21,7 @@ import java.util.HashMap;
  * <p>
  * Emoji here: https://github.com/vdurmont/emoji-java#available-emojis
  */
-public class plank30days extends TelegramLongPollingBot {
+public class fitlife24 extends TelegramLongPollingBot {
 
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
     HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
@@ -58,21 +60,11 @@ public class plank30days extends TelegramLongPollingBot {
         }
     }
 
-    public void sendMessageToPlankGroupId() {
-        SendMessage message = new SendMessage();
-        message.setChatId(-1001108159484L);
-        message.setText("Ребята, кто сделал сегодня планку? Давай давай! Кубики ждут :)");
-        try {
-            sendMessage(message);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }
 
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText("PLANK: " + messageText + "\nfrom id" + fromId + " : " + name);
+        message.setText("FIT: " + messageText + "\nfrom id" + fromId + " : " + name);
         try {
             sendMessage(message);
         } catch (Exception e) {
@@ -89,47 +81,47 @@ public class plank30days extends TelegramLongPollingBot {
         if (inMessage.startsWith("/start")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
-            message.setText("Добро пожаловать на марафон планки. 30 лней дисциплины, развития и повышения физической активности.");
+            message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
+            message.setText("Добро пожаловать на Fitlife24.");
             sendMessageToId(chat_id, message);
         } else if (inMessage.startsWith("/help")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
             message.setText("Помощь (в разработке).");
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
-            message.setText("Ты красавчик! Кубики ждут :) ");
+            message.setText("Ты красавчик! На тебе фиткойн! Печенька");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
-            message.setText("Ты красавчик! Но у тебя сгорела одна жизнь!");
+            message.setText("Ты красавчик! Но фиткойн только тем кто был!");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
         } else {
-            message.setText("Я не понимаю о чём ты... Напиши @xsd14 он человек и лучше меня разбирается в словах");
+            message.setText("Я не понимаю о чём ты...");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(diary.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
         }
     }
 
-    public plank30days() {
+    public fitlife24() {
         super();
     }
 
     public String getBotToken() {
-        return "390532084:AAEqQC6-XOqFTRtRZnyipy-qsZR5XsuK1BY";
+        return "409384909:AAGfnWDDYn87b50k8E1twlllX4p7PQTY8WM";
 
     }
 
     public String getBotUsername() {
-        return "P30D_bot";
+        return "Fitlife24bot";
     }
 
-    public plank30days(DefaultBotOptions options) {
+    public fitlife24(DefaultBotOptions options) {
         super(options);
     }
 

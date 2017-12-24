@@ -1,4 +1,4 @@
-package com.draft;
+package com.draft.Test;
 
 public class TestReturnMessage {
     public String getTestRetunMessage() {

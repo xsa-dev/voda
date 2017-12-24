@@ -1,6 +1,7 @@
-package com.timer;
+package com.sheduler.water;
 
-import com.draft.voda;
+import com.draft.Diary.voda;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -22,6 +23,8 @@ public class VodaShedule extends TimerTask {
         List<Integer> subscribers = new ArrayList<Integer>();
 
         // todo query for subscribers for water notification
+
+
         try {
             for (Integer subscriber : subscribers) {
                 // todo get time setting (UTC,

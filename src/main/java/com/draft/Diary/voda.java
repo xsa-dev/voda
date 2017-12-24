@@ -1,5 +1,8 @@
-package com.draft;
+package com.draft.Diary;
 
+import com.Diary;
+import com.draft.Clubs.Payments;
+import com.draft.Test.TestReturnMessage;
 import com.erezults.Result;
 import com.model.dbmodel;
 import com.vdurmont.emoji.EmojiParser;
@@ -101,6 +104,19 @@ public class voda extends TelegramLongPollingBot {
     }
 
     public void sendTextToIdMessage(long receiverid, String messagetext) {
+
+        SendMessage message = new SendMessage();
+
+        message.setChatId(receiverid);
+        message.setText(messagetext);
+        try {
+            sendMessage(message);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void sendTextToIdMessageAdmin(long receiverid, String messagetext) {
 
         SendMessage message = new SendMessage();
 
@@ -262,6 +278,7 @@ public class voda extends TelegramLongPollingBot {
                     sendMessage(message);
                 } catch (TelegramApiException e) {
                     System.out.println("Exeption:" + "\n" + e.toString());
+                    sendMessageToOwnerId(e.toString(), getOwnerId(), update.getMessage().getFrom().getFirstName());
                 }
 
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"))) {

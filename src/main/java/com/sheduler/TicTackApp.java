@@ -1,4 +1,10 @@
-package com.timer;
+package com.sheduler;
+
+import com.sheduler.plank30days.PlankShedule;
+import com.sheduler.test.RunMeShedule;
+import com.sheduler.test.TestShedule;
+import com.sheduler.water.EveryDaySheduleForUsersWaterDiary;
+import com.sheduler.water.EveryDaySheduleForWaterDiary;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,14 +25,14 @@ public class TicTackApp
     {
         TimerTask task = new RunMeShedule();
         Timer timer = new Timer();
-        //In this example, the timer will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
+        //In this example, the sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
         timer.schedule(task, 1000,60000);
     }
 
     public void createShedulledTimer(int delay, int period) {
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
-        //In this example, the timer will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
+        //In this example, the sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
         timer.schedule(task, delay, period);
     }
 
@@ -37,7 +43,7 @@ public class TicTackApp
 
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
-        // Write get personal subscriber setting and start timer
+        // Write get personal subscriber setting and start sheduler
         timer.schedule(task, delay, period);
     }
 
@@ -46,6 +52,15 @@ public class TicTackApp
         int period = 3600000; // every hour
 
         TimerTask task = new EveryDaySheduleForWaterDiary();
+        Timer timer = new Timer();
+        timer.schedule(task, delay, period);
+    }
+
+    public void createEveryDaySheduleForUsersWaterDiary() {
+        int delay = 1000;
+        int period = 3600000; // every hour
+
+        TimerTask task = new EveryDaySheduleForUsersWaterDiary();
         Timer timer = new Timer();
         timer.schedule(task, delay, period);
     }

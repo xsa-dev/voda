@@ -1,6 +1,6 @@
-package com.timer;
+package com.sheduler.plank30days;
 
-import com.draft.plank30days;
+import com.draft.Plank.plank30days;
 
 import java.time.LocalDateTime;
 import java.util.TimerTask;

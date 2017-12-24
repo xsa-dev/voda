@@ -1,4 +1,4 @@
-package com.draft;
+package com;
 
 import com.vdurmont.emoji.EmojiParser;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
