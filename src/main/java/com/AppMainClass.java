@@ -34,7 +34,7 @@ public class AppMainClass {
             botsApi.registerBot(new voda());
             botsApi.registerBot(new fitlife24());
             botsApi.registerBot(new plank30days());
-            botsApi.registerBot(new popejbot())
+            botsApi.registerBot(new popejbot());
         }
         catch (TelegramApiException e) {
             e.printStackTrace();

@@ -86,7 +86,7 @@ public class plank30days extends TelegramLongPollingBot {
 
         String inMessage = update.getMessage().getText();
         SendMessage message = new SendMessage();
-        message.setReplyMarkup(diary.getDefaultPlankActivityKeybord())
+        message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
         long chat_id = update.getMessage().getChatId();
 
         if (inMessage.startsWith("/start")) {
