@@ -2,6 +2,7 @@ package com;
 
 import com.draft.Diary.voda;
 import com.draft.Plank.plank30days;
+import com.draft.Popejbot.popejbot;
 import com.draft.fitlife24.fitlife24;
 import com.sheduler.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -33,6 +34,7 @@ public class AppMainClass {
             botsApi.registerBot(new voda());
             botsApi.registerBot(new fitlife24());
             botsApi.registerBot(new plank30days());
+            botsApi.registerBot(new popejbot())
         }
         catch (TelegramApiException e) {
             e.printStackTrace();
