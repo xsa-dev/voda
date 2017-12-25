@@ -1,4 +1,4 @@
-package com;
+package com.View;
 
 import com.vdurmont.emoji.EmojiParser;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 // refactor this for "Controllers" and all logik extract out
-public class Diary {
+public class Keyboards {
     public void start(long tid) {
-        System.out.println("Diary:start");
+        System.out.println("RezultDiary:start");
     }
 
     public ReplyKeyboardMarkup getDefaultDiaryKeybord() {

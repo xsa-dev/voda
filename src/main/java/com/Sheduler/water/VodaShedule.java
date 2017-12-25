@@ -1,6 +1,6 @@
-package com.sheduler.water;
+package com.Sheduler.water;
 
-import com.draft.Diary.voda;
+import com.draft.RezultDiary.voda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class VodaShedule extends TimerTask {
     public void run() {
         voda bot = new voda();
 
-        // todo send message about worked sheduler
+        // todo send message about worked Sheduler
         List<Integer> subscribers = new ArrayList<Integer>();
 
         // todo query for subscribers for water notification

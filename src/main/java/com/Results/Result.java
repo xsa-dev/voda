@@ -1,4 +1,4 @@
-package com.erezults;
+package com.Results;
 
 /**
  * Created by xsd on 26.08.2017 with love.

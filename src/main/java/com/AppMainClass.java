@@ -1,10 +1,10 @@
 package com;
 
-import com.draft.Diary.voda;
+import com.Sheduler.TicTackApp;
 import com.draft.Plank.plank30days;
 import com.draft.Popejbot.popejbot;
+import com.draft.RezultDiary.voda;
 import com.draft.fitlife24.fitlife24;
-import com.sheduler.TicTackApp;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;

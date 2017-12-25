@@ -1,7 +1,7 @@
-package com.sheduler.water;
+package com.Sheduler.water;
 
-import com.draft.Diary.voda;
-import com.model.dbmodel;
+import com.Model.dbmodel;
+import com.draft.RezultDiary.voda;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

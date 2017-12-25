@@ -1,10 +1,10 @@
 package com.draft.Popejbot;
 
-import com.Diary;
+import com.Model.dbmodel;
+import com.Results.Result;
+import com.View.Keyboards;
 import com.draft.Clubs.Payments;
 import com.draft.Test.TestReturnMessage;
-import com.erezults.Result;
-import com.model.dbmodel;
 import com.vdurmont.emoji.EmojiParser;
 import org.telegram.telegrambots.api.methods.send.SendInvoice;
 import org.telegram.telegrambots.api.methods.send.SendLocation;
@@ -51,7 +51,7 @@ public class popejbot extends TelegramLongPollingBot {
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
     HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
 
-    Diary diary = new Diary();
+    Keyboards keyboards = new Keyboards();
     Payments payments = new Payments();
     ReplyKeyboardMarkup rkm = new ReplyKeyboardMarkup();
     String resultString = "";
@@ -230,7 +230,7 @@ public class popejbot extends TelegramLongPollingBot {
             message.setChatId(chat_id);
 
             if (update.getMessage().getText().equals("/keyboardRefresh")) {
-                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
                 message.setText("KeyBoardRefresh");
 
                 sendMessageToId(chat_id, message);
@@ -272,7 +272,7 @@ public class popejbot extends TelegramLongPollingBot {
                 } catch (ClassNotFoundException e) {
                     sendMessageToOwnerId(e.toString(), chat_id, CurrentInMessage);
                 }
-                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
                 message.setChatId((chat_id));
                 message.setText("Привет, пользуйся кнопками для того чтобы записывать результаты по воде. О предложениях, замечаниях, ошибках сообщай тому кто тебя пригласил. Добро пожаловать. ");
 //                message.setText("Привет, я работаю в тестовом режиме." + "\n" +
@@ -288,7 +288,7 @@ public class popejbot extends TelegramLongPollingBot {
 
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:"))) {
                 message.setText("Back");
-                rkm = diary.getDefaultWaterDiaryKeybord();
+                rkm = keyboards.getDefaultWaterDiaryKeybord();
                 message.setReplyMarkup(rkm);
                 try {
                     sendMessage(message);
@@ -298,7 +298,7 @@ public class popejbot extends TelegramLongPollingBot {
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":heavy_plus_sign:"))) {
                 message.setText("Давайте запишу сколько вы выпили? " + "\n" + "Пишите цифру в миллилитрах " + EmojiParser.parseToUnicode(":droplet:"));
                 userWorkFlow.put(chat_id, "sendAnswerAboutWater");
-                message.setReplyMarkup(diary.getDefaultAnswerWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultAnswerWaterDiaryKeybord());
                 try {
                     sendMessage(message);
                 } catch (Exception e) {
@@ -306,7 +306,7 @@ public class popejbot extends TelegramLongPollingBot {
                 }
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":potable_water:"))) {
                 message.setText("WaterDiary start");
-                rkm = diary.getDefaultWaterDiaryKeybord();
+                rkm = keyboards.getDefaultWaterDiaryKeybord();
                 message.setReplyMarkup(rkm);
                 try {
                     sendMessage(message);
@@ -316,9 +316,9 @@ public class popejbot extends TelegramLongPollingBot {
 
             } else if (CurrentInMessage.startsWith(EmojiParser.parseToUnicode(":eyes:"))) {
 
-                Diary diary = new Diary();
-                message.setText("New function in develop: diary.. please test this and sebd feedback to @xsd14");
-                ReplyKeyboardMarkup rkm = diary.getDefaultWaterDiaryKeybord();
+                Keyboards keyboards = new Keyboards();
+                message.setText("New function in develop: keyboards.. please test this and sebd feedback to @xsd14");
+                ReplyKeyboardMarkup rkm = keyboards.getDefaultWaterDiaryKeybord();
                 message.setReplyMarkup(rkm);
                 try {
                     sendMessage(message);
@@ -418,7 +418,7 @@ public class popejbot extends TelegramLongPollingBot {
                 }
             } else if (CurrentInMessage.equals(EmojiParser.parseToUnicode(":ok:").toString())) {
                 message.setText("/start").setChatId(chat_id);
-                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
                 try {
                     sendMessage(message);
                 } catch (Exception e) {
@@ -493,7 +493,7 @@ public class popejbot extends TelegramLongPollingBot {
             } else if (CurrentInMessage.equals("/help")) {
                 message.setChatId(chat_id);
                 message.setChatId(chat_id);
-                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
                 String helpText1 = "На кнопках всё написано.";
 //                String helpText2 = "Как пользоваться дневником:" + "\n"
 //                        + "Напиши: + хлеб 10б 150э 5в - добавит в дневник питания 10 гр белка, 150 каллорий, 5 гр пищевых волокон." + "\n"
@@ -617,7 +617,7 @@ public class popejbot extends TelegramLongPollingBot {
                     message.setText("Отлично! Еще: " + update.getMessage().getText() + "мл. добавлено! " + EmojiParser.parseToUnicode(":pushpin:"));
                     message.setChatId(chat_id);
                     userWorkFlow.put(chat_id, "queryAboutWaterGoted");
-                    message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                    message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
                 } catch (Exception e) {
                     message.setText("Цыфра не распознана, допишите запись нормально (цифрой). Для возврата используйте кнопку " + EmojiParser.parseToUnicode(":leftwards_arrow_with_hook:") + "\n" + "Если это не сработает используйте цыфру 0");
                     message.setChatId(chat_id);
@@ -649,7 +649,7 @@ public class popejbot extends TelegramLongPollingBot {
             } else {
                 message.setChatId(chat_id);
                 message.setText("Я не понял \"" + update.getMessage().getText().toString() + "\"? " + EmojiParser.parseToUnicode(":male_shrug:").toString());
-                message.setReplyMarkup(diary.getDefaultWaterDiaryKeybord());
+                message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
 
                 try {
                     dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), String.valueOf(CurrentInMessage));

@@ -1,10 +1,10 @@
-package com.sheduler;
+package com.Sheduler;
 
-import com.sheduler.plank30days.PlankShedule;
-import com.sheduler.test.RunMeShedule;
-import com.sheduler.test.TestShedule;
-import com.sheduler.water.EveryDaySheduleForUsersWaterDiary;
-import com.sheduler.water.EveryDaySheduleForWaterDiary;
+import com.Sheduler.plank30days.PlankShedule;
+import com.Sheduler.test.RunMeShedule;
+import com.Sheduler.test.TestShedule;
+import com.Sheduler.water.EveryDaySheduleForUsersWaterDiary;
+import com.Sheduler.water.EveryDaySheduleForWaterDiary;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,14 +25,14 @@ public class TicTackApp
     {
         TimerTask task = new RunMeShedule();
         Timer timer = new Timer();
-        //In this example, the sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
+        //In this example, the Sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
         timer.schedule(task, 1000,60000);
     }
 
     public void createShedulledTimer(int delay, int period) {
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
-        //In this example, the sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
+        //In this example, the Sheduler will print the “Run Me ~” message every 60 seconds, with a 1 second delay for the first time of execution.
         timer.schedule(task, delay, period);
     }
 
@@ -43,7 +43,7 @@ public class TicTackApp
 
         TimerTask task = new TestShedule();
         Timer timer = new Timer();
-        // Write get personal subscriber setting and start sheduler
+        // Write get personal subscriber setting and start Sheduler
         timer.schedule(task, delay, period);
     }
 

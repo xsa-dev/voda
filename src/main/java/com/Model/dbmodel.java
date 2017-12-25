@@ -1,4 +1,4 @@
-package com.model;
+package com.Model;
 
 import java.sql.*;
 import java.util.ArrayList;

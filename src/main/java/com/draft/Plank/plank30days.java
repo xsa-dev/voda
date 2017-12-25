@@ -1,6 +1,6 @@
 package com.draft.Plank;
 
-import com.Diary;
+import com.View.Keyboards;
 import com.draft.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
@@ -26,7 +26,7 @@ public class plank30days extends TelegramLongPollingBot {
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
     HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
 
-    Diary diary = new Diary();
+    Keyboards keyboards = new Keyboards();
     Payments payments = new Payments();
     ReplyKeyboardMarkup rkm = new ReplyKeyboardMarkup();
     String[] WorkFlow = {"INIT", "WAITANSWER", "ANSWERED"};
@@ -86,35 +86,35 @@ public class plank30days extends TelegramLongPollingBot {
 
         String inMessage = update.getMessage().getText();
         SendMessage message = new SendMessage();
-        message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+        message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
         long chat_id = update.getMessage().getChatId();
 
         if (inMessage.startsWith("/start")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             message.setText("Добро пожаловать на марафон планки. 30 лней дисциплины, развития и повышения физической активности.");
             sendMessageToId(chat_id, message);
         } else if (inMessage.startsWith("/help")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             message.setText("Помощь (в разработке).");
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
             message.setText("Ты красавчик! Кубики ждут :) ");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
             message.setText("Ты красавчик! Но у тебя сгорела одна жизнь!");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else {
             message.setText("Я не понимаю о чём ты... Напиши @xsd14 он человек и лучше меня разбирается в словах");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(diary.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         }
     }

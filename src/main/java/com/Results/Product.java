@@ -1,11 +1,11 @@
 package com.herbalife;
 
-public class product {
+public class Product {
     private String name;
     private float vp;
     private float summ;
 
-    public product (String name, float vp, float summ) {
+    public Product(String name, float vp, float summ) {
         this.name = name;
         this.vp = vp;
         this.summ = summ;
@@ -37,7 +37,7 @@ public class product {
 
     @Override
     public String toString() {
-        return "product{" +
+        return "Product{" +
                 "name='" + name + '\'' +
                 ", vp=" + vp +
                 ", summ=" + summ +
