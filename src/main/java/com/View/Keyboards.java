@@ -164,6 +164,27 @@ public class Keyboards {
 
     }
 
+    public ReplyKeyboardMarkup getDefaultStatisticakActivityKeybord() {
+        List<KeyboardRow> keyboard = new ArrayList<KeyboardRow>();
+
+        KeyboardRow row = new KeyboardRow();
+
+        KeyboardButton one = new KeyboardButton("Да");
+        KeyboardButton two = new KeyboardButton("Нет");
+
+        row.add(one);
+        row.add(two);
+
+        keyboard.add(row);
+
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup().setResizeKeyboard(true);
+
+        keyboardMarkup.setKeyboard(keyboard).setSelective(true);
+
+        return keyboardMarkup;
+
+    }
+
     public String startMessage(long tid) {
         return "Привет! Хочешь записывать воду?";
     }
