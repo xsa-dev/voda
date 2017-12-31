@@ -63,7 +63,7 @@ public class statistica extends TelegramLongPollingBot {
     public void sendMessageToPlankGroupId() {
         SendMessage message = new SendMessage();
         message.setChatId(-1001108159484L);
-        message.setText("Ребята, кто сделал сегодня планку? Давай давай! Кубики ждут :)");
+        message.setText("Добрый день, все цели достигнуты?");
         try {
             sendMessage(message);
         } catch (Exception e) {
@@ -74,7 +74,7 @@ public class statistica extends TelegramLongPollingBot {
     public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
         message.setChatId(getOwnerId());
-        message.setText("PLANK: " + messageText + "\nfrom id" + fromId + " : " + name);
+        message.setText("STATISTICA: " + messageText + "\nfrom id" + fromId + " : " + name);
         try {
             sendMessage(message);
         } catch (Exception e) {
@@ -93,21 +93,21 @@ public class statistica extends TelegramLongPollingBot {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
-            message.setText("Добро пожаловать на марафон планки. 30 лней дисциплины, развития и повышения физической активности.");
+            message.setText("Привет! Я буду помогать вам вести статистику. Ежедневно я буду интересоваться вашими результатами, мне нужно отвечать кнопками при ответе на вопрос. Рад быть полезным.");
             sendMessageToId(chat_id, message);
         } else if (inMessage.startsWith("/help")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
-            message.setText("Помощь (в разработке).");
+            message.setText("Любую помощь по моему обучению оказывает мой создатель, разработчки @xsd14 ");
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
-            message.setText("Ты красавчик! Кубики ждут :) ");
+            message.setText("Ты достиг своей цели. Это похвально. Твоя главная цель будет обязательно достигнута.");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
-            message.setText("Ты красавчик! Но у тебя сгорела одна жизнь!");
+            message.setText("Ты просто себя не любишь.");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
