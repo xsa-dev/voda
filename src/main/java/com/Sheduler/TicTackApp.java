@@ -1,6 +1,7 @@
 package com.Sheduler;
 
 import com.Sheduler.plank30days.PlankShedule;
+import com.Sheduler.statistica.StatisticaShedule;
 import com.Sheduler.test.RunMeShedule;
 import com.Sheduler.test.TestShedule;
 import com.Sheduler.water.EveryDaySheduleForUsersWaterDiary;
@@ -70,6 +71,15 @@ public class TicTackApp
         int period = 3600000; // every hour
 
         TimerTask task = new PlankShedule();
+        Timer timer = new Timer();
+        timer.schedule(task, delay, period);
+    }
+
+    public void statisticaEveryDaySheduleForAndser() {
+        int delay = 0;
+        int period = 3600000; // every hour
+
+        TimerTask task = new StatisticaShedule();
         Timer timer = new Timer();
         timer.schedule(task, delay, period);
     }

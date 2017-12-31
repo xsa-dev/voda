@@ -4,6 +4,7 @@ import com.Sheduler.TicTackApp;
 import com.draft.Plank.plank30days;
 import com.draft.Popejbot.popejbot;
 import com.draft.RezultDiary.voda;
+import com.draft.Statistica.statistica;
 import com.draft.fitlife24.fitlife24;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
@@ -28,6 +29,7 @@ public class AppMainClass {
         shedulerApp.createEveryDaySheduleForWaterDiary();
         shedulerApp.createEveryDaySheduleForUsersWaterDiary();
         shedulerApp.plankEveryDaySheduleForAnswer();
+        shedulerApp.statisticaEveryDaySheduleForAndser();
 
         // todo Запускаем опросник по перезамерам
         try {
@@ -35,6 +37,7 @@ public class AppMainClass {
             botsApi.registerBot(new fitlife24());
             botsApi.registerBot(new plank30days());
             botsApi.registerBot(new popejbot());
+            botsApi.registerBot(new statistica());
         }
         catch (TelegramApiException e) {
             e.printStackTrace();
