@@ -66,6 +66,7 @@ public class dbmodel {
         }
 
 
+
         public static void addUnrecognizedQuestion(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
@@ -81,6 +82,25 @@ public class dbmodel {
             statement.execute(query);
 
         }
+
+
+        // for plank and water bot
+        public static void addAnswerForSheduledMessage(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement statement = connection.createStatement();
+
+            System.out.println(nrbotname + ":" + nrbottoken + ":" + nrmessageid + ":" + nrchatid + ":" + nrmessagetext);
+
+            String query = "insert into telegram.notrecognizedmessages (botname, bottoken, messageid, chatid, messagetext) " +
+                    //" VALUES " + "('" + nrbotname + "'," '" nrbottoken, nrchatid, nrmessageid, nrmessagetext)";
+                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid + "' , '" + nrchatid + "' , '" + nrmessagetext + "');";
+
+            System.out.println(query);
+            statement.execute(query);
+
+        }
+
 
         public void addUser(long tid, String tname, String tnummber) throws ClassNotFoundException, SQLException {
 

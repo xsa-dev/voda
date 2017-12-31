@@ -1,5 +1,6 @@
 package com.draft.Statistica;
 
+import com.Model.dbmodel;
 import com.View.Keyboards;
 import com.draft.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -39,6 +40,8 @@ public class statistica extends TelegramLongPollingBot {
         return 188416619;
     }
 
+    public static long getGroup() { return -0;}
+
     public void sendMessageToId(long receiverid, SendMessage message) {
         try {
             message.setChatId(receiverid);
@@ -60,6 +63,20 @@ public class statistica extends TelegramLongPollingBot {
         }
     }
 
+
+
+    public void sendMessageToThisGroupId() {
+        SendMessage message = new SendMessage();
+        message.setChatId(-1001108159484L);
+        message.setText("Добрый день, все цели достигнуты?");
+        try {
+            sendMessage(message);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    @Deprecated
     public void sendMessageToPlankGroupId() {
         SendMessage message = new SendMessage();
         message.setChatId(-1001108159484L);
@@ -104,15 +121,25 @@ public class statistica extends TelegramLongPollingBot {
         } else if (inMessage.equals("Да")) {
             message.setText("Ты достиг своей цели. Это похвально. Твоя главная цель будет обязательно достигнута.");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            // message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
             message.setText("Ты просто себя не любишь.");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            // message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            try {
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
             sendMessageToId(chat_id, message);
         } else {
             message.setText("Я не понимаю о чём ты... Напиши @xsd14 он человек и лучше меня разбирается в словах");
+            try {
+                dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+            } catch (Exception e) {
+                System.out.println(e);
+            }
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
@@ -124,7 +151,7 @@ public class statistica extends TelegramLongPollingBot {
     }
 
     public String getBotToken() {
-        return "390532084:AAEqQC6-XOqFTRtRZnyipy-qsZR5XsuK1BY";
+        return "XXX";
 
     }
 
