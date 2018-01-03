@@ -92,7 +92,7 @@ public class dbmodel {
 
             System.out.println(nrbotname + ":" + nrbottoken + ":" + nrmessageid + ":" + nrchatid + ":" + nrmessagetext);
 
-            String query = "insert into telegram.notrecognizedmessages (botname, bottoken, messageid, chatid, messagetext) " +
+            String query = "insert into telegram.sheduledanswers (botname, bottoken, messageid, chatid, messagetext) " +
                     //" VALUES " + "('" + nrbotname + "'," '" nrbottoken, nrchatid, nrmessageid, nrmessagetext)";
                     "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid + "' , '" + nrchatid + "' , '" + nrmessagetext + "');";
 
