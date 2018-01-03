@@ -1,5 +1,6 @@
 package com.draft.Plank;
 
+import com.Model.dbmodel;
 import com.View.Keyboards;
 import com.draft.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -103,11 +104,30 @@ public class plank30days extends TelegramLongPollingBot {
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
             message.setText("Ты красавчик! Кубики ждут :) ");
+
+            try {
+                // to do need testing, because model need update
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+            } catch (Exception e) {
+                message.setText("Exception: " + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
+            }
+
+
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
             message.setText("Ты красавчик! Но у тебя сгорела одна жизнь!");
+
+            try {
+                // to do need testing, because model need update
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+            } catch (Exception e) {
+                message.setText("Exception: " + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
+            }
+
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
