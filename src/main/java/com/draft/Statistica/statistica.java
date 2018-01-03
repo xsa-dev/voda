@@ -99,7 +99,7 @@ public class statistica extends TelegramLongPollingBot {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
-            message.setText("Привет! Я буду помогать вам вести статистику. Ежедневно я буду интересоваться вашими результатами, мне нужно отвечать кнопками при ответе на вопрос. Рад быть полезным.");
+            message.setText("Привет! Я буду помогать вам вести статистику. Ежедневно я буду интересоваться вашими результатами. Мне нужно отвечать кнопками при ответе на вопрос. Рад быть полезным.");
             sendMessageToId(chat_id, message);
         } else if (inMessage.startsWith("/help")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
