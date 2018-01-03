@@ -114,11 +114,12 @@ public class statistica extends TelegramLongPollingBot {
             try {
                 dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                message.setText("ClassNotFoundE" + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
             } catch (SQLException e) {
-                e.printStackTrace();
+                message.setText("SqlException" + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
             }
-            // message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
