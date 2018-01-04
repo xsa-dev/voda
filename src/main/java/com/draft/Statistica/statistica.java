@@ -130,7 +130,8 @@ public class statistica extends TelegramLongPollingBot {
                 // to do need testing, because model need update
                 dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
             } catch (Exception e) {
-                System.out.println(e.toString());
+                message.setText("Exception: " + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
             }
             sendMessageToId(chat_id, message);
         } else {
@@ -138,7 +139,8 @@ public class statistica extends TelegramLongPollingBot {
             try {
                 dbmodel.MysqlCon.addUnrecognizedQuestion(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
             } catch (Exception e) {
-                System.out.println(e);
+                message.setText("Exception: " + "\n" + e.toString());
+                sendMessageToId(getOwnerId(), message);
             }
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
