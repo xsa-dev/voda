@@ -52,7 +52,7 @@ public class EveryDaySheduleForWaterDiary extends TimerTask {
                             dbmodel.MysqlCon.getEveryDayWaterDiaryReportView(tid));
                 }
 
-                bot.sendTextToIdMessage(voda.getOwnerId(), "Это оповещение настроено на " + timeOfShedule);
+   //             bot.sendTextToIdMessage(voda.getOwnerId(), "Это оповещение настроено на " + timeOfShedule);
                 // bot.sendTextToIdMessage(105600955, "Это оповещение настроено на " + timeOfShedule);
             }
 
