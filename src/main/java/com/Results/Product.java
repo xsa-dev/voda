@@ -1,4 +1,4 @@
-package com.herbalife;
+package com.Results;
 
 public class Product {
     private String name;
