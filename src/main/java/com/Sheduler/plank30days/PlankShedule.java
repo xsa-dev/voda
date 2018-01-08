@@ -1,4 +1,4 @@
-package com.Sheduler.plank30days;
+package com.sheduler.plank30days;
 
 import com.draft.Plank.plank30days;
 
@@ -27,10 +27,7 @@ public class PlankShedule extends TimerTask {
 
             if (currentHour == timeOfShedule) {
                 bot.sendMessageToPlankGroupId();
-            } else {
             }
-            //bot.sendTextToIdMessage(plank30days.getOwnerId(), "Это оповещение настроено на " + timeOfShedule + ", а сейчас " + currentHour);
-            // bot.sendTextToIdMessage(105600955, "Это оповещение настроено на " + timeOfShedule);
 
         } catch (Exception e) {
             System.out.println();

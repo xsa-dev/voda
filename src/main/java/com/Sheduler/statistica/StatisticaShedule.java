@@ -1,4 +1,4 @@
-package com.Sheduler.statistica;
+package com.sheduler.statistica;
 
 import com.draft.Statistica.statistica;
 

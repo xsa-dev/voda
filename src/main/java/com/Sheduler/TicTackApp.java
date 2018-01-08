@@ -1,11 +1,11 @@
-package com.Sheduler;
+package com.sheduler;
 
-import com.Sheduler.plank30days.PlankShedule;
-import com.Sheduler.statistica.StatisticaShedule;
-import com.Sheduler.test.RunMeShedule;
-import com.Sheduler.test.TestShedule;
-import com.Sheduler.water.EveryDaySheduleForUsersWaterDiary;
-import com.Sheduler.water.EveryDaySheduleForWaterDiary;
+import com.sheduler.plank30days.PlankShedule;
+import com.sheduler.statistica.StatisticaShedule;
+import com.sheduler.test.RunMeShedule;
+import com.sheduler.test.TestShedule;
+import com.sheduler.water.EveryDaySheduleForUsersWaterDiary;
+import com.sheduler.water.EveryDaySheduleForWaterDiary;
 
 import java.util.Timer;
 import java.util.TimerTask;
