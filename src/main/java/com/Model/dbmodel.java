@@ -85,16 +85,16 @@ public class dbmodel {
 
 
         // for plank and water bot
-        public static void addAnswerForSheduledMessage(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext) throws ClassNotFoundException, SQLException {
+        public static void addAnswerForSheduledMessage(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext, long contact_chatid) throws ClassNotFoundException, SQLException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
             Statement statement = connection.createStatement();
 
             System.out.println(nrbotname + ":" + nrbottoken + ":" + nrmessageid + ":" + nrchatid + ":" + nrmessagetext);
 
-            String query = "insert into telegram.sheduledanswers (botname, bottoken, messageid, chatid, messagetext) " +
+            String query = "insert into telegram.sheduledanswers (botname, bottoken, messageid, chatid, messagetext, contact_chatid) " +
                     //" VALUES " + "('" + nrbotname + "'," '" nrbottoken, nrchatid, nrmessageid, nrmessagetext)";
-                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid + "' , '" + nrchatid + "' , '" + nrmessagetext + "');";
+                    "values ('" + nrbotname + "', '" + nrbottoken + "' , '" + nrmessageid + "' , '" + nrchatid + "' , '" + nrmessagetext + "' , '" + contact_chatid + "');";
 
             System.out.println(query);
             statement.execute(query);

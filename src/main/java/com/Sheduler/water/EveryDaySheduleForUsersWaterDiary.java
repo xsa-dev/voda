@@ -1,4 +1,4 @@
-package com.Sheduler.water;
+package com.sheduler.water;
 
 import com.Model.dbmodel;
 import com.draft.RezultDiary.voda;

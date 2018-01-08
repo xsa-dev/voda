@@ -112,7 +112,7 @@ public class statistica extends TelegramLongPollingBot {
             message.setText("Ты достиг своей цели. Это похвально. Твоя главная цель будет обязательно достигнута.");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             try {
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getContact().getUserID());
             } catch (ClassNotFoundException e) {
                 message.setText("ClassNotFoundE" + "\n" + e.toString());
                 sendMessageToId(getOwnerId(), message);
@@ -128,7 +128,7 @@ public class statistica extends TelegramLongPollingBot {
             // message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             try {
                 // to do need testing, because model need update
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText());
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getContact().getUserID());
             } catch (Exception e) {
                 message.setText("Exception: " + "\n" + e.toString());
                 sendMessageToId(getOwnerId(), message);
