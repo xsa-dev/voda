@@ -107,7 +107,7 @@ public class plank30days extends TelegramLongPollingBot {
 
             try {
                 // to do need testing, because model need update
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getContact().getUserID());
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
             } catch (Exception e) {
                 message.setText("Exception: " + "\n" + e.toString());
                 sendMessageToId(getOwnerId(), message);
@@ -122,7 +122,7 @@ public class plank30days extends TelegramLongPollingBot {
 
             try {
                 // to do need testing, because model need update
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getContact().getUserID());
+                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
             } catch (Exception e) {
                 message.setText("Exception: " + "\n" + e.toString());
                 sendMessageToId(getOwnerId(), message);
