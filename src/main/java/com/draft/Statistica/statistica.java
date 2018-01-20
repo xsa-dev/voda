@@ -66,6 +66,47 @@ public class statistica extends TelegramLongPollingBot {
         }
     }
 
+    static int randomWithRange(int min, int max) {
+        int range = (max - min) + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    public String getRandomPossitiveSentanse() {
+        String[] sentanses = {
+                "Ты на пути к своей цели!",
+                "Цель будет покорена!",
+                "Никаких проблем!",
+                "Будет круто, когда ты достигнешь цели. Пригласишь меня отметить?",
+                "Я восхищаюсь тобой.",
+                "Знаешь, это очень сложно следовать намеченной цели и не отступать от плана?"
+        };
+
+        int x;
+
+        x = randomWithRange(0, 5);
+
+
+        return sentanses[x];
+    }
+
+    public String getRandomNegativeSentanse() {
+        String[] sentanses = {
+                "Значит завтра не будет лучше!",
+                "Цель всё дальше и дальше!",
+                "У тебя есть главный враг. Ты сам!",
+                "Может сформулируешь для себя что-то пороще?",
+                "Ну ладно..",
+                "Помедетируй и подумай действительно тебе это нужно."
+        };
+
+        int x;
+
+        x = randomWithRange(0, 5);
+
+
+        return sentanses[x];
+    }
+
     public void sendMessageToThisGroupId() {
         SendMessage message = new SendMessage();
         message.setChatId(getGroupId());
@@ -109,7 +150,7 @@ public class statistica extends TelegramLongPollingBot {
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
-            message.setText("Ты достиг своей цели. Это похвально. Твоя главная цель будет обязательно достигнута.");
+            message.setText(getRandomPossitiveSentanse());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             try {
                 dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
@@ -123,7 +164,7 @@ public class statistica extends TelegramLongPollingBot {
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Нет")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
-            message.setText("Ты просто себя не любишь.");
+            message.setText(getRandomNegativeSentanse());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             // message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
             try {
