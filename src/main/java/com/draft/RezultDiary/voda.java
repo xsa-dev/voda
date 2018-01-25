@@ -609,7 +609,7 @@ public class voda extends TelegramLongPollingBot {
             } else if (userWorkFlow.get(chat_id).equals("sendAnswerAboutWater")) {
                 try {
                     dbmodel.MysqlCon.addWaterToDiary(chat_id, Integer.parseInt(update.getMessage().getText()));
-                    message.setText("Отлично! Еще: " + update.getMessage().getText() + "мл. добавлено! " + EmojiParser.parseToUnicode(":pushpin:"));
+                    message.setText("Отлично! Еще: " + update.getMessage().getText() + "мл. добавлено! " + EmojiParser.parseToUnicode(":pushpin:") + "\n" + "Итог за сегодня: " + dbmodel.MysqlCon.getWaterFromPeriod(chat_id, "debug", "debug") + " мл. ");
                     message.setChatId(chat_id);
                     userWorkFlow.put(chat_id, "queryAboutWaterGoted");
                     message.setReplyMarkup(keyboards.getDefaultWaterDiaryKeybord());
