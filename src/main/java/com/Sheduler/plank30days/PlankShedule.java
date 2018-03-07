@@ -1,4 +1,4 @@
-package com.sheduler.plank30days;
+package com.Sheduler.plank30days;
 
 import com.draft.Plank.plank30days;
 

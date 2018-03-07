@@ -1,6 +1,6 @@
 package com;
 
-import com.sheduler.TicTackApp;
+import com.Sheduler.TicTackApp;
 import com.draft.Plank.plank30days;
 import com.draft.Popejbot.popejbot;
 import com.draft.RezultDiary.voda;

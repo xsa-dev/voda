@@ -1,4 +1,4 @@
-package com.sheduler.test;
+package com.Sheduler.test;
 
 import com.draft.RezultDiary.voda;
 
