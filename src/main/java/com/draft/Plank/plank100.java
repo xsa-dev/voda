@@ -2,10 +2,8 @@ package com.draft.Plank;
 
 import com.Model.dbmodel;
 import com.View.Keyboards;
-import com.draft.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
-import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
@@ -106,7 +104,6 @@ public class plank100 extends TelegramLongPollingBot {
         } else if (inMessage.equals("Да")) {
             outMessage.setText("Ты красавчик! Кубики ждут :) ");
             try {
-                // to do need testing, because model need update
                 dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
             } catch (Exception e) {
                 outMessage.setText("Exception: " + "\n" + e.toString());

@@ -38,6 +38,10 @@ public class dbmodel {
             return water;
         }
 
+        public static void procedureActivityStreak(Long chatid) {
+
+        }
+
         public static void addWaterToDiary(Long chatid, int count) throws SQLException, ClassNotFoundException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
@@ -82,7 +86,6 @@ public class dbmodel {
             statement.execute(query);
 
         }
-
 
         // for plank and water bot
         public static void addAnswerForSheduledMessage(String nrbotname, String nrbottoken, int nrmessageid, long nrchatid, String nrmessagetext, long contact_chatid) throws ClassNotFoundException, SQLException {
