@@ -1,11 +1,11 @@
 package com;
 
-import com.Sheduler.TicTackApp;
-import com.draft.Plank.plank30days;
-import com.draft.Popejbot.popejbot;
-import com.draft.RezultDiary.voda;
-import com.draft.Statistica.statistica;
-import com.draft.fitlife24.fitlife24;
+import com.Controller.Sheduler.TicTackApp;
+import com.Controller.Plank.plank30days;
+import com.Controller.Popejbot.popejbot;
+import com.Controller.RezultDiary.voda;
+import com.Controller.Statistica.statistica;
+import com.Controller.fitlife24.fitlife24;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
@@ -17,6 +17,9 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 public class AppMainClass {
 
     public static void main(String[] args) {
+
+
+        // derby java db implementation region
 
         // todo multilanguage support android strings kotlyn :D
 
