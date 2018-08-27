@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/voda.iml" filepath="$PROJECT_DIR$/voda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/voda.iml" filepath="$PROJECT_DIR$/.idea/voda.iml" />
     </modules>
   </component>
 </project>

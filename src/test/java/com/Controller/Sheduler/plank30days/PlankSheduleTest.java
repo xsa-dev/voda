@@ -8,8 +8,7 @@ import java.time.LocalDateTime;
 public class PlankSheduleTest {
     @Test
     public void SheduleCreateTrue() throws Exception {
-        PlankShedule shedule = new PlankShedule();
-        Assert.assertNotNull(shedule);
+
     }
 
     @Test

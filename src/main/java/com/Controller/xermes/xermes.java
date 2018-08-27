@@ -1,6 +1,5 @@
-package com.Controller.Plank;
+package com.Controller.xermes;
 
-import com.dbAdapters.dbmodel;
 import com.View.Keyboards;
 import com.Controller.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
@@ -10,19 +9,36 @@ import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
- * Created by User on 11.07.2017
- * Updated by User on 19.07.2017
- * Updated by iko in 25.08.2017
- * Updated by xsd in 26.08.2017
- * Updated by iko in 01.09.2017
- * Updated by xsa in 10.12.2017
+ * RULES:
+ * 1) this must to be a long support bot with module logik
+ * 2) this myst to be a shop module
+ * 3) this must to be a edeedf module
+ * 4) this must to be a diary module
+ * 5) this must to be a CORE
+ * 6) this must to be a Sheduled Notifications
+ * 7) this must to be QIWI Payment
+ * 8) this must to be YD Payment
+ * 9) this must to be ...
+ * 10) this must to be a activity diary
+ * 11) this must to be a HERMES Conception
+ *  a) Partners
+ *  b) Referals
+ * 12) this must to be a Consultant Module
+ * 13) this must to be a Learning A Module
+ * 14) this must to be a Learning B Module
+ * 15) this must to be a 90 days plan
+ * 16) this myst to be a mysql connection
+ * 17) this myst to be a Kotlin Lang
+ * 18)
  * <p>
  * Emoji here: https://github.com/vdurmont/emoji-java#available-emojis
  */
-public class plank30days extends TelegramLongPollingBot {
+public class xermes extends TelegramLongPollingBot {
 
     HashMap<Long, Integer> onLineUserMap = new HashMap<Long, Integer>();
     HashMap<Long, String> userWorkFlow = new HashMap<Long, String>();
@@ -61,10 +77,11 @@ public class plank30days extends TelegramLongPollingBot {
         }
     }
 
-    public void sendMessageToPlankGroupId() {
+
+    public void sendMessageToOwnerId(String messageText, long fromId, String name) {
         SendMessage message = new SendMessage();
-        message.setChatId(-1001108159484L);
-        message.setText("Ребята, кто сделал сегодня планку? Давай давай! Кубики ждут :)");
+        message.setChatId(getOwnerId());
+        message.setText("FIT: " + messageText + "\nfrom id" + fromId + " : " + name);
         try {
             sendMessage(message);
         } catch (Exception e) {
@@ -72,87 +89,80 @@ public class plank30days extends TelegramLongPollingBot {
         }
     }
 
-    public void sendMessageToOwnerId(String messageText, long fromId, String name) {
-        SendMessage message = new SendMessage();
-        message.setChatId(getOwnerId());
-        message.setText("PLANK: " + messageText + "\nfrom id" + fromId + " : " + name);
-        try {
-            sendMessage(message);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+    public static boolean checkWithRegExp(String userNameString){
+        Pattern p = Pattern.compile("^/start [0-9]{1,9}$");
+        Matcher m = p.matcher(userNameString);
+        return m.matches();
     }
+
+    public static String getSponsorIdFromInmessage(String inMessage) {
+        String[] messageElements = inMessage.split(" ");
+        return messageElements[1];
+    }
+
 
     public void onUpdateReceived(Update update) {
 
         String inMessage = update.getMessage().getText();
         SendMessage message = new SendMessage();
-        message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
         long chat_id = update.getMessage().getChatId();
 
-        if (inMessage.startsWith("/start")) {
-            onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
-            sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
-            message.setText("Добро пожаловать на марафон планки. 30 лней дисциплины, развития и повышения физической активности.");
+        if (checkWithRegExp(inMessage)) {
+            String sponsor = getSponsorIdFromInmessage(inMessage);
+            message.setText("Добро пожаловать в Hermes! Я Вас узнал!" + "\n" + "Ваш id: " + sponsor);
             sendMessageToId(chat_id, message);
-        } else if (inMessage.startsWith("/help")) {
+        }
+        else if (inMessage.startsWith("/start")) {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
+            message.setText("Добро пожаловать в Hermes." +
+                    "\n" + "Укажите кодовое слово для регистрации.");
+            sendMessageToId(chat_id, message);
+        }
+        else if (inMessage.startsWith("/help")) {
+            onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
+            sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
+            message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             message.setText("Помощь (в разработке).");
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
-            message.setText("Ты красавчик! Кубики ждут :) ");
-
-            try {
-                // to do need testing, because model need update
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
-            } catch (Exception e) {
-                message.setText("Exception: " + "\n" + e.toString());
-                sendMessageToId(getOwnerId(), message);
-            }
-
-
+            message.setText("Ты красавчик! На тебе фиткойн! Печенька");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
-        } else if (inMessage.equals("Нет")) {
-            message.setText("Ты красавчик! Но у тебя сгорела одна жизнь!");
-
-            try {
-                // to do need testing, because model need update
-                dbmodel.MysqlCon.addAnswerForSheduledMessage(getBotUsername(), getBotToken(), update.getMessage().getMessageId(), update.getMessage().getChatId(), update.getMessage().getText(), update.getMessage().getFrom().getId());
-            } catch (Exception e) {
-                message.setText("Exception: " + "\n" + e.toString());
-                sendMessageToId(getOwnerId(), message);
-            }
-
+        }
+         else if (inMessage.equals("/sponsor")) {
+            message.setText("Ваша ссылка для приглаения людей " + "\n" + "http://t.me/xermes_bot?start=" + update.getMessage().getFrom().getId());
+            sendMessageToId(chat_id, message);
+        }
+        else if (inMessage.equals("Нет")) {
+            message.setText("Ты красавчик! Но фиткойн только тем кто был!");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
         } else {
-            message.setText("Я не понимаю о чём ты... Напиши @xsd14 он человек и лучше меня разбирается в словах");
+            message.setText("Я не понимаю о чём ты...");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
-            message.setReplyMarkup(keyboards.getDefaultPlankActivityKeybord());
+            message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
         }
     }
 
-    public plank30days() {
+    public xermes() {
         super();
     }
 
     public String getBotToken() {
-        return "390532084:AAEqQC6-XOqFTRtRZnyipy-qsZR5XsuK1BY";
+        return "686002098:AAEuJ0JgHo8RJ1Z1BoQqiFrpAFul4WkKo40";
 
     }
 
     public String getBotUsername() {
-        return "P30D_bot";
+        return "Fitlife24bot";
     }
 
-    public plank30days(DefaultBotOptions options) {
+    public xermes(DefaultBotOptions options) {
         super(options);
     }
 

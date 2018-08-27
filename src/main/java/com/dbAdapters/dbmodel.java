@@ -42,6 +42,7 @@ public class dbmodel {
 
         }
 
+
         public static void addWaterToDiary(Long chatid, int count) throws SQLException, ClassNotFoundException {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);

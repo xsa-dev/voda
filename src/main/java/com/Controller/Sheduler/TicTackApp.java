@@ -1,6 +1,5 @@
 package com.Controller.Sheduler;
 
-import com.Controller.Sheduler.plank30days.PlankShedule;
 import com.Controller.Sheduler.statistica.StatisticaShedule;
 import com.Controller.Sheduler.test.RunMeShedule;
 import com.Controller.Sheduler.test.TestShedule;
@@ -66,14 +65,7 @@ public class TicTackApp
         timer.schedule(task, delay, period);
     }
 
-    public void plankEveryDaySheduleForAnswer() {
-        int delay = 0;
-        int period = 3600000; // every hour
 
-        TimerTask task = new PlankShedule();
-        Timer timer = new Timer();
-        timer.schedule(task, delay, period);
-    }
 
     public void statisticaEveryDaySheduleForAndser() {
         int delay = 0;
