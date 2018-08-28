@@ -18,14 +18,14 @@ public class AppMainClass {
         ApiContextInitializer.init();
         TelegramBotsApi botsApi = new TelegramBotsApi();
 
-        TicTackApp shedulerApp = new TicTackApp();
-
-        shedulerApp.createEveryDaySheduleForWaterDiary();
-        shedulerApp.createEveryDaySheduleForUsersWaterDiary();
-        shedulerApp.statisticaEveryDaySheduleForAndser();
+//        TicTackApp shedulerApp = new TicTackApp();
+//
+//        shedulerApp.createEveryDaySheduleForWaterDiary();
+//        shedulerApp.createEveryDaySheduleForUsersWaterDiary();
+//        shedulerApp.statisticaEveryDaySheduleForAndser();
 
         try {
-            botsApi.registerBot(new voda());
+            //botsApi.registerBot(new voda());
             botsApi.registerBot(new xermes());
         }
         catch (TelegramApiException e) {

@@ -127,7 +127,7 @@ public class xermes extends TelegramLongPollingBot {
             message.setText("Помощь (в разработке).");
             sendMessageToId(chat_id, message);
         } else if (inMessage.equals("Да")) {
-            message.setText("Ты красавчик! На тебе фиткойн! Печенька");
+            message.setText("Ты красавчик! На тебе фиткойн!");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
@@ -137,7 +137,7 @@ public class xermes extends TelegramLongPollingBot {
             sendMessageToId(chat_id, message);
         }
         else if (inMessage.equals("Нет")) {
-            message.setText("Ты красавчик! Но фиткойн только тем кто был!");
+            message.setText("Ты красавчик! Но фитgolds! Увидемся :)");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
             sendMessageToId(chat_id, message);
@@ -159,7 +159,7 @@ public class xermes extends TelegramLongPollingBot {
     }
 
     public String getBotUsername() {
-        return "Fitlife24bot";
+        return "xermes_bot";
     }
 
     public xermes(DefaultBotOptions options) {
