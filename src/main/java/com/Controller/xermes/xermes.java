@@ -2,16 +2,17 @@ package com.Controller.xermes;
 
 import com.View.Keyboards;
 import com.Controller.Clubs.Payments;
+import com.dbAdapters.dbmodel;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 /**
  * RULES:
@@ -124,8 +125,28 @@ public class xermes extends TelegramLongPollingBot {
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
-            message.setText("Помощь (в разработке).");
+
+            message.setText("Commands: " + "\n" +
+                    "/price" + "\n" +
+                    "/sponsor" + "\n" +
+                    "/diary" + "\n" +
+                    "..."
+            );
+
             sendMessageToId(chat_id, message);
+        }
+        else if (inMessage.startsWith("/price")) {
+            dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
+            try {
+                message.setText(conn.getOwnPrice("sv"));
+                sendMessageToId(chat_id, message);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
         } else if (inMessage.equals("Да")) {
             message.setText("Ты красавчик! На тебе фиткойн!");
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());

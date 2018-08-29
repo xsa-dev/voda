@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0443030f-27bf-4c21-a16d-31f9522bd0b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/voda_jar/voda.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/AppMainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/AppMainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,6 +41,34 @@
         <item name="cb@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cb: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cb: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cb: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="views" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="cb: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="views" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="s_price_qp: view" type="bd137a56:MysqlImplModel$View" />
+      </path>
     </expand>
     <select />
   </component>
@@ -50,46 +77,54 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="10" />
-          <entry key="md" value="1" />
+          <entry key="java" value="15" />
+          <entry key="md" value="3" />
+          <entry key="products" value="3" />
+          <entry key="s_price_sv" value="1" />
           <entry key="snippet" value="1" />
+          <entry key="sql" value="1" />
           <entry key="xml" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="10" />
-          <entry key="Markdown" value="1" />
-          <entry key="Scratch" value="1" />
+          <entry key="Database Element" value="4" />
+          <entry key="JAVA" value="15" />
+          <entry key="Markdown" value="3" />
+          <entry key="Scratch" value="2" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="765" />
-          <entry key="md" value="736" />
-          <entry key="sql" value="25" />
-          <entry key="txt" value="115" />
+          <entry key="cell" value="354" />
+          <entry key="java" value="1627" />
+          <entry key="md" value="1197" />
+          <entry key="sql" value="237" />
+          <entry key="txt" value="148" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="765" />
-          <entry key="Markdown" value="736" />
-          <entry key="PLAIN_TEXT" value="115" />
-          <entry key="SQL" value="25" />
+          <entry key="JAVA" value="1627" />
+          <entry key="Markdown" value="1197" />
+          <entry key="PLAIN_TEXT" value="148" />
+          <entry key="SQL" value="111" />
+          <entry key="Scratch" value="480" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.16" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.20" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -100,37 +135,72 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/AppMainClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="135">
+                <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="311" lean-forward="true" selection-start-line="311" selection-end-line="311" />
+              <folding>
+                <element signature="method#procedureActivityStreak#0;class#MysqlCon#0;class#dbmodel#0" />
+                <element signature="method#addWaterToDiary#0;class#MysqlCon#0;class#dbmodel#0" />
+                <element signature="method#getEveryDayWaterUserWaterCountView#0;class#MysqlCon#0;class#dbmodel#0" />
+                <element signature="method#getWaterFromPeriod#0;class#MysqlCon#0;class#dbmodel#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="128" column="44" lean-forward="true" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="44" />
-              <folding>
-                <element signature="e#6333#6334#0" expanded="true" />
-                <element signature="e#6356#6357#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="133">
+              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/RezultDiary/voda.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="228" column="49" selection-start-line="228" selection-start-column="49" selection-end-line="228" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a23f4e73-47b0-492e-a31b-b5132ba8ab61/console_1.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>/help</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="xsd &lt;saleksey67@gmail.com&gt;" />
         <option value="xsa &lt;saleksey67@gmail.com&gt;" />
         <option value="xsaxsa" />
       </list>
@@ -147,11 +217,12 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/Controller/Clubs/Payments.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/Controller/fitlife24/fitlife24.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/AppMainClass.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a23f4e73-47b0-492e-a31b-b5132ba8ab61/console_1.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java" />
       </list>
     </option>
   </component>
@@ -217,27 +288,49 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
+      <flattenPackages ProjectPane="true" />
+      <showMembers ProjectPane="true" />
+      <hideEmptyPackages ProjectPane="true" />
+      <abbreviatePackageNames ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="voda" type="58d84e3e:PackageViewProjectNode" />
+              <item name="voda" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="voda" type="58d84e3e:PackageViewProjectNode" />
+              <item name="voda" type="616d4139:PackageViewModuleNode" />
+              <item name="c.Controller" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="voda" type="58d84e3e:PackageViewProjectNode" />
+              <item name="voda" type="616d4139:PackageViewModuleNode" />
+              <item name="c.C.RezultDiary" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="voda" type="58d84e3e:PackageViewProjectNode" />
+              <item name="voda" type="616d4139:PackageViewModuleNode" />
+              <item name="c.C.RezultDiary" type="1f31426a:PackageElementNode" />
+              <item name="voda" type="1a9f42e2:ClassTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="voda" type="b2602c69:ProjectViewProjectNode" />
               <item name="voda" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="voda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="voda" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="voda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="voda" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="voda" type="b2602c69:ProjectViewProjectNode" />
@@ -260,15 +353,20 @@
             <path>
               <item name="voda" type="b2602c69:ProjectViewProjectNode" />
               <item name="voda" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="voda" type="b2602c69:ProjectViewProjectNode" />
+              <item name="voda" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,10 +377,13 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535419246756" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535571817306" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -314,8 +415,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JAR Application.voda-1.0-SNAPSHOT-jar-with-dependencies.jar">
-    <configuration name="AppMainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.AppMainClass">
+    <configuration name="AppMainClass" type="Application" factoryName="Application" singleton="true" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.AppMainClass" />
       <module name="voda" />
       <extension name="coverage">
@@ -349,9 +450,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AppMainClass" />
         <item itemvalue="JAR Application.voda-1.0-SNAPSHOT-jar-with-dependencies.jar" />
         <item itemvalue="JAR Application.voda.jar" />
-        <item itemvalue="Application.AppMainClass" />
       </list>
     </recent_temporary>
   </component>
@@ -369,7 +470,10 @@
       <workItem from="1535408549007" duration="1502000" />
       <workItem from="1535410063947" duration="180000" />
       <workItem from="1535410637250" duration="3158000" />
-      <workItem from="1535414094531" duration="2809000" />
+      <workItem from="1535414094531" duration="2971000" />
+      <workItem from="1535446878235" duration="808000" />
+      <workItem from="1535448067726" duration="137000" />
+      <workItem from="1535566370377" duration="4623000" />
     </task>
     <task id="LOCAL-00001" summary="1) new device reg&#10;2) code cleaned [not all]&#10;3) new bot, all later bots deprecated&#10;4) ...">
       <created>1535413878715</created>
@@ -378,37 +482,37 @@
       <option name="project" value="LOCAL" />
       <updated>1535413878716</updated>
     </task>
-    <task id="LOCAL-00002" summary="refactor message -&gt; outMessage">
-      <created>1523556189950</created>
+    <task id="LOCAL-00002" summary="deployed &amp; minor fixes">
+      <created>1535419394421</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1523556189950</updated>
+      <updated>1535419394422</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6261000" />
+    <option name="totallyTimeSpent" value="11991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <layout>
-      <window_info id="Learn" order="0" weight="0.32956383" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.20840065" />
-      <window_info id="Structure" order="2" weight="0.25" />
-      <window_info id="Designer" order="3" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info id="Nl-Palette" order="8" />
-      <window_info anchor="bottom" id="File Transfer" weight="0.32876712" />
-      <window_info anchor="bottom" id="Database Changes" order="0" weight="0.32876712" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2180937" />
+      <window_info id="Structure" order="1" weight="0.24959612" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Nl-Palette" order="7" />
+      <window_info id="Learn" order="8" weight="0.32956383" />
+      <window_info anchor="bottom" id="Database Console" weight="0.32913166" />
+      <window_info anchor="bottom" id="Database Changes" order="0" weight="0.3277311" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49784017" weight="0.18767123" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.41643837" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49784017" weight="0.18627451" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4159664" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -416,17 +520,18 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50215983" side_tool="true" weight="0.35119048" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32465753" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32876712" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.32876712" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.3277311" />
+      <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32876712" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.32875606" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.2536349" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Remote Host" order="7" weight="0.25928918" />
       <window_info anchor="right" id="Properties" order="8" />
-      <window_info anchor="right" id="Database" order="9" weight="0.3796446" />
+      <window_info anchor="right" id="Database" order="9" weight="0.36187398" />
       <window_info anchor="right" id="Bean Validation" order="10" weight="0.32956383" />
       <window_info anchor="right" id="Ant Build" order="11" weight="0.24959612" />
       <window_info anchor="right" id="Coverage" order="12" sideWeight="0.50623053" side_tool="true" weight="0.32747602" />
@@ -440,16 +545,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1) new device reg&#10;2) code cleaned [not all]&#10;3) new bot, all later bots deprecated&#10;4) ..." />
-    <option name="LAST_COMMIT_MESSAGE" value="1) new device reg&#10;2) code cleaned [not all]&#10;3) new bot, all later bots deprecated&#10;4) ..." />
+    <MESSAGE value="deployed &amp; minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="deployed &amp; minor fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java</url>
-          <line>105</line>
+          <line>106</line>
           <properties />
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java</url>
+          <line>316</line>
+          <properties />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -483,25 +595,10 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/jshell/jshell_console.snippet">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="210">
-            <caret line="42" selection-start-line="42" selection-end-line="42" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
-          <folding>
-            <element signature="n#plugin#0;n#plugins#0;n#build#0;n#project#0;n#!!top" />
-            <element signature="n#plugin#3;n#plugins#0;n#build#0;n#project#0;n#!!top" />
-            <element signature="n#dependencies#0;n#project#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,13 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3/lib/maven-model-builder-3.3.9.jar!/org/apache/maven/model/pom-4.0.0.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -535,7 +625,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/AppMainClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="330">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -543,13 +633,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Model/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a23f4e73-47b0-492e-a31b-b5132ba8ab61/schema/cb/table/products">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a23f4e73-47b0-492e-a31b-b5132ba8ab61/schema/cb/view/s_price_sv">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a23f4e73-47b0-492e-a31b-b5132ba8ab61/console_1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="25" lean-forward="true" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/RezultDiary/voda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="228" column="49" selection-start-line="228" selection-start-column="49" selection-end-line="228" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="135">
+            <caret line="30" column="18" lean-forward="true" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="128" column="44" lean-forward="true" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="44" />
+        <state relative-caret-position="133">
+          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="311" lean-forward="true" selection-start-line="311" selection-end-line="311" />
           <folding>
-            <element signature="e#6333#6334#0" expanded="true" />
-            <element signature="e#6356#6357#0" expanded="true" />
+            <element signature="method#procedureActivityStreak#0;class#MysqlCon#0;class#dbmodel#0" />
+            <element signature="method#addWaterToDiary#0;class#MysqlCon#0;class#dbmodel#0" />
+            <element signature="method#getEveryDayWaterUserWaterCountView#0;class#MysqlCon#0;class#dbmodel#0" />
+            <element signature="method#getWaterFromPeriod#0;class#MysqlCon#0;class#dbmodel#0" />
           </folding>
         </state>
       </provider>

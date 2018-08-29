@@ -1,5 +1,6 @@
 package com.dbAdapters;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,27 +22,14 @@ public class dbmodel {
 
     public static class MysqlCon {
 
-        static String sqlUser = "devuser";
-        static String sqlPass = "devuser";
-        static String sqlHost = "jdbc:mysql://localhost:3306/clpr";
+        static String sqlUser = "root";
+        static String sqlPass = "root";
+        static String sqlHost = "jdbc:mysql://localhost:3306/cb";
 
-        public static int getWaterFromPeriod(long chatid, String dateFrom, String dateTo) throws ClassNotFoundException, SQLException {
-            int water = 0;
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
-            Statement stmt = con.createStatement();
-            String query = "select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime > curdate();";
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                water = rs.getInt(1);
-            }
-            return water;
-        }
 
         public static void procedureActivityStreak(Long chatid) {
 
         }
-
 
         public static void addWaterToDiary(Long chatid, int count) throws SQLException, ClassNotFoundException {
             Class.forName("com.mysql.jdbc.Driver");
@@ -282,6 +270,57 @@ public class dbmodel {
             } catch (SQLException sqlE) {
                 System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
             }
+        }
+
+        public static int getWaterFromPeriod(long chatid, String dateFrom, String dateTo) throws ClassNotFoundException, SQLException {
+            int water = 0;
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+            Statement stmt = con.createStatement();
+            String query = "select sum(watercount) from diary.waterdiary WHERE tid = + '" + chatid + "' AND datetime > curdate();";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                water = rs.getInt(1);
+            }
+            return water;
+        }
+
+
+        public String getOwnPrice(String q) throws SQLException, ClassNotFoundException {
+            String header = "Last Loaded Price: " + "\n";
+            String message = "";
+
+            String id;
+            String name;
+            BigDecimal vp;
+            Float price;
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                ResultSet rs;
+                Statement stmt = con.createStatement();
+                rs = stmt.executeQuery("select * from s_price_sv");
+
+                while (rs.next()) {
+                    id = rs.getString(1);
+                    name = rs.getString(2);
+                    vp = rs.getBigDecimal(3);
+                    price = rs.getFloat(4);
+
+                    System.out.println(rs.getString(1) + "  " + rs.getString(2) + "  " + rs.getBigDecimal(3) + " " + rs.getString(4));
+
+                    message += "/" + id + " " + name + "\n" + "Vp: " + vp + "\n" + "Rub: " + price + "\n";
+
+                }
+
+                return header + message;
+
+            } catch (SQLException sqlE) {
+                System.out.println(sqlE.getErrorCode() + "\n" + sqlE.toString());
+            }
+
+            return "Nothig";
         }
     }
 
