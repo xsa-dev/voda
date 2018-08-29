@@ -1,4 +1,4 @@
-package com.dbAdapters;
+package com.Adapters;
 
 public class jdb {
     public static void main(String[] args) {

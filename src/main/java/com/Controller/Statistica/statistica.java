@@ -1,6 +1,6 @@
 package com.Controller.Statistica;
 
-import com.dbAdapters.dbmodel;
+import com.Adapters.dbmodel;
 import com.View.Keyboards;
 import com.Controller.Clubs.Payments;
 import org.telegram.telegrambots.api.methods.send.SendMessage;

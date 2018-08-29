@@ -1,5 +1,10 @@
 Привет! 
 Новая версия.
+For builds:
+assembly/assembly
+
+how to read config?
+
 
 1) /start
 2) Добро пожаловать в Hermes!

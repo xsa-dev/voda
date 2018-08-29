@@ -1,9 +1,15 @@
-package com.dbAdapters;
+package com.Adapters;
 
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 /**
  * Created by xsd on 02.09.2017 with love.
@@ -22,8 +28,8 @@ public class dbmodel {
 
     public static class MysqlCon {
 
-        static String sqlUser = "root";
-        static String sqlPass = "root";
+        static String sqlUser = "bot";
+        static String sqlPass = "bot";
         static String sqlHost = "jdbc:mysql://localhost:3306/cb";
 
 

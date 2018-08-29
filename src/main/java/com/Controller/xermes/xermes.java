@@ -2,7 +2,7 @@ package com.Controller.xermes;
 
 import com.View.Keyboards;
 import com.Controller.Clubs.Payments;
-import com.dbAdapters.dbmodel;
+import com.Adapters.dbmodel;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
@@ -136,6 +136,7 @@ public class xermes extends TelegramLongPollingBot {
             sendMessageToId(chat_id, message);
         }
         else if (inMessage.startsWith("/price")) {
+
             dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
             try {
                 message.setText(conn.getOwnPrice("sv"));

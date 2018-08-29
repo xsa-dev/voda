@@ -1,6 +1,6 @@
 package com.Controller.RezultDiary;
 
-import com.dbAdapters.dbmodel;
+import com.Adapters.dbmodel;
 import com.Model.Result;
 import com.View.Keyboards;
 import com.Controller.Clubs.Payments;

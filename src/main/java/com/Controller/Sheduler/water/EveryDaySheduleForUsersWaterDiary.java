@@ -1,6 +1,6 @@
 package com.Controller.Sheduler.water;
 
-import com.dbAdapters.dbmodel;
+import com.Adapters.dbmodel;
 import com.Controller.RezultDiary.voda;
 
 import java.time.LocalDateTime;
