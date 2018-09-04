@@ -1,6 +1,7 @@
 package com.Adapters;
 
 import org.json.JSONObject;
+import org.telegram.telegrambots.api.objects.Update;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -291,8 +292,7 @@ public class dbmodel {
             return water;
         }
 
-
-        public String getOwnPrice(String q) throws SQLException, ClassNotFoundException {
+        public String getOwnPriceList(String q) throws SQLException, ClassNotFoundException {
             String header = "Last Loaded Price: " + "\n";
             String message = "";
 
@@ -327,6 +327,84 @@ public class dbmodel {
             }
 
             return "Nothig";
+        }
+
+        public static String getNameById(String sponsor) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement statement = connection.createStatement();
+
+                String query = "SELECT tfname, tlname, tuname from tele_users where sponsor = " + sponsor + " group by sponsor;";
+
+                ResultSet results = statement.executeQuery(query);
+
+                String tfname = null;
+                String tlname = null;
+                String tuname = null;
+
+                while (results.next()) {
+                    results.getStatement();
+                    tfname = results.getString("tfname");
+                    tlname = results.getString("tlname");
+                    tuname = results.getString("tuname");
+                }
+
+                if (tfname != null) {
+                    return tfname;
+                }
+
+                if (tlname != null) {
+                    return tlname;
+                }
+
+                if (tuname != null) {
+                    return tuname;
+                }
+                return "Хороший Человек!";
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            return "Хороший Человек!";
+        }
+
+        public static boolean registerUser(Update update, String sponsor) {
+            // userinfo
+            int tid = update.getMessage().getFrom().getId();
+            String tfname = update.getMessage().getFrom().getFirstName();
+            String tlname = update.getMessage().getFrom().getLastName();
+            String tuname = update.getMessage().getFrom().getUserName();
+            String lang = update.getMessage().getFrom().getLanguageCode();
+
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(sqlHost, sqlUser, sqlPass);
+                Statement statement = connection.createStatement();
+
+                String query = "insert into cb.tele_users (tid, tfname, tlname, tuname, lang, sponsor) " +
+                        "values (?, ?, ?, ?,?,?);";
+
+                // create the mysql insert preparedstatement
+                PreparedStatement preparedStmt = connection.prepareStatement(query);
+                preparedStmt.setInt (1,tid);
+                preparedStmt.setString (2, tfname);
+                preparedStmt.setString   (3, tlname);
+                preparedStmt.setString(4, tuname);
+                preparedStmt.setString    (5, lang);
+                preparedStmt.setInt (6,Integer.parseInt(sponsor));
+
+                // execute the preparedstatement
+                preparedStmt.execute();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            return true;
         }
     }
 

@@ -4,6 +4,7 @@ import com.View.Keyboards;
 import com.Controller.Clubs.Payments;
 import com.Adapters.dbmodel;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.objects.Message;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
@@ -101,6 +102,11 @@ public class xermes extends TelegramLongPollingBot {
         return messageElements[1];
     }
 
+    public boolean regUser(Update update) {
+        // для регистрации без спонсора
+        return false;
+    }
+
 
     public void onUpdateReceived(Update update) {
 
@@ -110,10 +116,17 @@ public class xermes extends TelegramLongPollingBot {
 
         if (checkWithRegExp(inMessage)) {
             String sponsor = getSponsorIdFromInmessage(inMessage);
-            message.setText("Добро пожаловать в Hermes! Я Вас узнал!" + "\n" + "Ваш id: " + sponsor);
+            dbmodel.MysqlCon.registerUser(update, sponsor);
+            message.setText("Добро пожаловать в Hermes! " +
+                    "Вас пригласил: " + dbmodel.MysqlCon.getNameById(sponsor) + "\n" + "У вас на счете 3 ваучера!" + " \n" + "Ваш id: " + sponsor);
             sendMessageToId(chat_id, message);
+            SendMessage sponsorMessage = new SendMessage();
+            sponsorMessage.setText("По вашей ссылке зарегистрировался: " + update.getMessage().getFrom().getFirstName() + "\n" + "Вам начислено 3 ваучера!");
+            sendMessageToId(Long.parseLong(sponsor), sponsorMessage);
         }
         else if (inMessage.startsWith("/start")) {
+            //todo если пользователь уже зарегистрирован сообщать об этом пользователю
+            regUser(update);
             onLineUserMap.put(update.getMessage().getChat().getId(), update.getMessage().getMessageId());
             sendMessageToOwnerId(update.getMessage().getText(), Long.valueOf(update.getMessage().getFrom().getId()), update.getMessage().getFrom().getFirstName());
             message.setReplyMarkup(keyboards.getDefaultFitActivityKeybord());
@@ -139,7 +152,7 @@ public class xermes extends TelegramLongPollingBot {
 
             dbmodel.MysqlCon conn = new dbmodel.MysqlCon();
             try {
-                message.setText(conn.getOwnPrice("sv"));
+                message.setText(conn.getOwnPriceList("sv"));
                 sendMessageToId(chat_id, message);
             } catch (SQLException e) {
                 e.printStackTrace();
