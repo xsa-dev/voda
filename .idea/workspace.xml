@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0443030f-27bf-4c21-a16d-31f9522bd0b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Adapters/dbmodel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Adapters/dbmodel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -99,20 +97,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="354" />
-          <entry key="java" value="3520" />
+          <entry key="java" value="3556" />
           <entry key="json" value="77" />
-          <entry key="md" value="1334" />
+          <entry key="md" value="1419" />
           <entry key="sql" value="237" />
-          <entry key="txt" value="194" />
+          <entry key="txt" value="222" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3520" />
+          <entry key="JAVA" value="3556" />
           <entry key="JSON" value="77" />
-          <entry key="Markdown" value="1334" />
-          <entry key="PLAIN_TEXT" value="194" />
+          <entry key="Markdown" value="1419" />
+          <entry key="PLAIN_TEXT" value="222" />
           <entry key="SQL" value="111" />
           <entry key="Scratch" value="480" />
           <entry key="XML" value="1" />
@@ -140,12 +138,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="115">
-                <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
+              <first_editor relative-caret-position="161">
+                <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               </first_editor>
               <second_editor />
             </state>
@@ -161,11 +159,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="122" column="59" lean-forward="true" selection-start-line="122" selection-start-column="59" selection-end-line="122" selection-end-column="59" />
+            <state relative-caret-position="122">
+              <caret line="124" column="69" lean-forward="true" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -232,9 +230,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/dbAdapters/dbmodel.java" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/Adapters/config.json" />
-        <option value="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" />
         <option value="$PROJECT_DIR$/src/main/java/com/Adapters/dbmodel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/Controller/readme.md" />
       </list>
     </option>
   </component>
@@ -508,7 +506,7 @@
       <workItem from="1535448067726" duration="137000" />
       <workItem from="1535566370377" duration="8042000" />
       <workItem from="1536098823572" duration="1984000" />
-      <workItem from="1536101172203" duration="2039000" />
+      <workItem from="1536101172203" duration="2279000" />
     </task>
     <task id="LOCAL-00001" summary="1) new device reg&#10;2) code cleaned [not all]&#10;3) new bot, all later bots deprecated&#10;4) ...">
       <created>1535413878715</created>
@@ -538,11 +536,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535575539801</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update">
+      <created>1536103482616</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1536103482616</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19433000" />
+    <option name="totallyTimeSpent" value="19673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -569,7 +574,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50215983" side_tool="true" weight="0.35119048" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32352942" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32876712" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3277311" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.3277311" />
       <window_info anchor="bottom" id="File Transfer" order="13" weight="0.3277311" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32913166" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -598,7 +603,9 @@
     <MESSAGE value="deployed &amp; minor fixes" />
     <MESSAGE value="updated price &amp; help" />
     <MESSAGE value="server and base fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="server and base fix" />
+    <MESSAGE value="update" />
+    <MESSAGE value="minor fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -811,16 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="115">
-            <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://a23f4e73-47b0-492e-a31b-b5132ba8ab61/schema/cb/table/tele_users">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -850,8 +847,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/xermes/xermes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="122" column="59" lean-forward="true" selection-start-line="122" selection-start-column="59" selection-end-line="122" selection-end-column="59" />
+        <state relative-caret-position="122">
+          <caret line="124" column="69" lean-forward="true" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/Controller/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="161">
+            <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
